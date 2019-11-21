@@ -20,13 +20,13 @@ import re
 #     }
 # }
 
-def findIndexGroup(event_index, length_serii):
+def findGroupIndex(event_index, length_serii):
     i = 0
     s = 0
     while(s + length_serii[i] < event_index):
-        s = s + length_serii[i]
+        s = s + length_serii[i] + 1
         i = i + 1
-    return event_index + i
+    return event_index - i
 
 orar = []
 
@@ -36,9 +36,13 @@ with open('orar_an1.csv') as f:
     for row in reader:
         orar.append(row)
 
+# taie chestiile useless
+orar = orar[:70]
+
 serii = list(filter(None, orar[0]))
 pattern_serie = re.compile(r'Anul \w{1,3} Seria \w{1}')
 
+# lista cu toate seriile si numarul de serii
 serii = [x for x in serii if pattern_serie.findall(x)]
 nr_serii = len(serii)
 
@@ -80,17 +84,26 @@ for ind, i in enumerate(jump_cells):
         continue
     jump_cells[ind] = jump_cells[ind] + ind
 
-print(length_serii)
-print(jump_cells)
-print(grupe)
+print(len(orar))
 
-for ind, cell in enumerate(range_orar[1][1:]):
-    # ind_grupa = findIndexGroup(ind, length_serii)
-    if cell == '' or ind in [x for x in jump_cells]:
-        print(cell)
+range_zile = [x for x in range(3, len(orar), 13)]
+for ind, _ in enumerate(range_zile):
+    if ind == 1:
         continue
     else:
-        ind_grupa = findIndexGroup(ind, length_serii)
-        print(f'grupa {grupe[ind_grupa]} are {cell}')
+        range_zile[ind] = range_zile[ind] + _
+
+zile = [[x, orar[x][0]] for x in range_zile]
+print(zile)
+
+for ind, cell in enumerate(range_orar[3][1:]):
+    # ind_grupa = findGroupIndex(ind, length_serii)
+    if cell == '' or ind in jump_cells:
+        if cell != '':
+            print('___celula ignorata___:', cell)
+        continue
+    else:
+        ind_grupa = findGroupIndex(ind, length_serii)
+        # print(f'grupa {grupe[ind_grupa]} are {cell}')
 
 # for thing in orar[2]
