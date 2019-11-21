@@ -6,19 +6,23 @@ import re
 # deci daca gasesc un curs/sem la indexul i, i se va atribui grupei i+
 
 # exemplu output dorit:
-#
-# {
+
+# [{
 #     'grupa': 'x',
 #     'orar': {
-#         'luni': {
+#         'luni': { 
 #             '9-11': {
 #                 'type': 'sem/curs',
 #                 'course': 'AM2',
 #                 'room': 'A03'
 #             }
+#             ...
 #         }
+#         ...
 #     }
-# }
+#     'grupa': 'y',
+#     ...
+# ]
 
 def findGroupIndex(event_index, length_serii):
     i = 0
@@ -67,7 +71,7 @@ for letter in dict_serii:
 
 
 effective_orar = nr_grupe + nr_serii
-print(effective_orar)
+# print(effective_orar)
 
 range_orar = [x[1:effective_orar+2] for x in orar[2:]] # inclusiv effective_orar
 print(range_orar[0])
@@ -92,19 +96,39 @@ for ind, i in enumerate(range_zile):
     range_zile[ind] = range_zile[ind] + ind-1
 
 range_zile.pop()
-print(range_zile)
+# print(range_zile)
 
-zile = [[x, orar[x][0]] for x in range_zile]
-print(zile)
+zile = [[x, orar[x][0], ind] for ind, x in enumerate(range_zile)]
+# print(zile)
 
-for ind, cell in enumerate(range_orar[3][1:]):
-    # ind_grupa = findGroupIndex(ind, length_serii)
-    if cell == '' or ind in jump_cells:
-        if cell != '':
-            print('___celula ignorata___:', cell)
-        continue
-    else:
-        ind_grupa = findGroupIndex(ind, length_serii)
-        # print(f'grupa {grupe[ind_grupa]} are {cell}')
+iterator_zi = iter(zile)
+zitmp = next(iterator_zi)
 
+print(zitmp[1])
+orar_final = [{} for x in grupe]
+
+for grupa, orar_grupa in zip(grupe, orar_final):
+    orar_grupa['grupa'] = grupa
+
+# print(orar_final)
+
+for ind_int, interval in enumerate(range_orar):
+    if(ind_int > zitmp[0]):
+        if zitmp[2] > 4:
+            zitmp = next(iterator_zi)
+            print(zitmp[1])
+    for ind, cell in enumerate(interval[1:]):
+        # ind_grupa = findGroupIndex(ind, length_serii)
+        if cell == '' or ind in jump_cells:
+            if cell != '':
+                # print('___celula ignorata___:', cell)
+                continue
+        else:
+            ind_grupa = findGroupIndex(ind, length_serii)
+            for orar in orar_final:
+                orar['orar'] = {}
+
+            print(f'grupa {grupe[ind_grupa]} are {cell}')
+
+print(orar_final)
 # for thing in orar[2]
