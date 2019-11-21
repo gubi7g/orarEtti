@@ -3,6 +3,7 @@ din csv -> JSON pt fiecare grupa
 
 exemplu output dorit:
 
+```json
 [   
     {
         'grupa': 'x',
@@ -20,3 +21,4 @@ exemplu output dorit:
         }
     }
 ]
+```
