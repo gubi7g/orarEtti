@@ -84,14 +84,15 @@ for ind, i in enumerate(jump_cells):
         continue
     jump_cells[ind] = jump_cells[ind] + ind
 
-print(len(orar))
-
 range_zile = [x for x in range(3, len(orar), 13)]
-for ind, _ in enumerate(range_zile):
-    if ind == 1:
+
+for ind, i in enumerate(range_zile):
+    if(ind == 0 or ind == 1):
         continue
-    else:
-        range_zile[ind] = range_zile[ind] + _
+    range_zile[ind] = range_zile[ind] + ind-1
+
+range_zile.pop()
+print(range_zile)
 
 zile = [[x, orar[x][0]] for x in range_zile]
 print(zile)
