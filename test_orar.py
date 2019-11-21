@@ -28,10 +28,6 @@ def findIndexGroup(event_index, length_serii):
         i = i + 1
     return event_index + i
 
-    
-            
-
-
 orar = []
 
 with open('orar_an1.csv') as f:
@@ -45,8 +41,6 @@ pattern_serie = re.compile(r'Anul \w{1,3} Seria \w{1}')
 
 serii = [x for x in serii if pattern_serie.findall(x)]
 nr_serii = len(serii)
-print(serii)
-print('numar de serii:', nr_serii)
 
 grupe = list(filter(None, orar[1]))
 # print(grupe)
@@ -54,8 +48,6 @@ pattern_grupa = re.compile(r'4\d{2}\w{1,2}')
 
 grupe = [x for x in grupe if pattern_grupa.findall(x)]
 nr_grupe = len(grupe)
-print(grupe)
-print('nr de sub/grupe: ', nr_grupe)
 
 # trebuie sa stim cate grupe are fiecare serie (ajuta cu determinarea curs/sem):
 
@@ -66,11 +58,9 @@ for letter in dict_serii:
     tmp_sum = 0
     for grupa in grupe:
         if(letter == grupa[3]):
-            print(grupa)
             tmp_sum = tmp_sum + 1
     length_serii.append(tmp_sum)
 
-print(length_serii)
 
 effective_orar = nr_grupe + nr_serii
 print(effective_orar)
@@ -80,18 +70,27 @@ print(range_orar[0])
 
 jump_cells = []
 temps = 0
-for i in length_serii:
-    temps = temps + i - 1
+for ind, i in enumerate(length_serii):
+    temps = temps + i
     jump_cells.append(temps)
 
+
+for ind, i in enumerate(jump_cells):
+    if(ind == 0):
+        continue
+    jump_cells[ind] = jump_cells[ind] + ind
+
+print(length_serii)
+print(jump_cells)
+print(grupe)
+
 for ind, cell in enumerate(range_orar[1][1:]):
-    if cell == '' or ind in [x+1 for x in jump_cells]:
-        pass
+    # ind_grupa = findIndexGroup(ind, length_serii)
+    if cell == '' or ind in [x for x in jump_cells]:
+        print(cell)
+        continue
     else:
         ind_grupa = findIndexGroup(ind, length_serii)
-        if(ind_grupa == -1):
-            pass
-        else:
-            print(f'grupa {grupe[ind_grupa]} are {cell}')
+        print(f'grupa {grupe[ind_grupa]} are {cell}')
 
 # for thing in orar[2]
