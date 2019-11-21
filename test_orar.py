@@ -1,3 +1,4 @@
+import json
 import csv
 import re
 
@@ -10,7 +11,7 @@ import re
 # [{
 #     'grupa': 'x',
 #     'orar': {
-#         'luni': { 
+#         'luni': {
 #             '9-11': {
 #                 'type': 'sem/curs',
 #                 'course': 'AM2',
@@ -24,13 +25,15 @@ import re
 #     ...
 # ]
 
+
 def findGroupIndex(event_index, length_serii):
     i = 0
     s = 0
     while(s + length_serii[i] < event_index):
         s = s + length_serii[i] + 1
         i = i + 1
-    return event_index - i
+    return event_index - i - 1
+
 
 orar = []
 
@@ -73,8 +76,8 @@ for letter in dict_serii:
 effective_orar = nr_grupe + nr_serii
 # print(effective_orar)
 
-range_orar = [x[1:effective_orar+2] for x in orar[2:]] # inclusiv effective_orar
-print(range_orar[0])
+range_orar = [x[0:effective_orar+2]
+              for x in orar[2:]]  # inclusiv effective_orar
 
 jump_cells = []
 temps = 0
@@ -82,53 +85,65 @@ for ind, i in enumerate(length_serii):
     temps = temps + i
     jump_cells.append(temps)
 
-
+# celule jump: 6, 19, 24
 for ind, i in enumerate(jump_cells):
-    if(ind == 0):
-        continue
-    jump_cells[ind] = jump_cells[ind] + ind
+    jump_cells[ind] = jump_cells[ind] + ind + 2
 
-range_zile = [x for x in range(3, len(orar), 13)]
+jump_cells.append(0)
+jump_cells.append(1)
 
-for ind, i in enumerate(range_zile):
-    if(ind == 0 or ind == 1):
-        continue
-    range_zile[ind] = range_zile[ind] + ind-1
+# print(jump_cells)
 
-range_zile.pop()
-# print(range_zile)
-
-zile = [[x, orar[x][0], ind] for ind, x in enumerate(range_zile)]
 # print(zile)
 
-iterator_zi = iter(zile)
-zitmp = next(iterator_zi)
-
-print(zitmp[1])
+# print(zi_tmp)
 orar_final = [{} for x in grupe]
+
+ore_posibile_dict = []
+
+for i in range(8, 21):
+    ore_posibile_dict.append(f'{i:02}-{(i+1):02}')
+
 
 for grupa, orar_grupa in zip(grupe, orar_final):
     orar_grupa['grupa'] = grupa
+    orar_grupa['orar'] = {}
+    for zi in ['luni', 'marti', 'miercuri', 'joi', 'vineri']:
+        orar_grupa['orar'][zi] = {}
+    # for interval in ore_posibile_dict:
+    #     orar_grupa['orar'][zi][interval] = {}
 
 # print(orar_final)
+# print(range_orar[1])
+zi_curenta = 'luni'
+jump_cells.sort(reverse=True)
+print(jump_cells)
+ora_curenta = 0
 
+
+# in range_orar[i][1] avem ora! oricare i
 for ind_int, interval in enumerate(range_orar):
-    if(ind_int > zitmp[0]):
-        if zitmp[2] > 4:
-            zitmp = next(iterator_zi)
-            print(zitmp[1])
-    for ind, cell in enumerate(interval[1:]):
-        # ind_grupa = findGroupIndex(ind, length_serii)
-        if cell == '' or ind in jump_cells:
+    if interval[0] != '':
+        zi_curenta = interval[0].lower()
+    if interval[1] != '':
+        ora_curenta = interval[1]
+    for i in jump_cells:
+        print(i)
+        interval.pop(i)
+    for (ind, cell), orar_grupa in zip(enumerate(interval), orar_final):
+        if cell == '':
             if cell != '':
-                # print('___celula ignorata___:', cell)
+                # print(f'___celula ignorata___ {cell} la index {ind}:')
                 continue
         else:
             ind_grupa = findGroupIndex(ind, length_serii)
-            for orar in orar_final:
-                orar['orar'] = {}
+            # print(zi_curenta)
+            if ora_curenta in orar_grupa['orar'][zi_curenta]:
+                orar_grupa['orar'][zi_curenta][ora_curenta]['course'] = cell
+            else:
+                orar_grupa['orar'][zi_curenta][ora_curenta] = {}
+                orar_grupa['orar'][zi_curenta][ora_curenta]['course'] = cell
 
-            print(f'grupa {grupe[ind_grupa]} are {cell}')
-
-print(orar_final)
-# for thing in orar[2]
+            # print(f'grupa {grupe[ind_grupa]} are {cell}')
+with open('orar_an1.json', 'w') as f:
+    f.write(json.dumps(orar_final))

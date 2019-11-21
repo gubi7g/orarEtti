@@ -1,0 +1,1432 @@
+[
+    {
+        "grupa": "411A",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "Fizica1 (curs)\nprof. A Lupascu"
+                },
+                "11-12": {
+                    "course": "AG (curs) / Bazele Electrotehnicii 1 BE1 (curs)\nprof. A. Ni\u00c8\u203a\u00c4\u0192 / prof. Constantinescu"
+                },
+                "14-15": {
+                    "course": "Fiz(l) / Chim(l)"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "LS1(s)\nB10"
+                },
+                "13-14": {
+                    "course": "BE1(s)\nB10"
+                },
+                "15-16": {
+                    "course": "AG(s) / Fiz(s)\nB10"
+                }
+            },
+            "miercuri": {
+                "13-14": {
+                    "course": "Sport(s)"
+                },
+                "15-16": {
+                    "course": "AM1(s) / --\nB 212"
+                },
+                "17-18": {
+                    "course": "PC(l)"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "AG (curs)\nprof. A. Ni\u00c8\u203a\u00c4\u0192"
+                },
+                "11-12": {
+                    "course": "Chimie (curs)\nprof. D. Ionita"
+                },
+                "13-14": {
+                    "course": "AM1 (curs) / Fizica1 (curs)\nProf. R. Purnichescu / prof. A. Lupa\u00c8\u2122cu"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": " Programarea Calculatoarelor - PC (curs) Prof. B. Ionescu"
+                },
+                "11-12": {
+                    "course": "AM1 (curs) Prof. R. Purnichescu"
+                },
+                "13-14": {
+                    "course": "Bazele Electrotehnicii 1 BE1 (curs)\n prof. Constantinescu"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "412A",
+        "orar": {
+            "luni": {
+                "14-15": {
+                    "course": "Chim(l) / Fiz(l)"
+                }
+            },
+            "marti": {
+                "13-14": {
+                    "course": "Fiz(s) / AG(s)\nB09"
+                },
+                "15-16": {
+                    "course": "BE1(s)\nB09"
+                }
+            },
+            "miercuri": {
+                "11-12": {
+                    "course": "Sport(s)"
+                },
+                "13-14": {
+                    "course": "LS1(s)\nB10"
+                },
+                "15-16": {
+                    "course": "PC(l)"
+                },
+                "17-18": {
+                    "course": "AM1(s) / --\nB09"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "413A",
+        "orar": {
+            "luni": {
+                "13-14": {
+                    "course": "Sport(s)"
+                },
+                "16-17": {
+                    "course": "Fiz(l) / --"
+                }
+            },
+            "marti": {
+                "13-14": {
+                    "course": "PC(l) sala 2 calc"
+                },
+                "15-16": {
+                    "course": "BE1(s)\nB11"
+                },
+                "17-18": {
+                    "course": "AG(s) / Fiz(s)\nB11"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "LS1(s)\nB11"
+                },
+                "12-13": {
+                    "course": "-- / Chim(l)"
+                },
+                "15-16": {
+                    "course": "-- / AM1(s)\nB 212"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "414A",
+        "orar": {
+            "luni": {
+                "16-17": {
+                    "course": "-- / Fiz(l) "
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "PC(l) sala 2 calc"
+                },
+                "13-14": {
+                    "course": "LS1(s)\nB 124"
+                },
+                "15-16": {
+                    "course": "Fiz(s) / AG(s)\nB12"
+                },
+                "17-18": {
+                    "course": "BE1(s)\nB12"
+                }
+            },
+            "miercuri": {
+                "12-13": {
+                    "course": "Chim(l) / --"
+                },
+                "15-16": {
+                    "course": "Sport(s)"
+                },
+                "17-18": {
+                    "course": "-- / AM1(s)\nB09"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "411Ba",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "AM1(s) / AG(s) \nB09"
+                },
+                "11-12": {
+                    "course": "LS1(s)\nB206b"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": " PC (curs)\nprof. O. Grigore"
+                },
+                "11-12": {
+                    "course": "Chimie (curs)\nprof. I. Rau"
+                },
+                "13-14": {
+                    "course": "Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs) / Fizica1 (curs) \nProf. A. Negrescu / prof. M Stafe"
+                }
+            },
+            "miercuri": {
+                "15-16": {
+                    "course": "BE1 (curs)\nprof. V. Paltanea "
+                },
+                "17-18": {
+                    "course": "Analiz\u00c4\u0192 Matematic\u00c4\u0192 I- AM1 (curs) \nprof. I. Meghea"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "BE1(s)\nB11"
+                },
+                "11-12": {
+                    "course": "-- / Fiz(s)\nB11"
+                },
+                "13-14": {
+                    "course": "Sport(s)\n"
+                },
+                "15-16": {
+                    "course": "Fiz(l) / --"
+                },
+                "16-17": {
+                    "course": "Fiz(l) / Chim(l)"
+                },
+                "17-18": {
+                    "course": "-- / Chim(l)"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs)\nProf. A. Negrescu"
+                },
+                "11-12": {
+                    "course": "Fizica1 (curs)\nprof. M. Stafe"
+                },
+                "13-14": {
+                    "course": "Analiz\u00c4\u0192 Matematic\u00c4\u0192 I- AM1 (curs) / BE1 (curs)\nprof. I. Meghea / prof. V. Paltanea"
+                },
+                "15-16": {
+                    "course": "PC(l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "411Bb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "13-14": {
+                    "course": "PC(l) sala 2  de calc"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "412Ba",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "LS1(s)\nB206b"
+                },
+                "11-12": {
+                    "course": "AG(s) / AM1(s)\nB13"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "PC(l)"
+                },
+                "11-12": {
+                    "course": "BE1(s)\nB12"
+                },
+                "13-14": {
+                    "course": " Fiz(s) / --\nB12"
+                },
+                "15-16": {
+                    "course": "-- / Fiz(l)"
+                },
+                "16-17": {
+                    "course": "Chim(l) / Fiz(l)"
+                },
+                "17-18": {
+                    "course": "Chim(l) / --"
+                }
+            },
+            "vineri": {
+                "15-16": {
+                    "course": "Sport(s)\n"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "412Bb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "PC(l) Sala 2 de calc"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "413Ba",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "AG(s) / AM1(s)\nB04"
+                },
+                "11-12": {
+                    "course": "BE1(s)\nB09"
+                },
+                "13-14": {
+                    "course": "LS1(s)\nB12"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "08-09": {
+                    "course": "-- / Chim(l)"
+                },
+                "11-12": {
+                    "course": "Sport(s)\n"
+                },
+                "13-14": {
+                    "course": "-- / Fiz(s) B12"
+                },
+                "15-16": {
+                    "course": "PC(l) sala 1 de calc"
+                },
+                "17-18": {
+                    "course": "Fiz(l) / --"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "413Bb",
+        "orar": {
+            "luni": {
+                "15-16": {
+                    "course": "PC(l)"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "414Ba",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "BE1(s)\nB12"
+                },
+                "11-12": {
+                    "course": "AM1(s) / AG(s) \nB12"
+                },
+                "13-14": {
+                    "course": "PC(l) sala A415"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "08-09": {
+                    "course": "Chim(l) / --"
+                },
+                "11-12": {
+                    "course": "Fiz(s) / --\nB11"
+                },
+                "13-14": {
+                    "course": "LS1(s)\nB11"
+                },
+                "15-16": {
+                    "course": "Sport(s)\n"
+                },
+                "17-18": {
+                    "course": "-- / Fiz(l)"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "414Bb",
+        "orar": {
+            "luni": {
+                "13-14": {
+                    "course": "PC(l)"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "413Ba",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "413Bb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "414Ba",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "414Bb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "411C",
+        "orar": {
+            "luni": {
+                "11-12": {
+                    "course": " Bazele electrotehnicii I - BE1 (curs) / Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs)\nprof. V. Ioni\u00c8\u203a\u00c4\u0192 / prof. O.\u00c8\u02dcandru "
+                },
+                "13-14": {
+                    "course": "Fizica1 (curs)\nprof. G. Stanciu"
+                },
+                "15-16": {
+                    "course": "Analiz\u00c4\u0192 Matematic\u00c4\u0192 I- AM1 (curs)\nprof. M. Joi\u00c8\u203aa"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "Sport(s)"
+                },
+                "13-14": {
+                    "course": "PC(l)"
+                },
+                "15-16": {
+                    "course": "Analiz\u00c4\u0192 Matematic\u00c4\u0192 I- AM1 (curs) / Fizica1 (curs)\nprof. M. Joi\u00c8\u203aa / prof. G. Stanciu"
+                },
+                "17-18": {
+                    "course": "Bazele electrotehnicii I - BE1 (curs)\nprof. V. Ioni\u00c8\u203a\u00c4\u0192"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "BE1(s)\nB09"
+                },
+                "11-12": {
+                    "course": "LS1(s)\nB10"
+                },
+                "13-14": {
+                    "course": "Fiz(l) / --"
+                },
+                "14-15": {
+                    "course": "Fiz(l) / Chim(l)"
+                },
+                "15-16": {
+                    "course": "-- / Chim(l)"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "Chimie (curs)\nprof. I. Rau"
+                },
+                "11-12": {
+                    "course": "Programarea Calculatoarelor - PC (curs)\nprof. C. Bira"
+                },
+                "13-14": {
+                    "course": " Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs)\nprof. O.\u00c8\u02dcandru "
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "AM1(s) / AG(s)\nB09"
+                },
+                "11-12": {
+                    "course": "Fiz(s) / --\nB 124"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "412C",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "09-10": {
+                    "course": "BE1(s)\nB12"
+                },
+                "11-12": {
+                    "course": "PC(l)"
+                },
+                "13-14": {
+                    "course": "-- / Fiz(l)"
+                },
+                "14-15": {
+                    "course": "Chim(l) / Fiz(l)"
+                },
+                "15-16": {
+                    "course": "Chim(l) / --"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "Fiz(s) / --\nB04"
+                },
+                "11-12": {
+                    "course": "AG(s) / AM1(s)\nB09"
+                },
+                "13-14": {
+                    "course": "Sport(s)"
+                },
+                "15-16": {
+                    "course": "LS1(s)\nB12"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "413C",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "09-10": {
+                    "course": "PC(l)"
+                },
+                "11-12": {
+                    "course": "BE1(s)\nB218"
+                },
+                "13-14": {
+                    "course": "Sport(s)"
+                },
+                "15-16": {
+                    "course": "Fiz(l) / --"
+                },
+                "16-17": {
+                    "course": "Fiz(l) / Chim(l)"
+                },
+                "17-18": {
+                    "course": "-- / Chim(l)"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "-- / Fiz(s)\nB04"
+                },
+                "11-12": {
+                    "course": "AM1(s) / AG(s)\nB11"
+                },
+                "13-14": {
+                    "course": "LS1(s)\nB11"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "414C",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "13-14": {
+                    "course": "Sport(s)"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "LS1(s)\nB10"
+                },
+                "11-12": {
+                    "course": "BE1(s)\nB12"
+                },
+                "13-14": {
+                    "course": "PC(l)"
+                },
+                "15-16": {
+                    "course": "-- / Fiz(l)"
+                },
+                "16-17": {
+                    "course": "Chim(l) / Fiz(l)"
+                },
+                "17-18": {
+                    "course": "Chim(l) / --"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "AG(s) / AM1(s)\nB11"
+                },
+                "11-12": {
+                    "course": "-- / Fiz(s)\nB 124"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "411D",
+        "orar": {
+            "luni": {
+                "08-09": {
+                    "course": "Fiz(l) / Chim(l)"
+                },
+                "13-14": {
+                    "course": "LS1(s)\nB122"
+                },
+                "15-16": {
+                    "course": "Bazele electrotehnicii I - BE1 (curs)\nprof. M. Vasilescu "
+                },
+                "17-18": {
+                    "course": "Fizica1 (curs)\nprof. S. Ciobanu"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "-- / AM1(s)\nB09"
+                },
+                "13-14": {
+                    "course": "PC(l)"
+                },
+                "15-16": {
+                    "course": "Sport(s)"
+                },
+                "17-18": {
+                    "course": "-- / Fiz(s)\nB09"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "AM1 (curs)\nProf. R. Purnichescu"
+                },
+                "11-12": {
+                    "course": "Programarea Calculatoarelor - PC (curs)\nprof. S. Zoican"
+                },
+                "13-14": {
+                    "course": "Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs) / Fizica1 (curs)\nprof. R. Radulescu / prof. S. Ciobanu"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "Chimie (curs) \nProf. D. Ionita"
+                },
+                "11-12": {
+                    "course": "Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs)\nprof. R. Radulescu"
+                },
+                "13-14": {
+                    "course": "Bazele electrotehnicii I - BE1 (curs) / AM1 (curs) \nprof. M. Vasilescu / Prof. R. Purnichescu"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "BE1(s)\nB10"
+                },
+                "11-12": {
+                    "course": "-- / AG(s)\nB10"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "412D",
+        "orar": {
+            "luni": {
+                "12-13": {
+                    "course": "Fiz(l) / Chim(l)"
+                }
+            },
+            "marti": {
+                "13-14": {
+                    "course": "Sport(s)"
+                },
+                "15-16": {
+                    "course": "AM1(s) / Fiz(s)\nB13"
+                },
+                "17-18": {
+                    "course": "PC(l)"
+                }
+            },
+            "miercuri": {
+                "15-16": {
+                    "course": "LS1(s)\nB10"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "-- / AG(s)\nB12"
+                },
+                "11-12": {
+                    "course": "BE1(s)\nB12"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "413D",
+        "orar": {
+            "luni": {
+                "10-11": {
+                    "course": "Fiz(l) / Chim(l)"
+                },
+                "13-14": {
+                    "course": "PC(l)"
+                }
+            },
+            "marti": {
+                "17-18": {
+                    "course": "Fiz(s) / AM1(s)\nB10"
+                }
+            },
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "AG(s) / --\nB12"
+                },
+                "11-12": {
+                    "course": "LS1(s)\nA102"
+                },
+                "13-14": {
+                    "course": "BE1(s)\nB12"
+                },
+                "15-16": {
+                    "course": "Sport(s)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "414D",
+        "orar": {
+            "luni": {
+                "10-11": {
+                    "course": "Chim(l) / Fiz(l)"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "Sport(s)"
+                },
+                "11-12": {
+                    "course": "PC(l)"
+                },
+                "13-14": {
+                    "course": "BE1(s)\nB12"
+                },
+                "15-16": {
+                    "course": "Fiz(s) / AM1(s)\nB04"
+                }
+            },
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "LS1(s)\nA102"
+                },
+                "11-12": {
+                    "course": "AG(s) / --\nB10"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "415D",
+        "orar": {
+            "luni": {
+                "12-13": {
+                    "course": "Chim(l) / Fiz(l)"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "BE1(s)\nB11"
+                },
+                "13-14": {
+                    "course": "Fiz(s) / AM1(s)\nB11"
+                },
+                "15-16": {
+                    "course": "PC(l)"
+                }
+            },
+            "miercuri": {
+                "15-16": {
+                    "course": "LS1(s)\nB 223a"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "11-12": {
+                    "course": "Sport(s)"
+                },
+                "13-14": {
+                    "course": "-- / AG(s) \nB09"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "411E",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "BE1(s)\nB11"
+                },
+                "11-12": {
+                    "course": "AM1(s) / Fiz(s)\nB11"
+                },
+                "13-14": {
+                    "course": "LS1(s)\nB11"
+                },
+                "15-16": {
+                    "course": "-- / AG(s)\nB11"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "Fizica1 (curs) / Bazele electrotehnicii I - BE1 (curs)\nProf. G. Cata - Danil / prof. R. Costea"
+                },
+                "11-12": {
+                    "course": "Chimie (curs) \nprof. C. P\u00c3\u00aervu "
+                },
+                "13-14": {
+                    "course": "Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs)\nprof. V. Slesar"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": " Fizica1 (curs)\nProf. G. Cata - Danil"
+                },
+                "11-12": {
+                    "course": "Programarea Calculatoarelor - PC (curs)\nProf. V. Grosu"
+                },
+                "13-14": {
+                    "course": "Analiz\u00c4\u0192 Matematic\u00c4\u0192 I- AM1 (curs) \nprof. C. Bercia "
+                },
+                "15-16": {
+                    "course": "Sport(s)"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "Fiz(l) / --"
+                },
+                "10-11": {
+                    "course": "Fiz(l) / Chim(l)"
+                },
+                "11-12": {
+                    "course": "-- / Chim(l)"
+                },
+                "13-14": {
+                    "course": "PC(l)"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "Bazele electrotehnicii I - BE1 (curs)\nprof. R. Costea"
+                },
+                "11-12": {
+                    "course": "Analiz\u00c4\u0192 Matematic\u00c4\u0192 I- AM1 (curs) / Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs)\nprof. C. Bercia / prof. V. Slesar"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "412E",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "AM1(s) / --\nB10"
+                },
+                "11-12": {
+                    "course": "BE1(s)\nB10"
+                },
+                "13-14": {
+                    "course": "PC(l) sala 2 de calc"
+                },
+                "15-16": {
+                    "course": "-- / Fiz(s)\nB10"
+                },
+                "17-18": {
+                    "course": "-- / AG(s)\nB10"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "-- / Fiz(l)"
+                },
+                "10-11": {
+                    "course": "Chim(l) / Fiz(l)"
+                },
+                "11-12": {
+                    "course": "Chim(l) / --"
+                },
+                "13-14": {
+                    "course": "LS1(s)\nB09"
+                }
+            },
+            "vineri": {
+                "13-14": {
+                    "course": "Sport(s)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "413E",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "PC(l)"
+                },
+                "11-12": {
+                    "course": "Sport(s)"
+                },
+                "13-14": {
+                    "course": "-- / Fiz(s)\nB09"
+                },
+                "16-17": {
+                    "course": "-- / Chim(l)"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "AG(s) / AM1(s) \nB12"
+                },
+                "11-12": {
+                    "course": "BE1(s)\nB04"
+                },
+                "13-14": {
+                    "course": "Fiz(l) / --"
+                }
+            },
+            "vineri": {
+                "13-14": {
+                    "course": "LS1(s)\nB206b"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "414E",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "-- / Fiz(s)\nB10"
+                },
+                "11-12": {
+                    "course": "PC(l) sala 2 de calc."
+                },
+                "13-14": {
+                    "course": "Sport(s)"
+                },
+                "16-17": {
+                    "course": "Chim(l) / --"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "BE1(s)\nB10"
+                },
+                "11-12": {
+                    "course": "AG(s) / AM1(s) \nB10"
+                },
+                "13-14": {
+                    "course": "-- / Fiz(l)"
+                }
+            },
+            "vineri": {
+                "13-14": {
+                    "course": "LS1(s)\nB212"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "411Fa",
+        "orar": {
+            "luni": {
+                "13-14": {
+                    "course": "-- / Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs)\n-- / prof. O. Sandru"
+                },
+                "15-16": {
+                    "course": "Fizica1 (curs)\nprof. C. Ro\u00c8\u2122u"
+                },
+                "17-18": {
+                    "course": "Analiz\u00c4\u0192 Matematic\u00c4\u0192 I- AM1 (curs)\nprof. M. Joi\u00c8\u203aa"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "Chimie (curs) \nprof. C. P\u00c3\u00aervu"
+                },
+                "11-12": {
+                    "course": "Bazele Electrotehnicii 1  - BE1 (curs) \nProf. I. Nemoianu"
+                },
+                "13-14": {
+                    "course": "Analiz\u00c4\u0192 Matematic\u00c4\u0192 I- AM1 (curs) / Fizica1 (curs)\nprof. M. Joi\u00c8\u203aa / prof. C. Ro\u00c8\u2122u"
+                }
+            },
+            "miercuri": {
+                "08-09": {
+                    "course": "-- / Chim(l)"
+                },
+                "09-10": {
+                    "course": "Fiz(l) / Chim(l)"
+                },
+                "10-11": {
+                    "course": "Fiz(l) / --"
+                },
+                "11-12": {
+                    "course": "BE1(s)\nB11"
+                },
+                "13-14": {
+                    "course": "Fiz(s) / --\nB11"
+                }
+            },
+            "joi": {
+                "11-12": {
+                    "course": "PC(l)"
+                },
+                "13-14": {
+                    "course": "Sport(s)\n"
+                },
+                "15-16": {
+                    "course": "LS1(s)\nB12"
+                },
+                "17-18": {
+                    "course": "AG(s) / AM1(s)\nB12"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "Bazele Electrotehnicii 1  - BE1 (curs) / -- \n Prof. I. Nemoianu / --"
+                },
+                "11-12": {
+                    "course": " Programarea Calculatoarelor - PC (curs)\nprof. R. Hobincu"
+                },
+                "13-14": {
+                    "course": "Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs)\nprof. O. Sandru"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "411Fb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "15-16": {
+                    "course": "PC(l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "412Fa",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "15-16": {
+                    "course": "Sport(s)\n"
+                }
+            },
+            "miercuri": {
+                "08-09": {
+                    "course": "Chim(l) / --"
+                },
+                "09-10": {
+                    "course": "Chim(l) / Fiz(l)"
+                },
+                "10-11": {
+                    "course": "-- / Fiz(l)"
+                },
+                "13-14": {
+                    "course": "BE1(s)\nB12"
+                },
+                "15-16": {
+                    "course": "Fiz(s) / --\nB12"
+                }
+            },
+            "joi": {
+                "13-14": {
+                    "course": "PC(l)"
+                },
+                "15-16": {
+                    "course": "AG(s) / AM1(s)\nB11"
+                },
+                "17-18": {
+                    "course": "LS1(s)\nB11"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "412Fb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "11-12": {
+                    "course": "PC(l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "413Fa",
+        "orar": {
+            "luni": {
+                "11-12": {
+                    "course": "PC(l)"
+                }
+            },
+            "marti": {},
+            "miercuri": {
+                "10-11": {
+                    "course": "-- / Chim(l)"
+                },
+                "11-12": {
+                    "course": "Fiz(l) / Chim(l)"
+                },
+                "12-13": {
+                    "course": "Fiz(l) / --"
+                },
+                "15-16": {
+                    "course": "BE1(s)\nB11"
+                },
+                "17-18": {
+                    "course": "Fiz(s) / -- \nB12"
+                }
+            },
+            "joi": {
+                "13-14": {
+                    "course": "LS1(s)\nB10"
+                },
+                "15-16": {
+                    "course": "Sport(s)\n"
+                },
+                "17-18": {
+                    "course": " AM1(s) / AG(s)\nB09"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "413Fb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "13-14": {
+                    "course": "PC(l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "414Fa",
+        "orar": {
+            "luni": {
+                "11-12": {
+                    "course": "PC(l)"
+                }
+            },
+            "marti": {},
+            "miercuri": {
+                "10-11": {
+                    "course": "Chim(l) / --"
+                },
+                "11-12": {
+                    "course": "Chim(l) / Fiz(l)"
+                },
+                "12-13": {
+                    "course": "-- / Fiz(l)"
+                },
+                "13-14": {
+                    "course": "LS1(s)\nB13"
+                },
+                "15-16": {
+                    "course": "-- / Fiz(s) \nB12"
+                }
+            },
+            "joi": {
+                "11-12": {
+                    "course": "Sport(s)\n"
+                },
+                "13-14": {
+                    "course": "BE1(s)\nB 206b"
+                },
+                "15-16": {
+                    "course": "AM1(s) / AG(s)\nB10"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "414Fb",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "15-16": {
+                    "course": "PC(l)"
+                }
+            },
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "415Fa",
+        "orar": {
+            "luni": {
+                "11-12": {
+                    "course": "Sport(s)\n"
+                }
+            },
+            "marti": {},
+            "miercuri": {
+                "09-10": {
+                    "course": "PC(l)"
+                },
+                "11-12": {
+                    "course": "Fiz(s) / --\nB09"
+                },
+                "13-14": {
+                    "course": "AG(s) / AM1(s)\nB09"
+                },
+                "15-16": {
+                    "course": "LS1(s)\nB09"
+                }
+            },
+            "joi": {
+                "11-12": {
+                    "course": "-- / Fiz(l)"
+                },
+                "12-13": {
+                    "course": "Chim(l) / Fiz(l)"
+                },
+                "13-14": {
+                    "course": "Chim(l) / --"
+                },
+                "15-16": {
+                    "course": "BE1(s)\nB09"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "415Fb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "PC(l)"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "411Ga",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": " Analiz\u00c4\u0192 Matematic\u00c4\u0192 I- AM1 (curs) \nprof. A. Toma"
+                },
+                "11-12": {
+                    "course": "Fizica1 (curs) \nprof. G. Suliman"
+                },
+                "13-14": {
+                    "course": "Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs) \nprof. I. Meghea"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "Sport(s)\n"
+                },
+                "13-14": {
+                    "course": "-- / AG(s) \nB04"
+                },
+                "15-16": {
+                    "course": "Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs) / Bazele electrotehnicii I - BE1 (curs)\nProf. I. Meghea / prof. O. Drosu  "
+                },
+                "17-18": {
+                    "course": "Fizica1 (curs) / Analiz\u00c4\u0192 Matematic\u00c4\u0192 I- AM1 (curs) \nprof. G. Suliman / Prof. A. Toma"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "Chimie (curs)\nprof. I. Rau"
+                },
+                "11-12": {
+                    "course": "Programarea Calculatoarelor - PC (curs)\nprof. I. N\u00c4\u0192stac"
+                },
+                "13-14": {
+                    "course": " Bazele electrotehnicii I - BE1 (curs)\n prof. O. Drosu  "
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "PC(l)"
+                },
+                "11-12": {
+                    "course": "BE1(s)\nB09"
+                },
+                "14-15": {
+                    "course": "-- / Chim(l)"
+                }
+            },
+            "vineri": {
+                "10-11": {
+                    "course": "-- / Fiz(l)"
+                },
+                "13-14": {
+                    "course": "AM1(s) / Fiz(s)\nB124"
+                },
+                "15-16": {
+                    "course": "LS1(s)\nB10"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "411Gb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "412Ga",
+        "orar": {
+            "luni": {
+                "15-16": {
+                    "course": "Sport(s)\n"
+                }
+            },
+            "marti": {
+                "13-14": {
+                    "course": "AG(s) / --\nB04"
+                }
+            },
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "BE1(s)\nB09"
+                },
+                "11-12": {
+                    "course": "PC(l)"
+                },
+                "14-15": {
+                    "course": "Chim(l) /--"
+                }
+            },
+            "vineri": {
+                "10-11": {
+                    "course": "Fiz(l) /--"
+                },
+                "13-14": {
+                    "course": "LS1(s)\nB10"
+                },
+                "15-16": {
+                    "course": "AM1(s) / Fiz(s)\nB09"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "412Gb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    }
+]
