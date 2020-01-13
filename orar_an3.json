@@ -1,0 +1,2415 @@
+[
+    {
+        "grupa": "431Aa",
+        "orar": {
+            "luni": {
+                "08-09": {
+                    "course": "IEM (l) / --"
+                },
+                "09-10": {
+                    "course": "IEM (l) /\n/ --"
+                },
+                "11-12": {
+                    "course": "Controlul automat \u00c3\u00aen electr. \u00c5\u0178i telecom. (curs) B223a Prof. D. Stoichescu || \nBazele \u00c8\u2122tiin\u00c8\u203aei informa\u00c8\u203aiei (curs) B312 prof. N. Dragulanescu || \nInginerie audio (curs) A103 prof. Cristian Negrescu ||\nCompatibilitate electromagnetic\u00c4\u0192 (curs) A102 prof. V. Voiculescu ||\nProgramare aplicativa a interfetelor (curs) A101 prof. V. Pupezescu"
+                },
+                "13-14": {
+                    "course": "Teoria transmisiunii informatiei (curs)\nProf. A. Radoi"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "Circuite integrate analogice (curs) \nProf. C. Dan"
+                },
+                "13-14": {
+                    "course": "Microcontrolere (curs) A101 Prof. C. Burileanu ||\nMicrocontrolere(curs) A103 Prof. R. Constantinescu ||\nMicrocontrolere(curs) B223a Prof. H. Cucu ||\nMicrocontrolere(curs) A03 Prof. S. Zoican"
+                },
+                "15-16": {
+                    "course": "Proiect1 A103"
+                },
+                "17-18": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "19-20": {
+                    "course": "uU (l) /\n/ --"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "-- /\n/ TTI (l)"
+                },
+                "11-12": {
+                    "course": "CIA (s) B13 /\n/ -- "
+                },
+                "13-14": {
+                    "course": "uU (s) A806 / \n/ --"
+                }
+            },
+            "joi": {
+                "11-12": {
+                    "course": "--  /  Circuite integrate analogice (curs)  Prof. C. Dan"
+                },
+                "13-14": {
+                    "course": "  Teoria transmisiunii informatiei (curs) Prof. A. Radoi / \n/ Instrumentatie electronica de masura (curs) Prof. R. Preda\n"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "Microunde (curs)\nProf. D. Brinaru"
+                },
+                "11-12": {
+                    "course": "Instrumentatie electronica de masura (curs)\nProf. R. Preda"
+                },
+                "13-14": {
+                    "course": "-- /\n/ TTI (s) B223"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "431Ab",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "17-18": {
+                    "course": "-- /\n/ CIA (l)"
+                },
+                "19-20": {
+                    "course": "-- /\n/ uU (l)"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "TTI (l) /\n/ --"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "432Aa",
+        "orar": {
+            "luni": {
+                "08-09": {
+                    "course": "-- / IEM (l)"
+                },
+                "09-10": {
+                    "course": "-- /\n/ IEM (l)"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "15-16": {
+                    "course": "uU (l) /\n/ TTI (l)"
+                },
+                "17-18": {
+                    "course": "Proiect1 B124"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "CIA (s) B13 / \n/ --"
+                },
+                "11-12": {
+                    "course": "uU (s) A806 / \n / --"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "13-14": {
+                    "course": "TTI (s) B223 /\n/ --"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "432Ab",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "09-10": {
+                    "course": "-- /\n/ CIA (l)"
+                },
+                "15-16": {
+                    "course": "TTI (l) /\n/ uU (l)"
+                }
+            },
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "433Aa",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": " -- / \n/ CIA (s) B13 "
+                },
+                "15-16": {
+                    "course": "IEM (l) / \n/ --"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "uU (l) /\n/ TTI (l)"
+                },
+                "15-16": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "18-19": {
+                    "course": "Proiect1 B124"
+                }
+            },
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "TTI (s) B124 / \n/ uU (s) B04"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "433Ab",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "09-10": {
+                    "course": "TTI (l) /\n/ uU (l)"
+                },
+                "15-16": {
+                    "course": "-- /\n/ CIA (l)"
+                }
+            },
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "434Aa",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "  CIA (s) B13  / \n/ --"
+                },
+                "15-16": {
+                    "course": "--  /\n/ IEM (l)"
+                }
+            },
+            "marti": {
+                "16-17": {
+                    "course": "Proiect1 A103"
+                },
+                "17-18": {
+                    "course": "uU (l) /\n/ TTI (l)"
+                },
+                "19-20": {
+                    "course": "CIA (l) /\n/ --"
+                }
+            },
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "uU (s) B04 / \n/ TTI (s) B124"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "434Ab",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "17-18": {
+                    "course": "TTI (l) /\n/ uU (l)"
+                },
+                "19-20": {
+                    "course": "-- /\n/ CIA (l)"
+                }
+            },
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "431Ba",
+        "orar": {
+            "luni": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "marti": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "miercuri": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "joi": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "vineri": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "431Bb",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "Teoria transmisiunii informatiei (curs)\nProf. M. Frunzete"
+                },
+                "11-12": {
+                    "course": "Controlul automat \u00c3\u00aen electr. \u00c5\u0178i telecom. (curs) B223a Prof. D. Stoichescu || \nBazele \u00c8\u2122tiin\u00c8\u203aei informa\u00c8\u203aiei (curs) B312 prof. N. Dragulanescu || \nInginerie audio (curs) A103 prof. Cristian Negrescu ||\nCompatibilitate electromagnetic\u00c4\u0192 (curs) A102 prof. V. Voiculescu ||\nProgramare aplicativa a interfetelor (curs) A101 prof. V. Pupezescu"
+                },
+                "13-14": {
+                    "course": "CIA (s) B13 / \n/ --"
+                },
+                "15-16": {
+                    "course": "Proiect1 B124 /\n / --"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "Microunde (curs) Prof. R. Cacoveanu"
+                },
+                "13-14": {
+                    "course": "Microcontrolere(curs) A101 Prof. C. Burileanu ||\nMicrocontrolere(curs) A103 Prof. R. Constantinescu ||\nMicrocontrolere(curs) B223a Prof. H. Cucu ||\nMicrocontrolere(curs) A03 Prof. S. Zoican"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": " --  / uU (s) A806"
+                },
+                "10-11": {
+                    "course": "IEM(l)  / \n/ uU (s) A806"
+                },
+                "11-12": {
+                    "course": "IEM(l)  / \n/ --"
+                },
+                "13-14": {
+                    "course": "Microunde (curs) Prof. R. Cacoveanu \n/ Circuite integrate analogice (curs) Prof. C. Popa"
+                },
+                "15-16": {
+                    "course": "Instrumentatie electronica de masura (curs)\nProf M. Stanciu"
+                }
+            },
+            "joi": {
+                "13-14": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "15-16": {
+                    "course": "TTI (s) B13 /\n/ --"
+                },
+                "17-18": {
+                    "course": "TTI (l) / \n/ --"
+                },
+                "19-20": {
+                    "course": "uU (l) /\n/ --"
+                }
+            },
+            "vineri": {
+                "11-12": {
+                    "course": "Instrumentatie electronica de masura (curs) Prof. M. Stanciu / \n/ Teoria transmisiunii informatiei (curs) Prof. M. Frunzete"
+                },
+                "13-14": {
+                    "course": "Circuite integrate analogice (curs)\nProf. C.Popa"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "432Ba",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "13-14": {
+                    "course": "-- /\n/ CIA (l)"
+                },
+                "17-18": {
+                    "course": "-- / \n/ TTI (l)"
+                },
+                "19-20": {
+                    "course": "-- /\n/ uU (l)"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "432Bb",
+        "orar": {
+            "luni": {
+                "13-14": {
+                    "course": "-- /\n / Proiect1 B124"
+                },
+                "15-16": {
+                    "course": "-- /\n/ CIA (s) B206b"
+                }
+            },
+            "marti": {
+                "16-17": {
+                    "course": "IEM(l) /\n/ --"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "-- / TTI (s) B13"
+                },
+                "11-12": {
+                    "course": " --  / \n/ uU (s) A806"
+                }
+            },
+            "joi": {
+                "11-12": {
+                    "course": "TTI (l) /\n/ --"
+                },
+                "15-16": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "17-18": {
+                    "course": "uU (l) /\n/ --"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "433Ba",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "11-12": {
+                    "course": "-- / \n/ TTI (l)"
+                },
+                "15-16": {
+                    "course": "-- /\n/ CIA (l)"
+                },
+                "17-18": {
+                    "course": "-- /\n/ uU (l)"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "433Bb",
+        "orar": {
+            "luni": {
+                "13-14": {
+                    "course": "-- /\n/ CIA (s) B13"
+                },
+                "15-16": {
+                    "course": "-- /\n / Proiect1 B124"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "-- /\n/TTI (s) B124"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "11-12": {
+                    "course": "uU (l) /\n/ TTI (l)"
+                }
+            },
+            "joi": {
+                "10-11": {
+                    "course": " uU (s) A806 / \n/ --"
+                },
+                "12-13": {
+                    "course": "IEM(l) / --"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "434Ba",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "09-10": {
+                    "course": "-- /\n/ CIA (l)"
+                },
+                "11-12": {
+                    "course": "TTI (l) /\n/ uU (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "434Bb",
+        "orar": {
+            "luni": {
+                "13-14": {
+                    "course": "Proiect1 B124 /\n / --"
+                },
+                "15-16": {
+                    "course": "CIA (s) B206b / \n/ --"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "TTI (s) B124 / \n/ --"
+                }
+            },
+            "miercuri": {
+                "11-12": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "17-18": {
+                    "course": "-- /\n/ TTI (l)"
+                },
+                "19-20": {
+                    "course": "-- /\n/ uU (l)"
+                }
+            },
+            "joi": {
+                "10-11": {
+                    "course": " --  / \n/ uU (s) A806"
+                },
+                "12-13": {
+                    "course": "-- / IEM(l)"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "435Ba",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "11-12": {
+                    "course": "-- /\n/ CIA (l)"
+                },
+                "17-18": {
+                    "course": "TTI (l) /\n/ --"
+                },
+                "19-20": {
+                    "course": "uU (l) /\n/ --"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "431Ca",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "A103"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "B223a"
+                }
+            },
+            "miercuri": {
+                "13-14": {
+                    "course": "B206a"
+                },
+                "15-16": {
+                    "course": "B206a"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "11-12": {
+                    "course": "A103"
+                },
+                "13-14": {
+                    "course": "A103"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "431Cb",
+        "orar": {
+            "luni": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "marti": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "miercuri": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "joi": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "vineri": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "432Ca",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": " Circuite integrate analogice (curs)\nProf. F. Mitu"
+                },
+                "11-12": {
+                    "course": "Controlul automat \u00c3\u00aen electr. \u00c5\u0178i telecom. (curs) B223a Prof. D. Stoichescu || \nBazele \u00c8\u2122tiin\u00c8\u203aei informa\u00c8\u203aiei (curs) B312 prof. N. Dragulanescu || \nInginerie audio (curs) A103 prof. Cristian Negrescu ||\nCompatibilitate electromagnetic\u00c4\u0192 (curs) A102 prof. V. Voiculescu ||\nProgramare aplicativa a interfetelor (curs) A101 prof. V. Pupezescu"
+                },
+                "13-14": {
+                    "course": "Microunde (curs)\nProf. N. Militaru"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "Teoria transmisiunii informatiei (curs) \nProf. L. Perisoara"
+                },
+                "11-12": {
+                    "course": "Instrumentatie electronica de masura (curs) Prof. O. Fratu /\n/ Circuite integrate analogice (curs) Prof. F. Mitu"
+                },
+                "13-14": {
+                    "course": "Microcontrolere(curs) A101 Prof. C. Burileanu ||\nMicrocontrolere(curs) A103 Prof. R. Constantinescu ||\nMicrocontrolere(curs) B223a Prof. H. Cucu ||\nMicrocontrolere(curs) A03 Prof. S. Zoican"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "Teoria transmisiunii informatiei (curs) Prof. L. Perisoara /\n/ Microunde (curs) Prof. N. Militaru"
+                },
+                "11-12": {
+                    "course": "Instrumentatie electronica de masura (curs)\nProf. O. Fratu"
+                },
+                "13-14": {
+                    "course": "IEM(l) / --"
+                },
+                "16-17": {
+                    "course": "Proiect1 B04"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "TTI (s) B13 / \n/ --"
+                },
+                "11-12": {
+                    "course": "uU (s) B124 /\n/ -- "
+                },
+                "13-14": {
+                    "course": "CIA (s) B124 / \n/ --"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "uU (l) /\n/ --"
+                },
+                "11-12": {
+                    "course": "TTI (l) /\n/ --"
+                },
+                "13-14": {
+                    "course": "CIA (l) /\n/ --"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "432Cb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "-- /\n/ uU (l)"
+                },
+                "11-12": {
+                    "course": "-- /\n/ TTI (l)"
+                },
+                "13-14": {
+                    "course": "-- /\n/ CIA (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "433Ca",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "15-16": {
+                    "course": "Proiect1 B124"
+                }
+            },
+            "miercuri": {
+                "13-14": {
+                    "course": "-- / IEM(l)"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "-- / \n/ TTI (s) B13"
+                },
+                "11-12": {
+                    "course": "-- / \n/ uU (s) B124 "
+                },
+                "13-14": {
+                    "course": "-- /\n/ CIA (s) B124"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "11-12": {
+                    "course": "uU (l) /\n/ --"
+                },
+                "13-14": {
+                    "course": "TTI (l) /\n/ --"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "433Cb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "-- /\n/ CIA (l)"
+                },
+                "11-12": {
+                    "course": "-- /\n/ uU (l)"
+                },
+                "13-14": {
+                    "course": "-- /\n/ TTI (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "434Ca",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "15-16": {
+                    "course": "Proiect1 B04"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "IEM(l) /\n/ --"
+                },
+                "11-12": {
+                    "course": "IEM(l) / TTI (s) B13"
+                },
+                "12-13": {
+                    "course": "-- / TTI (s) B13"
+                },
+                "13-14": {
+                    "course": "-- / \n/ uU (s) A 806 "
+                },
+                "15-16": {
+                    "course": "-- /\n/ CIA (s) B124"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "TTI (l) /\n/ --"
+                },
+                "11-12": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "13-14": {
+                    "course": "uU (l) /\n/ --"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "434Cb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "-- /\n/ TTI (l)"
+                },
+                "11-12": {
+                    "course": "-- /\n/ CIA (l)"
+                },
+                "13-14": {
+                    "course": "-- /\n/ uU (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "431Da",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "13-14": {
+                    "course": "-- /\n/ CIA (l)"
+                },
+                "15-16": {
+                    "course": "TTI (l) /\n/ uU (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "431Db",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "B223a"
+                },
+                "13-14": {
+                    "course": "A103"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "A101"
+                },
+                "11-12": {
+                    "course": "A101"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "A101"
+                },
+                "11-12": {
+                    "course": "B223a"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "432Da",
+        "orar": {
+            "luni": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "marti": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "miercuri": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "joi": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "vineri": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "432Db",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "11-12": {
+                    "course": "Controlul automat \u00c3\u00aen electr. \u00c5\u0178i telecom. (curs) B223a Prof. D. Stoichescu || \nBazele \u00c8\u2122tiin\u00c8\u203aei informa\u00c8\u203aiei (curs) B312 prof. N. Dragulanescu || \nInginerie audio (curs) A103 prof. Cristian Negrescu ||\nCompatibilitate electromagnetic\u00c4\u0192 (curs) A102 prof. V. Voiculescu ||\nProgramare aplicativa a interfetelor (curs) A101 prof. V. Pupezescu"
+                },
+                "13-14": {
+                    "course": "-- /\n/ TTI (l)"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "Teoria transmisiunii informatiei (curs) Prof. D. Faur / \n/ Instrumentatie electronica de masura (curs) Prof. A. Vulpe"
+                },
+                "11-12": {
+                    "course": "Microunde (curs)\nProf. T. Petrescu"
+                },
+                "13-14": {
+                    "course": "Microcontrolere(curs) A101 Prof. C. Burileanu ||\nMicrocontrolere(curs) A103 Prof. R. Constantinescu ||\nMicrocontrolere(curs) B223a Prof. H. Cucu ||\nMicrocontrolere(curs) A03 Prof. S. Zoican"
+                },
+                "15-16": {
+                    "course": "uU (s) A 806 / \n/ --"
+                }
+            },
+            "miercuri": {
+                "10-11": {
+                    "course": "Proiect1 B124"
+                },
+                "11-12": {
+                    "course": "Microunde (curs) Prof. T. Petrescu / \n/  Circuite integrate analogice (curs) Prof. C. Popa"
+                },
+                "13-14": {
+                    "course": "Instrumentatie electronica de masura (curs)\nProf. A. Vulpe"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "Teoria transmisiunii informatiei (curs)\n Prof. D. Faur"
+                },
+                "11-12": {
+                    "course": "Circuite integrate analogice (curs)\nProf. C. Popa"
+                }
+            },
+            "vineri": {
+                "08-09": {
+                    "course": "IEM(l) /\n/ --"
+                },
+                "11-12": {
+                    "course": "-- / \n/ CIA (s) B13"
+                },
+                "13-14": {
+                    "course": "-- / \n/ TTI (s) B13"
+                },
+                "15-16": {
+                    "course": "-- /\n/ uU (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "433Da",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "-- /\n/ CIA (l)"
+                },
+                "13-14": {
+                    "course": "TTI (l) /\n/ --"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "17-18": {
+                    "course": "-- /\n/ uU (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "433Db",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "-- /\n/ TTI (l)"
+                },
+                "13-14": {
+                    "course": "CIA (l) /\n/ --"
+                }
+            },
+            "marti": {
+                "15-16": {
+                    "course": "-- / \n/ uU (s) A 806"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "Proiect1 B124"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "08-09": {
+                    "course": "-- /\n/ IEM(l)"
+                },
+                "11-12": {
+                    "course": "CIA (s) B13 /\n/ --"
+                },
+                "13-14": {
+                    "course": "TTI (s)  B13 /\n/ --"
+                },
+                "15-16": {
+                    "course": "uU (l) /\n/ --"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "434Da",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "TTI (l) /\n/ --"
+                },
+                "13-14": {
+                    "course": "-- /\n/ CIA (l)"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "17-18": {
+                    "course": "uU (l) /\n/ --"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "434Db",
+        "orar": {
+            "luni": {
+                "13-14": {
+                    "course": "uU (s) A 806 / \n/ --"
+                },
+                "15-16": {
+                    "course": "-- /\n/ TTI (l)"
+                }
+            },
+            "marti": {},
+            "miercuri": {
+                "16-17": {
+                    "course": "Proiect1 A103"
+                },
+                "17-18": {
+                    "course": "-- /\n/ CIA (l)"
+                }
+            },
+            "joi": {
+                "13-14": {
+                    "course": "uU (l) /\n/ --"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "TTI (s) B124 /\n/ CIA (s) B13"
+                },
+                "12-13": {
+                    "course": "IEM(l) /\n/ --"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "431Ea",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "uU (l) /\n/ --"
+                },
+                "13-14": {
+                    "course": "-- / \n/ uU (s) A 806"
+                },
+                "15-16": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "17-18": {
+                    "course": "TTI (l) /\n/ --"
+                }
+            },
+            "marti": {},
+            "miercuri": {
+                "17-18": {
+                    "course": "Proiect1 B04"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "CIA (s) B13 /\n/ TTI (s) B124"
+                },
+                "12-13": {
+                    "course": "-- /\n/ IEM(l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "431Eb",
+        "orar": {
+            "luni": {
+                "15-16": {
+                    "course": "-- /\n/ CIA (l)"
+                },
+                "17-18": {
+                    "course": "-- /\n/ TTI (l)"
+                }
+            },
+            "marti": {},
+            "miercuri": {
+                "09-10": {
+                    "course": "uU (l) /\n/ --"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "432Ea",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "09-10": {
+                    "course": "A103"
+                },
+                "11-12": {
+                    "course": "A103"
+                }
+            },
+            "miercuri": {
+                "11-12": {
+                    "course": "A103"
+                },
+                "13-14": {
+                    "course": "A103"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "B223a"
+                },
+                "11-12": {
+                    "course": "A103"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "432Eb",
+        "orar": {
+            "luni": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "marti": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "miercuri": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "joi": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "vineri": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "433Ea",
+        "orar": {
+            "luni": {
+                "11-12": {
+                    "course": "Controlul automat \u00c3\u00aen electr. \u00c5\u0178i telecom. (curs) B223a Prof. D. Stoichescu || \nBazele \u00c8\u2122tiin\u00c8\u203aei informa\u00c8\u203aiei (curs) B312 prof. N. Dragulanescu || \nInginerie audio (curs) A103 prof. Cristian Negrescu ||\nCompatibilitate electromagnetic\u00c4\u0192 (curs) A102 prof. V. Voiculescu ||\nProgramare aplicativa a interfetelor (curs) A101 prof. V. Pupezescu"
+                },
+                "13-14": {
+                    "course": "Teoria transmisiunii informatiei (curs)\nProf. D. Coltuc"
+                },
+                "15-16": {
+                    "course": "Instrumentatie electronica de masura (curs)\nProf. O. Datcu"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "13-14": {
+                    "course": "Microcontrolere(curs) A101 Prof. C. Burileanu ||\nMicrocontrolere(curs) A103 Prof. R. Constantinescu ||\nMicrocontrolere(curs) B223a Prof. H. Cucu ||\nMicrocontrolere(curs) A03 Prof. S. Zoican"
+                },
+                "15-16": {
+                    "course": "Circuite integrate analogice (curs)\nProf. C. Dan"
+                },
+                "17-18": {
+                    "course": "Instrumentatie electronica de masura (curs)  Prof. O. Datcu /\n/ Teoria transmisiunii informatiei (curs) Prof. D. Coltuc"
+                }
+            },
+            "miercuri": {
+                "11-12": {
+                    "course": "Proiect1 B04 / \n/ --"
+                },
+                "13-14": {
+                    "course": "TTI (s) B124/ \n/ --"
+                },
+                "15-16": {
+                    "course": "uU (s) A 806 / \n/ --"
+                },
+                "17-18": {
+                    "course": "CIA (s) B13 / \n/ --"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "uU (l) /\n/ TTI (l)"
+                },
+                "11-12": {
+                    "course": "Circuite integrate analogice (curs) Prof. C. Dan / \n/ --"
+                },
+                "13-14": {
+                    "course": "Microunde (curs)\nProf. A. Anghel"
+                },
+                "15-16": {
+                    "course": "IEM(l) /\n/ --"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "433Eb",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "11-12": {
+                    "course": "-- /\n/ CIA (l)"
+                }
+            },
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "TTI (l) /\n/ uU (l)"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "434Ea",
+        "orar": {
+            "luni": {
+                "17-18": {
+                    "course": "uU (l) /\n/ --"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "-- /\n/ TTI (l)"
+                }
+            },
+            "miercuri": {
+                "11-12": {
+                    "course": "-- / \n/ Proiect1 B04"
+                },
+                "13-14": {
+                    "course": "-- / \n/ TTI (s) B124"
+                },
+                "15-16": {
+                    "course": "-- / \n/ uU (s) A 806"
+                },
+                "17-18": {
+                    "course": "-- / \n/ CIA (s) B13"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "15-16": {
+                    "course": "-- / \n/ IEM(l)"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "434Eb",
+        "orar": {
+            "luni": {
+                "17-18": {
+                    "course": "-- /\n/ uU (l)"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "TTI (l) /\n/ --"
+                }
+            },
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "-- /\n/ CIA (l)"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "435Ea",
+        "orar": {
+            "luni": {
+                "17-18": {
+                    "course": "CIA (l) /\n/ --"
+                }
+            },
+            "marti": {
+                "10-11": {
+                    "course": "IEM(l) /\n/ --"
+                }
+            },
+            "miercuri": {
+                "11-12": {
+                    "course": "-- / \n/ TTI (s) B13"
+                },
+                "13-14": {
+                    "course": "uU (l) /\n/ TTI (l)"
+                },
+                "15-16": {
+                    "course": "Proiect1 A103"
+                }
+            },
+            "joi": {
+                "15-16": {
+                    "course": "-- /\n/ uU (s) B13"
+                },
+                "17-18": {
+                    "course": "-- /\n/  CIA (s) B110"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "435Eb",
+        "orar": {
+            "luni": {
+                "17-18": {
+                    "course": "-- /\n/ CIA (l)"
+                }
+            },
+            "marti": {},
+            "miercuri": {
+                "13-14": {
+                    "course": "TTI (l) /\n/ uU (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "431Fa",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "15-16": {
+                    "course": "TTI (l) /\n/ --"
+                },
+                "17-18": {
+                    "course": "CIA (l) /\n/ --"
+                },
+                "19-20": {
+                    "course": "uU (l) /\n/ --"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "431Fb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "10-11": {
+                    "course": "-- / IEM(l)"
+                },
+                "13-14": {
+                    "course": "-- /\n/ Proiect1 B04"
+                },
+                "15-16": {
+                    "course": "TTI (s) B13/ \n/ CIA (s) B215"
+                },
+                "17-18": {
+                    "course": " uU (s) A806 /\n/ --"
+                }
+            },
+            "joi": {
+                "15-16": {
+                    "course": "uU (l) /\n/ --"
+                }
+            },
+            "vineri": {
+                "15-16": {
+                    "course": "-- /\n/ CIA (l)"
+                },
+                "17-18": {
+                    "course": "-- /\n/ TTI (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "431Ga",
+        "orar": {
+            "luni": {
+                "13-14": {
+                    "course": "B110"
+                },
+                "15-16": {
+                    "course": "B110"
+                }
+            },
+            "marti": {
+                "15-16": {
+                    "course": "A101"
+                },
+                "17-18": {
+                    "course": "A101"
+                }
+            },
+            "miercuri": {},
+            "joi": {
+                "11-12": {
+                    "course": "A101"
+                },
+                "13-14": {
+                    "course": "A101"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "431Gb",
+        "orar": {
+            "luni": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "marti": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "miercuri": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "joi": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                },
+                "20-21": {
+                    "course": "20-21"
+                }
+            },
+            "vineri": {
+                "08-09": {
+                    "course": "08-09"
+                },
+                "09-10": {
+                    "course": "09-10"
+                },
+                "10-11": {
+                    "course": "10-11"
+                },
+                "11-12": {
+                    "course": "11-12"
+                },
+                "12-13": {
+                    "course": "12-13"
+                },
+                "13-14": {
+                    "course": "13-14"
+                },
+                "14-15": {
+                    "course": "14-15"
+                },
+                "15-16": {
+                    "course": "15-16"
+                },
+                "16-17": {
+                    "course": "16-17"
+                },
+                "17-18": {
+                    "course": "17-18"
+                },
+                "18-19": {
+                    "course": "18-19"
+                },
+                "19-20": {
+                    "course": "19-20"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "432Ga",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "uC (l) /\n/ --"
+                },
+                "11-12": {
+                    "course": "Controlul automat \u00c3\u00aen electr. \u00c5\u0178i telecom. (curs) B223a Prof. D. Stoichescu || \nBazele \u00c8\u2122tiin\u00c8\u203aei informa\u00c8\u203aiei (curs) B312 prof. N. Dragulanescu || \nInginerie audio (curs) A103 prof. Cristian Negrescu ||\nCompatibilitate electromagnetic\u00c4\u0192 (curs) A102 prof. V. Voiculescu ||\nProgramare aplicativa a interfetelor (curs) A101 prof. V. Pupezescu"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "-- / \n/ uU (s) B124"
+                },
+                "13-14": {
+                    "course": "uU (l) /\n/ IEM (l)"
+                },
+                "15-16": {
+                    "course": "-- / \n/ IEM (l)"
+                },
+                "17-18": {
+                    "course": "CIA (s) B13 /\n/ Proiect1 (Infineon)"
+                },
+                "19-20": {
+                    "course": "TTI (l) /\n/ --"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "Controlul automat \u00c3\u00aen electr. \u00c5\u0178i telecom. (curs) Prof. D. Stoichescu"
+                },
+                "11-12": {
+                    "course": "Microcontrolere (curs)\nProf. C. Burileanu"
+                },
+                "13-14": {
+                    "course": "Teoria transmisiunii informatiei (curs) D. Stoichescu  /\n/ Instrumentatie electronica de masura (curs) Prof. A. Paun "
+                },
+                "15-16": {
+                    "course": "TTI (s) B124 /\n/ --"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "Instrumentatie electronica de masura (curs)\nProf. A. Paun"
+                },
+                "11-12": {
+                    "course": "Teoria transmisiunii informatiei (curs)\nProf. D. Stoichescu"
+                },
+                "13-14": {
+                    "course": "Circuite integrate analogice (curs) Prof. M. Enachescu /\n/ Microunde (curs) Prof. G. Lojewski"
+                },
+                "17-18": {
+                    "course": "CIA (l) /\n/ --"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "Circuite integrate analogice (curs)\nProf. M. Enachescu"
+                },
+                "11-12": {
+                    "course": "Microunde (curs)\nProf. G. Lojewski"
+                }
+            }
+        }
+    }
+]

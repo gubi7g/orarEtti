@@ -3,10 +3,10 @@
         "grupa": "411A",
         "orar": {
             "luni": {
-                "09-10": {
+                "09-Oct": {
                     "course": "Fizica1 (curs)\nprof. A Lupascu"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "AG (curs) / Bazele Electrotehnicii 1 BE1 (curs)\nprof. A. Ni\u00c8\u203a\u00c4\u0192 / prof. Constantinescu"
                 },
                 "14-15": {
@@ -14,7 +14,7 @@
                 }
             },
             "marti": {
-                "11-12": {
+                "11-Dec": {
                     "course": "LS1(s)\nB10"
                 },
                 "13-14": {
@@ -36,10 +36,10 @@
                 }
             },
             "joi": {
-                "09-10": {
+                "09-Oct": {
                     "course": "AG (curs)\nprof. A. Ni\u00c8\u203a\u00c4\u0192"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Chimie (curs)\nprof. D. Ionita"
                 },
                 "13-14": {
@@ -47,10 +47,10 @@
                 }
             },
             "vineri": {
-                "09-10": {
+                "09-Oct": {
                     "course": " Programarea Calculatoarelor - PC (curs) Prof. B. Ionescu"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "AM1 (curs) Prof. R. Purnichescu"
                 },
                 "13-14": {
@@ -76,7 +76,7 @@
                 }
             },
             "miercuri": {
-                "11-12": {
+                "11-Dec": {
                     "course": "Sport(s)"
                 },
                 "13-14": {
@@ -116,10 +116,10 @@
                 }
             },
             "miercuri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "LS1(s)\nB11"
                 },
-                "12-13": {
+                "Dec-13": {
                     "course": "-- / Chim(l)"
                 },
                 "15-16": {
@@ -139,7 +139,7 @@
                 }
             },
             "marti": {
-                "11-12": {
+                "11-Dec": {
                     "course": "PC(l) sala 2 calc"
                 },
                 "13-14": {
@@ -153,7 +153,7 @@
                 }
             },
             "miercuri": {
-                "12-13": {
+                "Dec-13": {
                     "course": "Chim(l) / --"
                 },
                 "15-16": {
@@ -171,18 +171,18 @@
         "grupa": "411Ba",
         "orar": {
             "luni": {
-                "09-10": {
+                "09-Oct": {
                     "course": "AM1(s) / AG(s) \nB09"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "LS1(s)\nB206b"
                 }
             },
             "marti": {
-                "09-10": {
+                "09-Oct": {
                     "course": " PC (curs)\nprof. O. Grigore"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Chimie (curs)\nprof. I. Rau"
                 },
                 "13-14": {
@@ -198,10 +198,10 @@
                 }
             },
             "joi": {
-                "09-10": {
+                "09-Oct": {
                     "course": "BE1(s)\nB11"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "-- / Fiz(s)\nB11"
                 },
                 "13-14": {
@@ -218,10 +218,10 @@
                 }
             },
             "vineri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs)\nProf. A. Negrescu"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Fizica1 (curs)\nprof. M. Stafe"
                 },
                 "13-14": {
@@ -251,20 +251,20 @@
         "grupa": "412Ba",
         "orar": {
             "luni": {
-                "09-10": {
+                "09-Oct": {
                     "course": "LS1(s)\nB206b"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "AG(s) / AM1(s)\nB13"
                 }
             },
             "marti": {},
             "miercuri": {},
             "joi": {
-                "09-10": {
+                "09-Oct": {
                     "course": "PC(l)"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "BE1(s)\nB12"
                 },
                 "13-14": {
@@ -294,7 +294,7 @@
             "marti": {},
             "miercuri": {},
             "joi": {
-                "09-10": {
+                "09-Oct": {
                     "course": "PC(l) Sala 2 de calc"
                 }
             },
@@ -305,10 +305,10 @@
         "grupa": "413Ba",
         "orar": {
             "luni": {
-                "09-10": {
+                "09-Oct": {
                     "course": "AG(s) / AM1(s)\nB04"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "BE1(s)\nB09"
                 },
                 "13-14": {
@@ -318,10 +318,10 @@
             "marti": {},
             "miercuri": {},
             "joi": {
-                "08-09": {
+                "08-Sep": {
                     "course": "-- / Chim(l)"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Sport(s)\n"
                 },
                 "13-14": {
@@ -355,10 +355,10 @@
         "grupa": "414Ba",
         "orar": {
             "luni": {
-                "09-10": {
+                "09-Oct": {
                     "course": "BE1(s)\nB12"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "AM1(s) / AG(s) \nB12"
                 },
                 "13-14": {
@@ -368,10 +368,10 @@
             "marti": {},
             "miercuri": {},
             "joi": {
-                "08-09": {
+                "08-Sep": {
                     "course": "Chim(l) / --"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Fiz(s) / --\nB11"
                 },
                 "13-14": {
@@ -445,7 +445,7 @@
         "grupa": "411C",
         "orar": {
             "luni": {
-                "11-12": {
+                "11-Dec": {
                     "course": " Bazele electrotehnicii I - BE1 (curs) / Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs)\nprof. V. Ioni\u00c8\u203a\u00c4\u0192 / prof. O.\u00c8\u02dcandru "
                 },
                 "13-14": {
@@ -456,7 +456,7 @@
                 }
             },
             "marti": {
-                "11-12": {
+                "11-Dec": {
                     "course": "Sport(s)"
                 },
                 "13-14": {
@@ -470,10 +470,10 @@
                 }
             },
             "miercuri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "BE1(s)\nB09"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "LS1(s)\nB10"
                 },
                 "13-14": {
@@ -487,10 +487,10 @@
                 }
             },
             "joi": {
-                "09-10": {
+                "09-Oct": {
                     "course": "Chimie (curs)\nprof. I. Rau"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Programarea Calculatoarelor - PC (curs)\nprof. C. Bira"
                 },
                 "13-14": {
@@ -498,10 +498,10 @@
                 }
             },
             "vineri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "AM1(s) / AG(s)\nB09"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Fiz(s) / --\nB 124"
                 }
             }
@@ -513,10 +513,10 @@
             "luni": {},
             "marti": {},
             "miercuri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "BE1(s)\nB12"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "PC(l)"
                 },
                 "13-14": {
@@ -531,10 +531,10 @@
             },
             "joi": {},
             "vineri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "Fiz(s) / --\nB04"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "AG(s) / AM1(s)\nB09"
                 },
                 "13-14": {
@@ -552,10 +552,10 @@
             "luni": {},
             "marti": {},
             "miercuri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "PC(l)"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "BE1(s)\nB218"
                 },
                 "13-14": {
@@ -573,10 +573,10 @@
             },
             "joi": {},
             "vineri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "-- / Fiz(s)\nB04"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "AM1(s) / AG(s)\nB11"
                 },
                 "13-14": {
@@ -595,10 +595,10 @@
                 }
             },
             "miercuri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "LS1(s)\nB10"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "BE1(s)\nB12"
                 },
                 "13-14": {
@@ -616,10 +616,10 @@
             },
             "joi": {},
             "vineri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "AG(s) / AM1(s)\nB11"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "-- / Fiz(s)\nB 124"
                 }
             }
@@ -629,7 +629,7 @@
         "grupa": "411D",
         "orar": {
             "luni": {
-                "08-09": {
+                "08-Sep": {
                     "course": "Fiz(l) / Chim(l)"
                 },
                 "13-14": {
@@ -643,7 +643,7 @@
                 }
             },
             "marti": {
-                "11-12": {
+                "11-Dec": {
                     "course": "-- / AM1(s)\nB09"
                 },
                 "13-14": {
@@ -657,10 +657,10 @@
                 }
             },
             "miercuri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "AM1 (curs)\nProf. R. Purnichescu"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Programarea Calculatoarelor - PC (curs)\nprof. S. Zoican"
                 },
                 "13-14": {
@@ -668,10 +668,10 @@
                 }
             },
             "joi": {
-                "09-10": {
+                "09-Oct": {
                     "course": "Chimie (curs) \nProf. D. Ionita"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs)\nprof. R. Radulescu"
                 },
                 "13-14": {
@@ -679,10 +679,10 @@
                 }
             },
             "vineri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "BE1(s)\nB10"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "-- / AG(s)\nB10"
                 }
             }
@@ -692,7 +692,7 @@
         "grupa": "412D",
         "orar": {
             "luni": {
-                "12-13": {
+                "Dec-13": {
                     "course": "Fiz(l) / Chim(l)"
                 }
             },
@@ -714,10 +714,10 @@
             },
             "joi": {},
             "vineri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "-- / AG(s)\nB12"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "BE1(s)\nB12"
                 }
             }
@@ -727,7 +727,7 @@
         "grupa": "413D",
         "orar": {
             "luni": {
-                "10-11": {
+                "10-Nov": {
                     "course": "Fiz(l) / Chim(l)"
                 },
                 "13-14": {
@@ -742,10 +742,10 @@
             "miercuri": {},
             "joi": {},
             "vineri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "AG(s) / --\nB12"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "LS1(s)\nA102"
                 },
                 "13-14": {
@@ -761,15 +761,15 @@
         "grupa": "414D",
         "orar": {
             "luni": {
-                "10-11": {
+                "10-Nov": {
                     "course": "Chim(l) / Fiz(l)"
                 }
             },
             "marti": {
-                "09-10": {
+                "09-Oct": {
                     "course": "Sport(s)"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "PC(l)"
                 },
                 "13-14": {
@@ -782,10 +782,10 @@
             "miercuri": {},
             "joi": {},
             "vineri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "LS1(s)\nA102"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "AG(s) / --\nB10"
                 }
             }
@@ -795,12 +795,12 @@
         "grupa": "415D",
         "orar": {
             "luni": {
-                "12-13": {
+                "Dec-13": {
                     "course": "Chim(l) / Fiz(l)"
                 }
             },
             "marti": {
-                "11-12": {
+                "11-Dec": {
                     "course": "BE1(s)\nB11"
                 },
                 "13-14": {
@@ -817,7 +817,7 @@
             },
             "joi": {},
             "vineri": {
-                "11-12": {
+                "11-Dec": {
                     "course": "Sport(s)"
                 },
                 "13-14": {
@@ -830,10 +830,10 @@
         "grupa": "411E",
         "orar": {
             "luni": {
-                "09-10": {
+                "09-Oct": {
                     "course": "BE1(s)\nB11"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "AM1(s) / Fiz(s)\nB11"
                 },
                 "13-14": {
@@ -844,10 +844,10 @@
                 }
             },
             "marti": {
-                "09-10": {
+                "09-Oct": {
                     "course": "Fizica1 (curs) / Bazele electrotehnicii I - BE1 (curs)\nProf. G. Cata - Danil / prof. R. Costea"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Chimie (curs) \nprof. C. P\u00c3\u00aervu "
                 },
                 "13-14": {
@@ -855,10 +855,10 @@
                 }
             },
             "miercuri": {
-                "09-10": {
+                "09-Oct": {
                     "course": " Fizica1 (curs)\nProf. G. Cata - Danil"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Programarea Calculatoarelor - PC (curs)\nProf. V. Grosu"
                 },
                 "13-14": {
@@ -869,13 +869,13 @@
                 }
             },
             "joi": {
-                "09-10": {
+                "09-Oct": {
                     "course": "Fiz(l) / --"
                 },
-                "10-11": {
+                "10-Nov": {
                     "course": "Fiz(l) / Chim(l)"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "-- / Chim(l)"
                 },
                 "13-14": {
@@ -883,10 +883,10 @@
                 }
             },
             "vineri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "Bazele electrotehnicii I - BE1 (curs)\nprof. R. Costea"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Analiz\u00c4\u0192 Matematic\u00c4\u0192 I- AM1 (curs) / Algebr\u00c4\u0192 \u00c8\u2122i Geometrie - AG (curs)\nprof. C. Bercia / prof. V. Slesar"
                 }
             }
@@ -896,10 +896,10 @@
         "grupa": "412E",
         "orar": {
             "luni": {
-                "09-10": {
+                "09-Oct": {
                     "course": "AM1(s) / --\nB10"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "BE1(s)\nB10"
                 },
                 "13-14": {
@@ -915,13 +915,13 @@
             "marti": {},
             "miercuri": {},
             "joi": {
-                "09-10": {
+                "09-Oct": {
                     "course": "-- / Fiz(l)"
                 },
-                "10-11": {
+                "10-Nov": {
                     "course": "Chim(l) / Fiz(l)"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Chim(l) / --"
                 },
                 "13-14": {
@@ -939,10 +939,10 @@
         "grupa": "413E",
         "orar": {
             "luni": {
-                "09-10": {
+                "09-Oct": {
                     "course": "PC(l)"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Sport(s)"
                 },
                 "13-14": {
@@ -955,10 +955,10 @@
             "marti": {},
             "miercuri": {},
             "joi": {
-                "09-10": {
+                "09-Oct": {
                     "course": "AG(s) / AM1(s) \nB12"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "BE1(s)\nB04"
                 },
                 "13-14": {
@@ -976,10 +976,10 @@
         "grupa": "414E",
         "orar": {
             "luni": {
-                "09-10": {
+                "09-Oct": {
                     "course": "-- / Fiz(s)\nB10"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "PC(l) sala 2 de calc."
                 },
                 "13-14": {
@@ -992,10 +992,10 @@
             "marti": {},
             "miercuri": {},
             "joi": {
-                "09-10": {
+                "09-Oct": {
                     "course": "BE1(s)\nB10"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "AG(s) / AM1(s) \nB10"
                 },
                 "13-14": {
@@ -1024,10 +1024,10 @@
                 }
             },
             "marti": {
-                "09-10": {
+                "09-Oct": {
                     "course": "Chimie (curs) \nprof. C. P\u00c3\u00aervu"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Bazele Electrotehnicii 1  - BE1 (curs) \nProf. I. Nemoianu"
                 },
                 "13-14": {
@@ -1035,16 +1035,16 @@
                 }
             },
             "miercuri": {
-                "08-09": {
+                "08-Sep": {
                     "course": "-- / Chim(l)"
                 },
-                "09-10": {
+                "09-Oct": {
                     "course": "Fiz(l) / Chim(l)"
                 },
-                "10-11": {
+                "10-Nov": {
                     "course": "Fiz(l) / --"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "BE1(s)\nB11"
                 },
                 "13-14": {
@@ -1052,7 +1052,7 @@
                 }
             },
             "joi": {
-                "11-12": {
+                "11-Dec": {
                     "course": "PC(l)"
                 },
                 "13-14": {
@@ -1066,10 +1066,10 @@
                 }
             },
             "vineri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "Bazele Electrotehnicii 1  - BE1 (curs) / -- \n Prof. I. Nemoianu / --"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": " Programarea Calculatoarelor - PC (curs)\nprof. R. Hobincu"
                 },
                 "13-14": {
@@ -1102,13 +1102,13 @@
                 }
             },
             "miercuri": {
-                "08-09": {
+                "08-Sep": {
                     "course": "Chim(l) / --"
                 },
-                "09-10": {
+                "09-Oct": {
                     "course": "Chim(l) / Fiz(l)"
                 },
-                "10-11": {
+                "10-Nov": {
                     "course": "-- / Fiz(l)"
                 },
                 "13-14": {
@@ -1138,7 +1138,7 @@
             "luni": {},
             "marti": {},
             "miercuri": {
-                "11-12": {
+                "11-Dec": {
                     "course": "PC(l)"
                 }
             },
@@ -1150,19 +1150,19 @@
         "grupa": "413Fa",
         "orar": {
             "luni": {
-                "11-12": {
+                "11-Dec": {
                     "course": "PC(l)"
                 }
             },
             "marti": {},
             "miercuri": {
-                "10-11": {
+                "10-Nov": {
                     "course": "-- / Chim(l)"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Fiz(l) / Chim(l)"
                 },
-                "12-13": {
+                "Dec-13": {
                     "course": "Fiz(l) / --"
                 },
                 "15-16": {
@@ -1204,19 +1204,19 @@
         "grupa": "414Fa",
         "orar": {
             "luni": {
-                "11-12": {
+                "11-Dec": {
                     "course": "PC(l)"
                 }
             },
             "marti": {},
             "miercuri": {
-                "10-11": {
+                "10-Nov": {
                     "course": "Chim(l) / --"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Chim(l) / Fiz(l)"
                 },
-                "12-13": {
+                "Dec-13": {
                     "course": "-- / Fiz(l)"
                 },
                 "13-14": {
@@ -1227,7 +1227,7 @@
                 }
             },
             "joi": {
-                "11-12": {
+                "11-Dec": {
                     "course": "Sport(s)\n"
                 },
                 "13-14": {
@@ -1258,16 +1258,16 @@
         "grupa": "415Fa",
         "orar": {
             "luni": {
-                "11-12": {
+                "11-Dec": {
                     "course": "Sport(s)\n"
                 }
             },
             "marti": {},
             "miercuri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "PC(l)"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Fiz(s) / --\nB09"
                 },
                 "13-14": {
@@ -1278,10 +1278,10 @@
                 }
             },
             "joi": {
-                "11-12": {
+                "11-Dec": {
                     "course": "-- / Fiz(l)"
                 },
-                "12-13": {
+                "Dec-13": {
                     "course": "Chim(l) / Fiz(l)"
                 },
                 "13-14": {
@@ -1301,7 +1301,7 @@
             "marti": {},
             "miercuri": {},
             "joi": {
-                "09-10": {
+                "09-Oct": {
                     "course": "PC(l)"
                 }
             },
@@ -1312,10 +1312,10 @@
         "grupa": "411Ga",
         "orar": {
             "luni": {
-                "09-10": {
+                "09-Oct": {
                     "course": " Analiz\u00c4\u0192 Matematic\u00c4\u0192 I- AM1 (curs) \nprof. A. Toma"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Fizica1 (curs) \nprof. G. Suliman"
                 },
                 "13-14": {
@@ -1323,7 +1323,7 @@
                 }
             },
             "marti": {
-                "11-12": {
+                "11-Dec": {
                     "course": "Sport(s)\n"
                 },
                 "13-14": {
@@ -1337,10 +1337,10 @@
                 }
             },
             "miercuri": {
-                "09-10": {
+                "09-Oct": {
                     "course": "Chimie (curs)\nprof. I. Rau"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "Programarea Calculatoarelor - PC (curs)\nprof. I. N\u00c4\u0192stac"
                 },
                 "13-14": {
@@ -1348,10 +1348,10 @@
                 }
             },
             "joi": {
-                "09-10": {
+                "09-Oct": {
                     "course": "PC(l)"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "BE1(s)\nB09"
                 },
                 "14-15": {
@@ -1359,7 +1359,7 @@
                 }
             },
             "vineri": {
-                "10-11": {
+                "10-Nov": {
                     "course": "-- / Fiz(l)"
                 },
                 "13-14": {
@@ -1396,10 +1396,10 @@
             },
             "miercuri": {},
             "joi": {
-                "09-10": {
+                "09-Oct": {
                     "course": "BE1(s)\nB09"
                 },
-                "11-12": {
+                "11-Dec": {
                     "course": "PC(l)"
                 },
                 "14-15": {
@@ -1407,7 +1407,7 @@
                 }
             },
             "vineri": {
-                "10-11": {
+                "10-Nov": {
                     "course": "Fiz(l) /--"
                 },
                 "13-14": {

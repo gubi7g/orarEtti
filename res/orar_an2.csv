@@ -1,0 +1,196 @@
+,,Anul II Seria A,,,,,,,,,Anul II Seria B,,,,,,,,,Anul II Seria C,,,,,,,,,Anul II Seria D,,,,,,,,,Anul II Seria E,,,,,,,,,Anul II Seria F,,,,,,,,,Anul II Seria G,,,,,,,,,,,,curs,curs,curs,sem,,,,,,,,,,,
+,,421Aa,421Ab,422Aa,422Ab,423Aa,423Ab,424Aa,424Ab,Sala,421Ba,421Bb,422Ba,422Bb,423Ba,423Bb,424Ba,424Bb,sala,421Ca,421Cb,422Ca,422Cb,423Ca,423Cb,424Ca,424Cb,sala,421Da,421Db,422Da,422Db,423Da,423Db,424Da,424Db,sala,421Ea,421Eb,422Ea,422Eb,423Ea,423Eb,424Ea,424Eb,sala,421Fa,421Fb,422Fa,422Fb,423Fa,423Fb,424Fa,424Fb,sala,421Ga,421Gb,422Ga,422Gb,423Ga,423Gb,424Ga,424Gb,,,,sala,B110,A05,B219b,,Sport,ME (l),DE (l),SS (l),CCP (l),A414,A415,Sala 2,,,
+LUNI,09-10,"Componente si Circuite Pasive CCP (curs)
+Prof. A. Vasile",,,,,,,,A05,"Programare orientată pe obiecte POO (curs)
+Prof. O. Grigore",,,,,,,,B110,ME (l) / CCP (l),,CCP (l) / ME (l),,-- / DE (l),,DE (l) / --,,,,,,,,,,,,"Semnale si Sisteme SS (curs)
+Prof. L. Stanciu",,,,,,,,B219b,,,,,,,,,,,,,,,,SS (s) B122,,,,,,1,1,1,1,0,1,2,0,1,0,0,0,,,
+,10-11,,,,,,,,,A05,,,,,,,,,B110,,,,,,,,,,,,,,,,,,,,,,,,,,,B219b,,,,,,,,,,,,,,,,,,,,,,1,1,1,,,,,,,,,0,,,
+,11-12,"Semnale si Sisteme SS (curs)
+Prof. L. Stanciu",,,,,,,,A05,"Dispozitive Electronice DE (curs)
+Prof. L. Dobrescu",,,,,,,,B110,,,,,SS (l) / DE (l),,DE (l) / SS (l),,,,,,,DE (s) B04,,,,,"Programare orientată pe obiecte POO (curs)
+Prof. V. Grosu",,,,,,,,B219b,,,,,,,DE (s) B122,,,SP (p) / --,,-- /SP (p) ,,,,,,,,,,1,1,1,2,0,,,1,,0,0,0,,,
+,12-13,,,,,,,,,A05,,,,,,,,,B110,,,,,SS (l) / --,,DE (l) / --,,,,,,,,,,,,,,,,,,,,B219b,,,,,,,,,,,,,,ME (l) / CCP (l),,CCP (l) / ME (l),,,,,,1,1,1,,,1,0.5,,1,,,0,,,
+,13-14,"O2 ISIA (c) A05 / ME (curs) 
+/ Prof. M. Vladescu",,,,,,,,A05,O2 TCAD (c) B212 | ISIA (c) A05 / MN (c) B212,,,,,,,,,O2 TCAD (c) B212 | ISIA (c) A05 / MN (c) B212,,,,,,,,,ISIA (c) A05 / DE (s) B218,,ISIA (c) A05 / --,,,,,,,O2 TCAD (c) B212 | ISIA (c) A05 / MN (c) B212,,,,,,,,,"ISIA (c) A05 / Semnale si Sisteme SS (curs)
+Prof. C. Florea / Prof. M. Raducanu",,,,,,,,,O2 ISIA (c) A05 / --,,,,,,,,,,,,0,1,0,1,0,,,0,,0,0,0,,,
+,14-15,,,,,,,,,A05,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,B219b,,,,,,,,,,,,,0,1,1,,,,,,,,,0,,,
+,15-16,,,,,,,,,,,,,,"SP (p) / --
+sala 1",,"-- /SP (p) 
+sala 1",,,"Semnale si Sisteme SS (curs)
+Prof. S. Halunga",,,,,,,,A05,DE  (s) B122 / --,,SS (s) B04,,"POO (l) 
+/ --","-- /
+POO (l)",SS (s) B12,,,"-- / Materiale pentru Electronice ME (curs)
+-- / Prof. A. Dragulinescu",,,,,,,,,"Materiale pentru Electronice ME (curs)  / Dispozitive Electronice DE (curs)
+Prof. P. Schiopu / Prof. C. Ravariu",,,,,,,,B219b,ME (l) / CCP (l),,CCP (l) / ME (l),,,,SS (l)  / --,,,,,,0,1,1,3,0,1,0,0.5,1,0,0,0,,,
+,16-17,,,,,,,,,,,,,,,,,,,,,,,,,,,A05,,,,,,,,,,,,,,,,,,B212,,,,,,,,,B219b,,,,,"POO (l) 
+/ --",-- /POO (l),,,,,,,0,1,1,,,,,,,,,0,,,
+,17-18,,,,,,,,,,,,,,,,,,,,,,,-- / SP (p),,SP (p) / --,,,SS (s) B12,,"POO (l) 
+/ --","-- /
+POO (l)",,,,,,,,,,,,,,,"Componente si Circuite Pasive CCP (curs)
+Prof. B. Mihailescu",,,,,,,,B219b,,,,,,,,,,,,,0,0,1,1,0,,,0,,0,0,0,,,
+,18-19,,,,,,,,,,,,,,,,,,,DE (l) / --,,-- / DE (l),,,,,,,,,,,ME (l) / CCP (l),,CCP (l) / ME (l),,,,,,,,,,,,,,,,,,,,B219b,,,"POO (l) 
+/ --",-- /POO (l),,,,,,,,,0,0,1,,,1,1,,1,,,0,,,
+,19-20,,,,,,,,,,,,,,,,,,,,,,,,,,,,"POO (l) 
+/ --","-- /
+POO (l)",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,0,0,0,0,,,0,,0,0,0,,,
+,20-21,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,0,0,,,,,,,,,0,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,2,,,,,,,,,,,
+MARTI,09-10,SS (s) B218,,"SP (p) / SS (l)
+B04 / --",,DE (l) / -- ,,-- / DE (l),,,DE (s) B122,,-- / SP (p),,CCP (l) / ME (l),,ME (l) / CCP (l),,,"Materiale pentru Electronica ME (curs) / Dispozitive Electronice DE (curs)
+Prof. M. Vladescu / Prof. F. Draghici",,,,,,,,A05,"Semnale si Sisteme SS (curs) 
+Prof. T. Petrescu ",,,,,,,,B110,,,,,,,,,,,,,,,,,,,"Semnale si Sisteme SS (curs)
+Prof. C. Negrescu",,,,,,,,,,,B219b,1,1,1,,0,1,1,0.5,1,0,0,0,,,
+,10-11,,,,,,,,,,,,,,,,,,,,,,,,,,,A05,,,,,,,,,B110,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,B219b,1,1,1,,,,,,,,,0,,,
+,11-12,"SS (l) / SP (p)
+-- / B04",,SS (s) B218,,,,,,,SP (p) / SS (l),,DE (s) B122,,,,,,,"Semnale si Sisteme SS (curs) / O2 TCAD (c)
+ Prof. S. Halunga / --",,,,,,,,A05,"Dispozitive Electronice DE (curs)
+Prof. Gh. Brezeanu",,,,,,,,B110,-- / O2 TCAD (c) A05,,,,"SP (p) B02c /
+O2 TCAD (c)",,-- /SP (p) B02c,,,-- / O2 TCAD (c) A05,,,,,,,,,"Materiale pentru Electronica ME (curs) / O2 MN (c) | TCAD (c)
+Prof. A. Dragulinescu / Prof. V. Grosu",,,,,,,,,,,B219b,1,1,1,2,0,,,1,,0,0,0,,,
+,12-13,,,,,ME (l) / CCP (l),,CCP (l) / ME (l),,,,,,,DE  (l) / -- ,,-- / DE  (l),,,,,,,,,,,A05,,,,,,,,,B110,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,A05,1,2,0,,,1,1,,1,,,0,,,
+,13-14,,,,,,,,,,,,SS (s) B218,,DE (l) / SS (l),,SS (l) / DE (l) ,,,O1 (c) Elemente de drept si legislatia afacerilor (curs)  A05 | Macroeconomie (curs)  B219b | Microeconomie (curs) B110 ,,,,,,,,A05,O1 (c) Elemente de drept si legislatia afacerilor (curs)  A05 | Macroeconomie (curs)  B219b | Microeconomie (curs) B110 ,,,,,,,,B219b,SP (p) B02c / --,,-- /SP (p) B02c,,,,,,,O1 (c) Elemente de drept si legislatia afacerilor (curs)  A05 | Macroeconomie (curs)  B219b | Microeconomie (curs) B110 ,,,,,,,,B110,,,,,SS (s) B122,,,,,,,,1,1,1,2,0,,,1,,0,0,0,,,
+,14-15,,,,,,,,,,,,,,,,,,,,,,,,,,,A05,,,,,,,,,B219b,,,,,,,,,,,,,,,,,,B110,,,,,,,,,,,,,1,1,1,,,,,,,,,0,,,
+,15-16,O1 (c) Elemente de drept si legislatia afacerilor (curs)  A05 | Macroeconomie (curs)  B219b | Microeconomie (curs) A03 ,,,,,,,,A05,O1 (c) Elemente de drept si legislatia afacerilor (curs)  A05 | Macroeconomie (curs)  B219b | Microeconomie (curs) A03 ,,,,,,,,B219b,DE (s) B218,,,,,,,,,-- / SP (p) B02c,,,,SP (p) B02c/ --,,-- / DE (l),,,O1 (c) Elemente de drept si legislatia afacerilor (curs)  A05 | Macroeconomie (curs)  B219b | Microeconomie (curs) A03 ,,,,,,,,,"Semnale si Sisteme SS (curs)
+Prof. M. Raducanu",,,,,,,,B110,SS (s) B122,,,,SP (p) / SS (l),SP (p) / --,-- /SP (p) ,SS (l) /SP (p) ,,,,,1,1,1,2,0,0,0.5,1,0,0,0,0,,,
+,16-17,,,,,,,,,A05,,,,,,,,,B219b,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,B110,,,,,,,,,,,,,1,1,1,,,,,,,,,0,,,
+,17-18,,,,,,,,,,,,,,,,,,,,,DE (s) B218,,,,,,,,,,,,,,,," Dispozitive Electronice DE (curs)
+ Prof. D. Dascalu",,,,,,,,A05,"Dispozitive Electronice DE (curs)
+Prof. C. Ravariu",,,,,,,,B110,,,,,,,,,,,,,1,1,0,1,0,,,0,,0,0,0,,,
+,18-19,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,A05,,,,,,,,,B110,,,,,,,,,,,,,1,1,0,,,0,0,,0,,,0,,,
+,19-20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,DE (s) A05,,,,,,,,A05,,,,,,,,,,,,,,,,,,,,,,0,1,0,1,0,,,0,,0,0,0,,,
+,20-21,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,A05,,,,,,,,,,,,,,,,,,,,,,0,1,0,,,,,,,,,0,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+MIERCURI,09-10,"Materiale pentru Electronica ME (curs)
+Prof. M. Vladescu",,,,,,,,A05,ME (l) / CCP (l),,CCP (l) / ME (l),,DE (s) B122,,"POO (l) 
+/ --","-- /
+POO (l)",,,,,,,,,,,"SS (l) / ME (curs)
+-- / Prof. M. Dragulinescu",,"-- / Materiale pentru Electronice ME (curs)
+-- / Prof. M. Dragulinescu",,,,,,,,,,,,,,,,,,,,,,,,,-- /SS (l) ,POO (l) /SS (l) ,DE (s) B218 D,,DE (s) Infineon L,,DE (l) / --,-- / DE (l),,,,,0,1,0,3,0,1,1,1.5,1,0,0,0,,,
+,10-11,,,,,,,,,A05,,,,,,,,,,,,,,,,,,,,,,,,,,,B110,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1,1,0,,,,,,,,,0,,,
+,11-12,"  Semnale si Sisteme SS (curs) / Dispozitive Electronice DE (curs)
+ Prof. L. Stanciu / Prof. Gh. Brezeanu",,,,,,,,A05,,,,,"POO (l) 
+/ --","-- /
+POO (l)",DE (s) B122,,,"Materiale pentru Electronica ME (curs)
+Prof. M. Vladescu",,,,,,,,B206a,"Dispozitive Electronice DE (curs) / Semnale si Sisteme SS (curs)
+Prof. Gh. Brezeanu / Prof. T. Petrescu",,,,,,,,B110,,,,,DE (s) A03,,,,A03,"Programare orientată pe obiecte POO (curs)
+Prof. R. Hobincu",,,,,,,,B219b,"DE (s)
+B124",,-- /SS (l) ,,,SS (l)  / --,,,,,,,1,1,1,4,0,,,1,,0,0,0,,,
+,12-13,,,,,,,,,A05,,,,,,,,,,,,,,,,,,B206a,,,,,,,,,B110,,,,,,,,,A03,,,,,,,,,B219b,,,,,DE (l) / --,SS (l) / DE (l),DE (s) Infineon D,,,,,,1,1,1,,,0,2.5,,0,,,0,,,
+,13-14,O2 TCAD (c) A05 / MN (c) A05,,,,,,,,A05,SS (s) B219b,,"POO (l) 
+/ --","-- /
+POO (l)",,,SS (s) B219b,,B219b,SS (s) B122,,-- / SS (l),,,,,,,O2 TCAD (c) A05 / MN (c) A05,,,,,,,,,"Semnale si Sisteme SS (curs) / Dispozitive Electronice DE (curs)
+Prof. L. Stanciu / Prof. D. Dascalu",,,,,,,,B110,O2 TCAD (c) A05 / MN (c) A05,,,,,,,,,DE (l) / --,-- / DE (l),SS (s) B218,,,-- / DE (l),,,,,,,1,1,1,4,0,,,0.5,,0,0,0,,,
+,14-15,,,,,,,,,A05,,,,,,,,,B219b,,,,,,,,,,,,,,,,,,,,,,,,,,,B110,,,,,,,,,,,,,,,,,,,,,,1,1,1,,,,,,,,,0,,,
+,15-16,POO (l) / --,,-- / POO (l),,,,,,,"POO (l) 
+/ --","-- /
+POO (l)",,,,,,,,,,SS (s) B122,,ME (l) / CCP (l),,CCP (l) / ME (l),,,,,SP (p) / SS (l),,SS (s) B218,,-- / SP (p),,,"Componente si Circuite Pasive CCP (curs)
+Prof. A. Vasile",,,,,,,,B110,"Materiale pentru Electronica ME (curs)
+Prof. P. Schiopu",,,,,,,,A05,,,DE (l) / --,-- / DE (l),,,"POO (l) 
+/ --","-- /
+POO (l)",,,,,1,1,0,2,0,1,1,0.5,1,0,0,0,,,
+,16-17,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,B110,,,,,,,,,A05,,,,,,,,,,,,,1,1,0,,,,,,,,,0,,,
+,17-18,,,,,"POO (l) / SP (p) 
+-- / A111-SC4",,-- / POO (l),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"Materiale pentru Electronica ME (curs)
+Prof. A. Dragulinescu",,,,,,,,B110,,,,,,,,,,"POO (l) 
+/ --",,,,,,,,,,,,1,0,0,0,0,,,0,,0,0,0,,,
+,18-19,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,B110,,,,,,,,,,,,,,,,,,,,,,1,0,0,,,0,0,,0,,,0,,,
+,19-20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,0,0,0,0,,,0,,0,0,0,,,
+,20-21,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,0,0,,,,,,,,,0,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+JOI,09-10,"Programare Obiect-Orientata POO (curs)
+Prof. I. Dogaru",,,,,,,,B110,,,,,SS (s) B122,,,,,"POO (l) 
+/ SP (p)","SP (p) /
+POO (l)","SP (p) 
+/ --","-- /
+SP (p)",,,,,,"Componente si Circuite Pasive CCP (curs)
+Prof. C. Marghescu",,,,,,,,B219b,DE (l) / SS (l),,SS (s) B218,,"SS (l) / --
+",,ME (l) / CCP (l),,,,,CCP (l) / ME (l),,,,-- / DE (l),,,"Semnale si Sisteme SS (curs)
+Prof. C. Negrescu",,,,,,,,,,,A05,1,1,1,2,0,1,1,1,1,0,0,0,,,
+,10-11,,,,,,,,,B110,,,,,,,,,,,,,,,,,,,,,,,,,,,B219b,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,A05,1,1,1,,,,,,,,,0,,,
+,11-12,"Dispozitive Electronice DE (curs)
+Prof. Gh. Brezeanu",,,,,,,,B110,Semnale si Sisteme SS (curs),,,,,,,,A03,SS (l) / --,,"POO (l) 
+/ --","-- /
+POO (l)",,,,,,"Materiale pentru Electronica ME (curs)
+Prof. M. Dragulinescu",,,,,,,,B219b,DE  (l) / -- ,,,,SS (s) B218,,,,,DE (s) B122,,,,,,,,,"Dispozitive Electronice DE (curs)
+Prof. G. Dima",,,,,,,,,,,A05,1,1,1,2,0,,,0.5,,0,0,0,,,
+,12-13,,,,,,,,,B110,,,,,,,,,A03,,,,,,,,,,,,,,,,,,B219b,,,DE  (l) / -- ,,,,-- / DE  (l),,,,,,,,,CCP (l) / ME (l),,,,,,,,,,,,,,A05,1,1,1,,,0.5,1,,0.5,,,0,,,
+,13-14,,,,,,,,,,"Dispozitive Electronice DE (curs) / Materiale pentru Electronica ME (curs)
+Prof. L. Dobrescu / Prof. A. Dragulinescu",,,,,,,,B110,,,,,"POO (l) 
+/ --","-- /
+POO (l)",,,,"Programare Obiect-Orientata POO (curs)
+Prof. D. Galatchi",,,,,,,,B219b,SS (s) B04,,DE (l) / SS (l),,,,SS (l) / DE (l),,,,,DE (s) B122,,SS (s) B218,,,,,O1. Elemente de Drept si Legislatia Afacerilor (curs) A05,,,,,,,,,,,A05,1,1,1,3,0,,,1,,0,0,0,,,
+,14-15,,,,,,,,,,,,,,,,,,B110,,,,,,,,,,,,,,,,,,B219b,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,A05,1,1,1,,,,,,,,,0,,,
+,15-16,,,,,,,,,,-- / DE (l),,DE (l) / SS (l),,,,,,,,,,,SS (s) B219b,,"POO (l) 
+/ --","-- /
+POO (l)",B219b,,,,,,,,,,,,"POO (l) 
+/ --","-- /
+POO (l)",CCP (l) / ME (l),,SS (s) B04,,,ME (l) / CCP (l),,"SS (l) / --
+",,DE (s) B122,,SS (s) B218,,,"Programare orientată pe obiecte POO (curs)
+Prof. V. Grosu",,,,,,,,,,,A05,0,1,1,4,0,1,1,1,1,0,0,0,,,
+,16-17,,,,,,,,,,,,,,,,,,,,,,,,,,,B219b,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,A05,0,1,1,,,,,,,,,0,,,
+,17-18,,,,,,,,,,,,DE  (l) / -- ,,,,,,,,,,,DE (s) B218,,SS (s) B122,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,0,0,2,0,,,0,,0,0,0,,,
+,18-19,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,DE (l)  / --,,,,ME (l) / CCP (l),,,,,,,,,,,,,,,,,0,0,0,,,0.5,0.5,,0.5,,,0,,,
+,19-20,,,,,,,,,,,,,,,,,,,,,,,,,DE (s) B218,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,0,0,1,0,,,0,,0,0,0,,,
+,20-21,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,0,0,,,,,,,,,0,Legendă,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+VINERI,09-10,DE (l) / -- ,,-- / DE (l),,SS (s) B218,,-- / SP (p) A111-SC4,,,"Componente si Circuite Pasive CCP (curs)
+Prof. A. Vasile",,,,,,,,A05,"Dispozitive Electronice DE (curs)
+Prof. F. Draghici",,,,,,,,B110,ME (l) / CCP (l),,CCP (l) / ME (l),,,,,,,,,,,,,,,,SP (p) / SS (l),,,,SS (l) / SP (p)  ,,"POO (l) 
+/ --","-- /
+POO (l)",,"-- / Dispozitive Electronice DE (curs)
+-- / Prof. G. Dima",,,,,,,,,,,B219b,1,1,1,1,0,1,1,1,1,0,0,0,"Activitate didactică
+obligatorie",,"Act. Săpt impară /
+/ Act. Săpt pară"
+,10-11,,,,,,,,,,,,,,,,,,A05,,,,,,,,,B110,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,B219b,1,1,1,,,,,,,,,0,,,
+,11-12,,,,,DE (s) B122,,SS (s) B04,,,"Semnale si Sisteme SS (curs)
+prof. Stanomir",,,,,,,,A05,"Componente si Circuite Pasive CCP (curs)
+Prof. A. Drumea",,,,,,,,B110,,,,,,,"POO (l) 
+/ --","-- /
+POO (l)",,,,,,,,"POO (l) 
+/ --","-- /
+POO (l)",,SS (s) B218,,SP (p) / --,,"POO (l) 
+/ --","-- /
+POO (l)",SS (l) / SP (p)  ,,,"Materiale pentru Electronica ME (curs)
+Prof. A. Dragulinescu",,,,,,,,,,,B219b,1,1,1,3,0,,,0.5,,0,0,0,,,
+,12-13,ME (l) / CCP (l),,CCP (l) / ME (l),,,,,,,,,,,,,,,A05,,,,,,,,,B110,DE (l) / --,,-- / DE (l),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,B219b,1,1,1,,,1,1,,1,,,0,,,
+,13-14,,,,,SS (l) / --,,DE (s) B122,,,"Materiale pentru Electronica ME (curs)
+Prof. A. Dragulinescu",,,,,,,,A05,"Programare orientată pe obiecte POO (curs)
+Prof. C. Bîră",,,,,,,,B110,,,,,-- / SS (l),,DE (s) B04,,,"POO (l) 
+/ --","-- /
+POO (l)",,,,,,,,"POO (l) 
+/ --","-- /
+POO (l)",SS (s) B218,,,,,,,"Componente si Circuite Pasive CCP (curs)
+Prof. C. Ionescu",,,,,,,,,,,B219b,1,1,1,3,0,,,1,,0,0,0,"Activitate didactică
+opţională",,"Act. Săpt impară /
+/ ---"
+,14-15,,,,,,,,,,,,,,,,,,A05,,,,,,,,,B110,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,B219b,1,1,1,,,,,,,,,0,,,
+,15-16,DE (s) B218,,,,,,SS (l) / --,,,,,,,,,,,,,,,,,,,,,,,DE (s) B122,,-- / DE (l),,-- / SS (l),,,ME (l) / CCP (l),,CCP (l) / ME (l),,"POO (l) 
+/ --","-- /
+POO (l)",,,,,,"POO (l) 
+/ --","-- /
+POO (l)",DE (l)  / --,,,,,,,,,,,,,,,,,0,0,0,2,0,1,1,1,1,0,0,0,,,
+,16-17,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,0,0,,,,,,,,,0,,,
+,17-18,,,DE (s) B218,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,0,0,1,0,,,0,,0,0,0,"Activitate didactică
+facultativă",,"--- /
+/ Act. Săpt pară"
+,18-19,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,DE (l)  / --,,,,,,,-- / DE (l) ,,,,,,,,,,,,,,,,,,,0,0,0,,,0,1,,0,,,0,,,
+,19-20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,0,0,0,0,,,0,,0,0,0,,,
+,20-21,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,0,0,,,,,,,,,0,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SS (curs),,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,,,,,,,,,,,,,,,,,,
+ME (curs),,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,,,,,,,,,,,,,,,,,,
+DE (curs),,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,2,,,,,,,,,,,,,,,,,,,,,,,,,,
+CCP (curs),,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,,,,,,,,,,,,,,,,,,
+POO (curs),,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,,,,,,,,,,,,,,,,,,
+MN (c),,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,,,,,,,,,,,,,,,,,,
+TCAD (c),,1,,,,,,,,,1,,,,,,,,,2,,,,,,,,,1,,,,,,,,,2,,,,,,,,,2,,,,,,,,,1,,,,,,,,,,,,,,,,,,,,,,,,,,
+O1,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,1,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SS (s),SS _(s),1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,0,,,,,,,,,,,,,,,,,
+DE (s),DE _(s),1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,,,1,,,,,1,,1,,1,,1,,,1,,1,,1,,1,,,0,,,,,,,,,,,,,,,,,
+SS (l),SS (l),1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,2,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,0,,,,,,,,,,,,,,,,,
+CCP (l),CCP (l),1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,0,,,,,,,,,,,,,,,,,
+POO (l),POO (l),1,,1,,1,,1,,,1,1,1,1,1,1,1,1,,1,,1,,1,,1,,,1,1,1,1,1,1,1,1,,1,1,1,1,1,1,1,1,,1,1,1,1,1,1,1,1,,1,,1,,1,,1,,,0,,,,,,,,,,,,,,,,,
+ME (l),ME (l),1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,0,,,,,,,,,,,,,,,,,
+DE (l),DE (l),1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,2,,3,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,0,,,,,,,,,,,,,,,,,
+SP (p),SP (p),1,,1,,1,,1,,,1,,1,,1,,1,,,2,,2,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,1,,1,,,1,,1,,2,,2,,,0,,,,,,,,,,,,,,,,,

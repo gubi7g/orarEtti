@@ -3,7 +3,7 @@ import csv
 import re
 
 orar = []
-with open('orar_an1.csv') as f:
+with open('orar_an3.csv') as f:
     reader = csv.reader(f)
 
     for row in reader:
@@ -64,6 +64,8 @@ ore_posibile_dict = []
 for i in range(8, 21):
     ore_posibile_dict.append(f'{i:02}-{(i+1):02}')
 
+print(ore_posibile_dict)
+
 # initialize a part of the final dict
 for grupa, orar_grupa in zip(grupe, orar_final):
     orar_grupa['grupa'] = grupa
@@ -79,9 +81,10 @@ jump_cells.sort(reverse=True)
 ora_curenta = 0
 
 # in range_orar[i][1] avem ora! oricare i
+print(range_orar)
 for ind_int, interval in enumerate(range_orar):
     # pe poz 0 avem numele zilei
-    if interval[0] != '':
+    if interval[0] != '' and interval[0].isalpha():
         zi_curenta = interval[0].lower()
 
     # pe poz 1 avem intervalul orar
@@ -90,9 +93,10 @@ for ind_int, interval in enumerate(range_orar):
 
     # scoatem din campurile cu evenimente coloanele care nu ne folosesc (pt un zip bijectiv)
     for i in jump_cells:
-        print(i)
+        # print(i)
         interval.pop(i)
 
+    print(zi_curenta, ind_int, interval)
     for (ind, cell), orar_grupa in zip(enumerate(interval), orar_final):
         if cell == '':
             continue
@@ -109,5 +113,5 @@ for ind_int, interval in enumerate(range_orar):
             # print(f'grupa {grupe[ind_grupa]} are {cell}')
 
 # write everything to a file
-with open('orar_an1.json', 'w') as f:
+with open('orar_an3.json', 'w') as f:
     f.write(json.dumps(orar_final))

@@ -1,0 +1,1572 @@
+[
+    {
+        "grupa": "421Aa",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "Componente si Circuite Pasive CCP (curs)\nProf. A. Vasile"
+                },
+                "11-12": {
+                    "course": "Semnale si Sisteme SS (curs)\nProf. L. Stanciu"
+                },
+                "13-14": {
+                    "course": "O2 ISIA (c) A05 / ME (curs) \n/ Prof. M. Vladescu"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "SS (s) B218"
+                },
+                "11-12": {
+                    "course": "SS (l) / SP (p)\n-- / B04"
+                },
+                "15-16": {
+                    "course": "O1 (c) Elemente de drept si legislatia afacerilor (curs)  A05 | Macroeconomie (curs)  B219b | Microeconomie (curs) A03 "
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "Materiale pentru Electronica ME (curs)\nProf. M. Vladescu"
+                },
+                "11-12": {
+                    "course": "  Semnale si Sisteme SS (curs) / Dispozitive Electronice DE (curs)\n Prof. L. Stanciu / Prof. Gh. Brezeanu"
+                },
+                "13-14": {
+                    "course": "O2 TCAD (c) A05 / MN (c) A05"
+                },
+                "15-16": {
+                    "course": "POO (l) / --"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "Programare Obiect-Orientata POO (curs)\nProf. I. Dogaru"
+                },
+                "11-12": {
+                    "course": "Dispozitive Electronice DE (curs)\nProf. Gh. Brezeanu"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "DE (l) / -- "
+                },
+                "12-13": {
+                    "course": "ME (l) / CCP (l)"
+                },
+                "15-16": {
+                    "course": "DE (s) B218"
+                },
+                "20-21": {
+                    "course": "2"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "421Ab",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "422Aa",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "09-10": {
+                    "course": "SP (p) / SS (l)\nB04 / --"
+                },
+                "11-12": {
+                    "course": "SS (s) B218"
+                }
+            },
+            "miercuri": {
+                "15-16": {
+                    "course": "-- / POO (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "-- / DE (l)"
+                },
+                "12-13": {
+                    "course": "CCP (l) / ME (l)"
+                },
+                "17-18": {
+                    "course": "DE (s) B218"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "422Ab",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "423Aa",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "09-10": {
+                    "course": "DE (l) / -- "
+                },
+                "12-13": {
+                    "course": "ME (l) / CCP (l)"
+                }
+            },
+            "miercuri": {
+                "17-18": {
+                    "course": "POO (l) / SP (p) \n-- / A111-SC4"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "SS (s) B218"
+                },
+                "11-12": {
+                    "course": "DE (s) B122"
+                },
+                "13-14": {
+                    "course": "SS (l) / --"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "423Ab",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "424Aa",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "09-10": {
+                    "course": "-- / DE (l)"
+                },
+                "12-13": {
+                    "course": "CCP (l) / ME (l)"
+                }
+            },
+            "miercuri": {
+                "17-18": {
+                    "course": "-- / POO (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "-- / SP (p) A111-SC4"
+                },
+                "11-12": {
+                    "course": "SS (s) B04"
+                },
+                "13-14": {
+                    "course": "DE (s) B122"
+                },
+                "15-16": {
+                    "course": "SS (l) / --"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "424Ab",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "421Ba",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "Programare orientat\u00c4\u0192 pe obiecte POO (curs)\nProf. O. Grigore"
+                },
+                "11-12": {
+                    "course": "Dispozitive Electronice DE (curs)\nProf. L. Dobrescu"
+                },
+                "13-14": {
+                    "course": "O2 TCAD (c) B212 | ISIA (c) A05 / MN (c) B212"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "DE (s) B122"
+                },
+                "11-12": {
+                    "course": "SP (p) / SS (l)"
+                },
+                "15-16": {
+                    "course": "O1 (c) Elemente de drept si legislatia afacerilor (curs)  A05 | Macroeconomie (curs)  B219b | Microeconomie (curs) A03 "
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "ME (l) / CCP (l)"
+                },
+                "13-14": {
+                    "course": "SS (s) B219b"
+                },
+                "15-16": {
+                    "course": "POO (l) \n/ --"
+                }
+            },
+            "joi": {
+                "11-12": {
+                    "course": "Semnale si Sisteme SS (curs)"
+                },
+                "13-14": {
+                    "course": "Dispozitive Electronice DE (curs) / Materiale pentru Electronica ME (curs)\nProf. L. Dobrescu / Prof. A. Dragulinescu"
+                },
+                "15-16": {
+                    "course": "-- / DE (l)"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "Componente si Circuite Pasive CCP (curs)\nProf. A. Vasile"
+                },
+                "11-12": {
+                    "course": "Semnale si Sisteme SS (curs)\nprof. Stanomir"
+                },
+                "13-14": {
+                    "course": "Materiale pentru Electronica ME (curs)\nProf. A. Dragulinescu"
+                },
+                "20-21": {
+                    "course": "2"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "421Bb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "15-16": {
+                    "course": "-- /\nPOO (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "422Ba",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "09-10": {
+                    "course": "-- / SP (p)"
+                },
+                "11-12": {
+                    "course": "DE (s) B122"
+                },
+                "13-14": {
+                    "course": "SS (s) B218"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "CCP (l) / ME (l)"
+                },
+                "13-14": {
+                    "course": "POO (l) \n/ --"
+                }
+            },
+            "joi": {
+                "15-16": {
+                    "course": "DE (l) / SS (l)"
+                },
+                "17-18": {
+                    "course": "DE  (l) / -- "
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "422Bb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "13-14": {
+                    "course": "-- /\nPOO (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "423Ba",
+        "orar": {
+            "luni": {
+                "15-16": {
+                    "course": "SP (p) / --\nsala 1"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "CCP (l) / ME (l)"
+                },
+                "12-13": {
+                    "course": "DE  (l) / -- "
+                },
+                "13-14": {
+                    "course": "DE (l) / SS (l)"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "DE (s) B122"
+                },
+                "11-12": {
+                    "course": "POO (l) \n/ --"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "SS (s) B122"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "423Bb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "11-12": {
+                    "course": "-- /\nPOO (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "424Ba",
+        "orar": {
+            "luni": {
+                "15-16": {
+                    "course": "-- /SP (p) \nsala 1"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "ME (l) / CCP (l)"
+                },
+                "12-13": {
+                    "course": "-- / DE  (l)"
+                },
+                "13-14": {
+                    "course": "SS (l) / DE (l) "
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "POO (l) \n/ --"
+                },
+                "11-12": {
+                    "course": "DE (s) B122"
+                },
+                "13-14": {
+                    "course": "SS (s) B219b"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "424Bb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "09-10": {
+                    "course": "-- /\nPOO (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "421Ca",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "ME (l) / CCP (l)"
+                },
+                "13-14": {
+                    "course": "O2 TCAD (c) B212 | ISIA (c) A05 / MN (c) B212"
+                },
+                "15-16": {
+                    "course": "Semnale si Sisteme SS (curs)\nProf. S. Halunga"
+                },
+                "18-19": {
+                    "course": "DE (l) / --"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "Materiale pentru Electronica ME (curs) / Dispozitive Electronice DE (curs)\nProf. M. Vladescu / Prof. F. Draghici"
+                },
+                "11-12": {
+                    "course": "Semnale si Sisteme SS (curs) / O2 TCAD (c)\n Prof. S. Halunga / --"
+                },
+                "13-14": {
+                    "course": "O1 (c) Elemente de drept si legislatia afacerilor (curs)  A05 | Macroeconomie (curs)  B219b | Microeconomie (curs) B110 "
+                },
+                "15-16": {
+                    "course": "DE (s) B218"
+                }
+            },
+            "miercuri": {
+                "11-12": {
+                    "course": "Materiale pentru Electronica ME (curs)\nProf. M. Vladescu"
+                },
+                "13-14": {
+                    "course": "SS (s) B122"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "POO (l) \n/ SP (p)"
+                },
+                "11-12": {
+                    "course": "SS (l) / --"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "Dispozitive Electronice DE (curs)\nProf. F. Draghici"
+                },
+                "11-12": {
+                    "course": "Componente si Circuite Pasive CCP (curs)\nProf. A. Drumea"
+                },
+                "13-14": {
+                    "course": "Programare orientat\u00c4\u0192 pe obiecte POO (curs)\nProf. C. B\u00c3\u00aer\u00c4\u0192"
+                },
+                "20-21": {
+                    "course": "2"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "421Cb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "SP (p) /\nPOO (l)"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "422Ca",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "CCP (l) / ME (l)"
+                },
+                "18-19": {
+                    "course": "-- / DE (l)"
+                }
+            },
+            "marti": {
+                "17-18": {
+                    "course": "DE (s) B218"
+                }
+            },
+            "miercuri": {
+                "13-14": {
+                    "course": "-- / SS (l)"
+                },
+                "15-16": {
+                    "course": "SS (s) B122"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "SP (p) \n/ --"
+                },
+                "11-12": {
+                    "course": "POO (l) \n/ --"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "422Cb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "-- /\nSP (p)"
+                },
+                "11-12": {
+                    "course": "-- /\nPOO (l)"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "423Ca",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "-- / DE (l)"
+                },
+                "11-12": {
+                    "course": "SS (l) / DE (l)"
+                },
+                "12-13": {
+                    "course": "SS (l) / --"
+                },
+                "17-18": {
+                    "course": "-- / SP (p)"
+                }
+            },
+            "marti": {},
+            "miercuri": {
+                "15-16": {
+                    "course": "ME (l) / CCP (l)"
+                }
+            },
+            "joi": {
+                "13-14": {
+                    "course": "POO (l) \n/ --"
+                },
+                "15-16": {
+                    "course": "SS (s) B219b"
+                },
+                "17-18": {
+                    "course": "DE (s) B218"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "423Cb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "13-14": {
+                    "course": "-- /\nPOO (l)"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "424Ca",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "DE (l) / --"
+                },
+                "11-12": {
+                    "course": "DE (l) / SS (l)"
+                },
+                "12-13": {
+                    "course": "DE (l) / --"
+                },
+                "17-18": {
+                    "course": "SP (p) / --"
+                }
+            },
+            "marti": {},
+            "miercuri": {
+                "15-16": {
+                    "course": "CCP (l) / ME (l)"
+                }
+            },
+            "joi": {
+                "15-16": {
+                    "course": "POO (l) \n/ --"
+                },
+                "17-18": {
+                    "course": "SS (s) B122"
+                },
+                "19-20": {
+                    "course": "DE (s) B218"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "424Cb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "15-16": {
+                    "course": "-- /\nPOO (l)"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "421Da",
+        "orar": {
+            "luni": {
+                "13-14": {
+                    "course": "ISIA (c) A05 / DE (s) B218"
+                },
+                "15-16": {
+                    "course": "DE  (s) B122 / --"
+                },
+                "17-18": {
+                    "course": "SS (s) B12"
+                },
+                "19-20": {
+                    "course": "POO (l) \n/ --"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "Semnale si Sisteme SS (curs) \nProf. T. Petrescu "
+                },
+                "11-12": {
+                    "course": "Dispozitive Electronice DE (curs)\nProf. Gh. Brezeanu"
+                },
+                "13-14": {
+                    "course": "O1 (c) Elemente de drept si legislatia afacerilor (curs)  A05 | Macroeconomie (curs)  B219b | Microeconomie (curs) B110 "
+                },
+                "15-16": {
+                    "course": "-- / SP (p) B02c"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "SS (l) / ME (curs)\n-- / Prof. M. Dragulinescu"
+                },
+                "11-12": {
+                    "course": "Dispozitive Electronice DE (curs) / Semnale si Sisteme SS (curs)\nProf. Gh. Brezeanu / Prof. T. Petrescu"
+                },
+                "13-14": {
+                    "course": "O2 TCAD (c) A05 / MN (c) A05"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "Componente si Circuite Pasive CCP (curs)\nProf. C. Marghescu"
+                },
+                "11-12": {
+                    "course": "Materiale pentru Electronica ME (curs)\nProf. M. Dragulinescu"
+                },
+                "13-14": {
+                    "course": "Programare Obiect-Orientata POO (curs)\nProf. D. Galatchi"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "ME (l) / CCP (l)"
+                },
+                "12-13": {
+                    "course": "DE (l) / --"
+                },
+                "20-21": {
+                    "course": "2"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "421Db",
+        "orar": {
+            "luni": {
+                "19-20": {
+                    "course": "-- /\nPOO (l)"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "422Da",
+        "orar": {
+            "luni": {
+                "13-14": {
+                    "course": "ISIA (c) A05 / --"
+                },
+                "15-16": {
+                    "course": "SS (s) B04"
+                },
+                "17-18": {
+                    "course": "POO (l) \n/ --"
+                }
+            },
+            "marti": {},
+            "miercuri": {
+                "09-10": {
+                    "course": "-- / Materiale pentru Electronice ME (curs)\n-- / Prof. M. Dragulinescu"
+                },
+                "15-16": {
+                    "course": "SP (p) / SS (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "CCP (l) / ME (l)"
+                },
+                "12-13": {
+                    "course": "-- / DE (l)"
+                },
+                "15-16": {
+                    "course": "DE (s) B122"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "422Db",
+        "orar": {
+            "luni": {
+                "17-18": {
+                    "course": "-- /\nPOO (l)"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "423Da",
+        "orar": {
+            "luni": {
+                "11-12": {
+                    "course": "DE (s) B04"
+                },
+                "15-16": {
+                    "course": "POO (l) \n/ --"
+                },
+                "18-19": {
+                    "course": "ME (l) / CCP (l)"
+                }
+            },
+            "marti": {
+                "15-16": {
+                    "course": "SP (p) B02c/ --"
+                }
+            },
+            "miercuri": {
+                "15-16": {
+                    "course": "SS (s) B218"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "13-14": {
+                    "course": "-- / SS (l)"
+                },
+                "15-16": {
+                    "course": "-- / DE (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "423Db",
+        "orar": {
+            "luni": {
+                "15-16": {
+                    "course": "-- /\nPOO (l)"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "424Da",
+        "orar": {
+            "luni": {
+                "15-16": {
+                    "course": "SS (s) B12"
+                },
+                "18-19": {
+                    "course": "CCP (l) / ME (l)"
+                }
+            },
+            "marti": {
+                "15-16": {
+                    "course": "-- / DE (l)"
+                }
+            },
+            "miercuri": {
+                "15-16": {
+                    "course": "-- / SP (p)"
+                }
+            },
+            "joi": {},
+            "vineri": {
+                "11-12": {
+                    "course": "POO (l) \n/ --"
+                },
+                "13-14": {
+                    "course": "DE (s) B04"
+                },
+                "15-16": {
+                    "course": "-- / SS (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "424Db",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "11-12": {
+                    "course": "-- /\nPOO (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "421Ea",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "Semnale si Sisteme SS (curs)\nProf. L. Stanciu"
+                },
+                "11-12": {
+                    "course": "Programare orientat\u00c4\u0192 pe obiecte POO (curs)\nProf. V. Grosu"
+                },
+                "13-14": {
+                    "course": "O2 TCAD (c) B212 | ISIA (c) A05 / MN (c) B212"
+                },
+                "15-16": {
+                    "course": "-- / Materiale pentru Electronice ME (curs)\n-- / Prof. A. Dragulinescu"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "-- / O2 TCAD (c) A05"
+                },
+                "13-14": {
+                    "course": "SP (p) B02c / --"
+                },
+                "15-16": {
+                    "course": "O1 (c) Elemente de drept si legislatia afacerilor (curs)  A05 | Macroeconomie (curs)  B219b | Microeconomie (curs) A03 "
+                },
+                "17-18": {
+                    "course": " Dispozitive Electronice DE (curs)\n Prof. D. Dascalu"
+                },
+                "19-20": {
+                    "course": "DE (s) A05"
+                }
+            },
+            "miercuri": {
+                "13-14": {
+                    "course": "Semnale si Sisteme SS (curs) / Dispozitive Electronice DE (curs)\nProf. L. Stanciu / Prof. D. Dascalu"
+                },
+                "15-16": {
+                    "course": "Componente si Circuite Pasive CCP (curs)\nProf. A. Vasile"
+                },
+                "17-18": {
+                    "course": "Materiale pentru Electronica ME (curs)\nProf. A. Dragulinescu"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "DE (l) / SS (l)"
+                },
+                "11-12": {
+                    "course": "DE  (l) / -- "
+                },
+                "13-14": {
+                    "course": "SS (s) B04"
+                }
+            },
+            "vineri": {
+                "13-14": {
+                    "course": "POO (l) \n/ --"
+                },
+                "15-16": {
+                    "course": "ME (l) / CCP (l)"
+                },
+                "20-21": {
+                    "course": "2"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "421Eb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "13-14": {
+                    "course": "-- /\nPOO (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "422Ea",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "13-14": {
+                    "course": "-- /SP (p) B02c"
+                }
+            },
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "SS (s) B218"
+                },
+                "12-13": {
+                    "course": "DE  (l) / -- "
+                },
+                "13-14": {
+                    "course": "DE (l) / SS (l)"
+                },
+                "15-16": {
+                    "course": "POO (l) \n/ --"
+                }
+            },
+            "vineri": {
+                "15-16": {
+                    "course": "CCP (l) / ME (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "422Eb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "15-16": {
+                    "course": "-- /\nPOO (l)"
+                }
+            },
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "423Ea",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "11-12": {
+                    "course": "SP (p) B02c /\nO2 TCAD (c)"
+                }
+            },
+            "miercuri": {
+                "11-12": {
+                    "course": "DE (s) A03"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "SS (l) / --\n"
+                },
+                "11-12": {
+                    "course": "SS (s) B218"
+                },
+                "15-16": {
+                    "course": "CCP (l) / ME (l)"
+                }
+            },
+            "vineri": {
+                "15-16": {
+                    "course": "POO (l) \n/ --"
+                },
+                "18-19": {
+                    "course": "DE (l)  / --"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "423Eb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "15-16": {
+                    "course": "-- /\nPOO (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "424Ea",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "11-12": {
+                    "course": "-- /SP (p) B02c"
+                }
+            },
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "ME (l) / CCP (l)"
+                },
+                "12-13": {
+                    "course": "-- / DE  (l)"
+                },
+                "13-14": {
+                    "course": "SS (l) / DE (l)"
+                },
+                "15-16": {
+                    "course": "SS (s) B04"
+                }
+            },
+            "vineri": {
+                "11-12": {
+                    "course": "POO (l) \n/ --"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "424Eb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "11-12": {
+                    "course": "-- /\nPOO (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "421Fa",
+        "orar": {
+            "luni": {
+                "13-14": {
+                    "course": "ISIA (c) A05 / Semnale si Sisteme SS (curs)\nProf. C. Florea / Prof. M. Raducanu"
+                },
+                "15-16": {
+                    "course": "Materiale pentru Electronice ME (curs)  / Dispozitive Electronice DE (curs)\nProf. P. Schiopu / Prof. C. Ravariu"
+                },
+                "17-18": {
+                    "course": "Componente si Circuite Pasive CCP (curs)\nProf. B. Mihailescu"
+                }
+            },
+            "marti": {
+                "11-12": {
+                    "course": "-- / O2 TCAD (c) A05"
+                },
+                "13-14": {
+                    "course": "O1 (c) Elemente de drept si legislatia afacerilor (curs)  A05 | Macroeconomie (curs)  B219b | Microeconomie (curs) B110 "
+                },
+                "15-16": {
+                    "course": "Semnale si Sisteme SS (curs)\nProf. M. Raducanu"
+                },
+                "17-18": {
+                    "course": "Dispozitive Electronice DE (curs)\nProf. C. Ravariu"
+                }
+            },
+            "miercuri": {
+                "11-12": {
+                    "course": "Programare orientat\u00c4\u0192 pe obiecte POO (curs)\nProf. R. Hobincu"
+                },
+                "13-14": {
+                    "course": "O2 TCAD (c) A05 / MN (c) A05"
+                },
+                "15-16": {
+                    "course": "Materiale pentru Electronica ME (curs)\nProf. P. Schiopu"
+                }
+            },
+            "joi": {
+                "11-12": {
+                    "course": "DE (s) B122"
+                },
+                "15-16": {
+                    "course": "ME (l) / CCP (l)"
+                },
+                "18-19": {
+                    "course": "DE (l)  / --"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "SP (p) / SS (l)"
+                },
+                "11-12": {
+                    "course": "SS (s) B218"
+                },
+                "13-14": {
+                    "course": "POO (l) \n/ --"
+                },
+                "20-21": {
+                    "course": "2"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "421Fb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "13-14": {
+                    "course": "-- /\nPOO (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "422Fa",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "CCP (l) / ME (l)"
+                },
+                "13-14": {
+                    "course": "DE (s) B122"
+                },
+                "15-16": {
+                    "course": "SS (l) / --\n"
+                }
+            },
+            "vineri": {
+                "11-12": {
+                    "course": "SP (p) / --"
+                },
+                "13-14": {
+                    "course": "SS (s) B218"
+                },
+                "15-16": {
+                    "course": "POO (l) \n/ --"
+                },
+                "18-19": {
+                    "course": "-- / DE (l) "
+                }
+            }
+        }
+    },
+    {
+        "grupa": "422Fb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "15-16": {
+                    "course": "-- /\nPOO (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "423Fa",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "13-14": {
+                    "course": "SS (s) B218"
+                },
+                "15-16": {
+                    "course": "DE (s) B122"
+                },
+                "18-19": {
+                    "course": "ME (l) / CCP (l)"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "SS (l) / SP (p)  "
+                },
+                "11-12": {
+                    "course": "POO (l) \n/ --"
+                },
+                "15-16": {
+                    "course": "DE (l)  / --"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "423Fb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "11-12": {
+                    "course": "-- /\nPOO (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "424Fa",
+        "orar": {
+            "luni": {
+                "11-12": {
+                    "course": "DE (s) B122"
+                }
+            },
+            "marti": {},
+            "miercuri": {},
+            "joi": {
+                "09-10": {
+                    "course": "-- / DE (l)"
+                },
+                "12-13": {
+                    "course": "CCP (l) / ME (l)"
+                },
+                "15-16": {
+                    "course": "SS (s) B218"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "POO (l) \n/ --"
+                },
+                "11-12": {
+                    "course": "SS (l) / SP (p)  "
+                }
+            }
+        }
+    },
+    {
+        "grupa": "424Fb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {},
+            "joi": {},
+            "vineri": {
+                "09-10": {
+                    "course": "-- /\nPOO (l)"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "421Ga",
+        "orar": {
+            "luni": {
+                "11-12": {
+                    "course": "SP (p) / --"
+                },
+                "13-14": {
+                    "course": "O2 ISIA (c) A05 / --"
+                },
+                "15-16": {
+                    "course": "ME (l) / CCP (l)"
+                }
+            },
+            "marti": {
+                "09-10": {
+                    "course": "Semnale si Sisteme SS (curs)\nProf. C. Negrescu"
+                },
+                "11-12": {
+                    "course": "Materiale pentru Electronica ME (curs) / O2 MN (c) | TCAD (c)\nProf. A. Dragulinescu / Prof. V. Grosu"
+                },
+                "15-16": {
+                    "course": "SS (s) B122"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "-- /SS (l) "
+                },
+                "11-12": {
+                    "course": "DE (s)\nB124"
+                },
+                "13-14": {
+                    "course": "DE (l) / --"
+                },
+                "17-18": {
+                    "course": "POO (l) \n/ --"
+                }
+            },
+            "joi": {
+                "09-10": {
+                    "course": "Semnale si Sisteme SS (curs)\nProf. C. Negrescu"
+                },
+                "11-12": {
+                    "course": "Dispozitive Electronice DE (curs)\nProf. G. Dima"
+                },
+                "13-14": {
+                    "course": "O1. Elemente de Drept si Legislatia Afacerilor (curs) A05"
+                },
+                "15-16": {
+                    "course": "Programare orientat\u00c4\u0192 pe obiecte POO (curs)\nProf. V. Grosu"
+                }
+            },
+            "vineri": {
+                "09-10": {
+                    "course": "-- / Dispozitive Electronice DE (curs)\n-- / Prof. G. Dima"
+                },
+                "11-12": {
+                    "course": "Materiale pentru Electronica ME (curs)\nProf. A. Dragulinescu"
+                },
+                "13-14": {
+                    "course": "Componente si Circuite Pasive CCP (curs)\nProf. C. Ionescu"
+                },
+                "20-21": {
+                    "course": "2"
+                }
+            }
+        }
+    },
+    {
+        "grupa": "421Gb",
+        "orar": {
+            "luni": {},
+            "marti": {},
+            "miercuri": {
+                "09-10": {
+                    "course": "POO (l) /SS (l) "
+                },
+                "13-14": {
+                    "course": "-- / DE (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "422Ga",
+        "orar": {
+            "luni": {
+                "11-12": {
+                    "course": "-- /SP (p) "
+                },
+                "15-16": {
+                    "course": "CCP (l) / ME (l)"
+                },
+                "18-19": {
+                    "course": "POO (l) \n/ --"
+                }
+            },
+            "marti": {},
+            "miercuri": {
+                "09-10": {
+                    "course": "DE (s) B218 D"
+                },
+                "11-12": {
+                    "course": "-- /SS (l) "
+                },
+                "13-14": {
+                    "course": "SS (s) B218"
+                },
+                "15-16": {
+                    "course": "DE (l) / --"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "422Gb",
+        "orar": {
+            "luni": {
+                "18-19": {
+                    "course": "-- /POO (l)"
+                }
+            },
+            "marti": {},
+            "miercuri": {
+                "15-16": {
+                    "course": "-- / DE (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "423Ga",
+        "orar": {
+            "luni": {
+                "12-13": {
+                    "course": "ME (l) / CCP (l)"
+                },
+                "16-17": {
+                    "course": "POO (l) \n/ --"
+                }
+            },
+            "marti": {
+                "13-14": {
+                    "course": "SS (s) B122"
+                },
+                "15-16": {
+                    "course": "SP (p) / SS (l)"
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "DE (s) Infineon L"
+                },
+                "12-13": {
+                    "course": "DE (l) / --"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "423Gb",
+        "orar": {
+            "luni": {
+                "16-17": {
+                    "course": "-- /POO (l)"
+                }
+            },
+            "marti": {
+                "15-16": {
+                    "course": "SP (p) / --"
+                }
+            },
+            "miercuri": {
+                "11-12": {
+                    "course": "SS (l)  / --"
+                },
+                "12-13": {
+                    "course": "SS (l) / DE (l)"
+                },
+                "13-14": {
+                    "course": "-- / DE (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "424Ga",
+        "orar": {
+            "luni": {
+                "09-10": {
+                    "course": "SS (s) B122"
+                },
+                "12-13": {
+                    "course": "CCP (l) / ME (l)"
+                },
+                "15-16": {
+                    "course": "SS (l)  / --"
+                }
+            },
+            "marti": {
+                "15-16": {
+                    "course": "-- /SP (p) "
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "DE (l) / --"
+                },
+                "12-13": {
+                    "course": "DE (s) Infineon D"
+                },
+                "15-16": {
+                    "course": "POO (l) \n/ --"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    },
+    {
+        "grupa": "424Gb",
+        "orar": {
+            "luni": {},
+            "marti": {
+                "15-16": {
+                    "course": "SS (l) /SP (p) "
+                }
+            },
+            "miercuri": {
+                "09-10": {
+                    "course": "-- / DE (l)"
+                },
+                "15-16": {
+                    "course": "-- /\nPOO (l)"
+                }
+            },
+            "joi": {},
+            "vineri": {}
+        }
+    }
+]
