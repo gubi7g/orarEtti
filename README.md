@@ -22,3 +22,7 @@ exemplu output dorit:
     }
 ]
 ```
+
+## Resources
+
+https://docs.opencv.org/master/d1/d32/tutorial_py_contour_properties.html

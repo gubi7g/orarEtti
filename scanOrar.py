@@ -15,11 +15,11 @@ def detect(self, c):
     peri = cv2.arcLength(c, True)
     approx = cv2.approxPolyDP(c, 0.04 * peri, True)
 
-pages = convert_from_path('res/orarPdf.pdf', 500)
+# pages = convert_from_path('res/orarPdf.pdf', 500)
 destSave = 'res/orarJpg.jpg'
 
-for page in pages:
-    page.save(destSave, 'JPEG')
+# for page in pages:
+#     page.save(destSave, 'JPEG')
 
 
 # we start the image detection
@@ -63,7 +63,10 @@ for cnt in contours:
     if not cv2.contourArea(cnt) > 20:
         continue
 
-    cv2.drawContours(blank_image, [cnt], 0, (0, 255, 0), 1)
+    x, y, *_ = cv2.boundingRect(cnt)
+    cv2.circle(blank_image,(x, y), 1, (0, 255, 0), 1) # mai bun decat draw contours
+    # momentan nu mai am nevoie de textul scris in coloanele/randurile delimitatoare gri, deci nu conteaza daca iau unctele de sus/jos - in cazul asta am luat mijlocul (sau coltul stanga jos?) conturului.
+
 
 structElem = cv2.getStructuringElement(cv2.MORPH_RECT, (50, 50))
 blank_image2 = cv2.morphologyEx(blank_image, cv2.MORPH_CLOSE, structElem)
