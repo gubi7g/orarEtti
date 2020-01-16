@@ -3,11 +3,11 @@ import imutils
 import cv2
 import numpy as np
 
-def extractDays(cnts):
-    minNrAppearances = 6  # or bigger
-    for cnt in cnts:
-        x, y, w, h = cv2.boundingRect(cnt)
-        # cv.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+def findTopRightPointOrar(cnts):
+    return
+
+def findTopLeftPointOrar(cnts):
+    return
 
 
 def detect(self, c):
@@ -63,11 +63,14 @@ for cnt in contours:
     if not cv2.contourArea(cnt) > 20:
         continue
 
-    cv2.drawContours(blank_image, [cnt], 0, (0, 255, 0), 3)
+    cv2.drawContours(blank_image, [cnt], 0, (0, 255, 0), 1)
 
 structElem = cv2.getStructuringElement(cv2.MORPH_RECT, (50, 50))
 blank_image2 = cv2.morphologyEx(blank_image, cv2.MORPH_CLOSE, structElem)
 
+# trage liniile finale
+cv2.line(blank_image2, (0, 0), (0, blank_image2.shape[:2][1]), (0, 255, 0))
+cv2.line(blank_image2, (0, 0), (0, blank_image2.shape[:2][1]), (0, 255, 0))
 cv2.imshow('after morph', blank_image2)
 cv2.waitKey()
 # for cnt in contours:
