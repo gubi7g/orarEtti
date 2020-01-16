@@ -3,6 +3,13 @@ import imutils
 import cv2
 import numpy as np
 
+def extractDays(cnts):
+    minNrAppearances = 6  # or bigger
+    for cnt in cnts:
+        x, y, w, h = cv2.boundingRect(cnt)
+        # cv.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+
+
 def detect(self, c):
     shape = "unidentified"
     peri = cv2.arcLength(c, True)
@@ -17,7 +24,7 @@ for page in pages:
 
 # we start the image detection
 
-boundaries = [([190, 190, 190], [210, 210, 210])]
+boundaries = [([204, 204, 204], [204, 204, 204])]
 
 img = cv2.imread(destSave)
 resized = imutils.resize(img, width=1000)
@@ -27,15 +34,18 @@ lower = np.array(lower, dtype= "uint8")
 upper = np.array(upper, dtype= "uint8")
 
 mask = cv2.inRange(resized, lower, upper)
-output = cv2.bitwise_and(resized, resized, mask= mask)
+output = cv2.bitwise_and(resized, resized, mask=mask)
 
 # show the images
 cv2.imshow("output", output)
 
 gray = cv2.cvtColor(output, cv2.COLOR_BGR2GRAY)
 blur = cv2.medianBlur(gray, 5)
+edges = cv2.Canny(gray, 50, 150, apertureSize=3)
 
-sharpen_kernel = np.array([[-1,-1,-1], [-1,9,-1], [-1,-1,-1]])
+cv2.imshow('edges', edges)
+
+sharpen_kernel = np.array([[-1,-1,-1], [-1, 9, -1], [-1, -1, -1]])
 sharpen = cv2.filter2D(blur, -1, sharpen_kernel)
 
 thresh = cv2.threshold(sharpen, 160, 255, cv2.THRESH_BINARY_INV)[1]
@@ -44,18 +54,31 @@ kernel = np.ones((7, 7), np.uint8)  # note this is a horizontal kernel
 d_im = cv2.dilate(thresh, kernel, iterations=1)
 e_im = cv2.erode(d_im, kernel, iterations=1)
 
-contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+blank_image = np.zeros((img.shape[:2][0], img.shape[:2][1], 3), np.uint8)
+blank_image2 = np.zeros((img.shape[:2][0], img.shape[:2][1], 3), np.uint8)
+
+contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
 for cnt in contours:
-    if not cv2.contourArea(cnt) > 500:
+    if not cv2.contourArea(cnt) > 20:
         continue
+
+    cv2.drawContours(blank_image, [cnt], 0, (0, 255, 0), 3)
+
+structElem = cv2.getStructuringElement(cv2.MORPH_RECT, (50, 50))
+blank_image2 = cv2.morphologyEx(blank_image, cv2.MORPH_CLOSE, structElem)
+
+cv2.imshow('after morph', blank_image2)
+cv2.waitKey()
+# for cnt in contours:
+#     if not cv2.contourArea(cnt) > 20:
+        
     
-    cv2.drawContours(output, [cnt], 0, (0,255,0), 3)
-
-    cv2.imshow('out + contours', output)
-    if cv2.waitKey() == 'q':
-        break
-
-
+#     cv2.drawContours(blank_image, [cnt], 0, (0, 255, 0), 3)
+#     print(cnt)
+    # cv2.imshow('out + contours', blank_image)
+    # if cv2.waitKey(0) == ord('q'):
+    #     break
 
 
 # thresh = cv2.threshold(sharpen,160,255, cv2.THRESH_BINARY_INV)[1]
