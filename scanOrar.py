@@ -3,12 +3,47 @@ import imutils
 import cv2
 import numpy as np
 
-def findTopRightPointOrar(cnts):
-    return
+def findBottomLeftPointOrar(cnts, img):
+    tmpX = img.shape[:2][1] # width
+    tmpY = 0
 
-def findTopLeftPointOrar(cnts):
-    return
+    for cnt in cnts:
+        for pnt in cnt:
+            pX, pY = pnt[0]
+            # print(pX, pY)
+            if pX < tmpX:
+                tmpX = pX
+            if pY > tmpY:
+                tmpY = pY
+    return tmpX, tmpY
 
+def findTopLeftPointOrar(cnts, img):
+    tmpX = img.shape[:2][1] # width
+    tmpY = img.shape[:2][0] # max height
+
+    for cnt in cnts:
+        for pnt in cnt:
+            pX, pY = pnt[0]
+            # print(pX, pY)
+            if pX < tmpX:
+                tmpX = pX
+            if pY < tmpY:
+                tmpY = pY
+    return tmpX, tmpY
+
+def findTopRightPointOrar(cnts, img):
+    tmpX = 0 # width
+    tmpY = img.shape[:2][0] # max height
+
+    for cnt in cnts:
+        for pnt in cnt:
+            pX, pY = pnt[0]
+            # print(pX, pY)
+            if pX > tmpX:
+                tmpX = pX
+            if pY < tmpY:
+                tmpY = pY
+    return tmpX, tmpY
 
 def detect(self, c):
     shape = "unidentified"
@@ -54,59 +89,47 @@ kernel = np.ones((7, 7), np.uint8)  # note this is a horizontal kernel
 d_im = cv2.dilate(thresh, kernel, iterations=1)
 e_im = cv2.erode(d_im, kernel, iterations=1)
 
-blank_image = np.zeros((img.shape[:2][0], img.shape[:2][1], 3), np.uint8)
-blank_image2 = np.zeros((img.shape[:2][0], img.shape[:2][1], 3), np.uint8)
+blank_image = np.zeros((resized.shape[:2][0], resized.shape[:2][1], 3), np.uint8)
+blank_image2 = np.zeros((resized.shape[:2][0], resized.shape[:2][1], 3), np.uint8)
 
 contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
 
 for cnt in contours:
     if not cv2.contourArea(cnt) > 20:
         continue
 
     x, y, *_ = cv2.boundingRect(cnt)
-    cv2.circle(blank_image,(x, y), 1, (0, 255, 0), 1) # mai bun decat draw contours
-    # momentan nu mai am nevoie de textul scris in coloanele/randurile delimitatoare gri, deci nu conteaza daca iau unctele de sus/jos - in cazul asta am luat mijlocul (sau coltul stanga jos?) conturului.
+    cv2.circle(blank_image, (x, y), 1, (0, 255, 0), 1) # mai bun decat draw contours
+    # momentan nu mai am nevoie de textul scris in coloanele/randurile delimitatoare gri, deci nu conteaza daca iau punctele de sus/jos - in cazul asta am luat mijlocul (sau coltul stanga jos?) conturului.
 
 
 structElem = cv2.getStructuringElement(cv2.MORPH_RECT, (50, 50))
 blank_image2 = cv2.morphologyEx(blank_image, cv2.MORPH_CLOSE, structElem)
 
+# cv2.circle(blank_image2, findBottomLeftPointOrar(contours, blank_image2), 1, (255, 0, 0), 10)
+# cv2.circle(blank_image2, findTopLeftPointOrar(contours, blank_image2), 1, (255, 0, 0), 10)
+
 # trage liniile finale
-cv2.line(blank_image2, (0, 0), (0, blank_image2.shape[:2][1]), (0, 255, 0))
-cv2.line(blank_image2, (0, 0), (0, blank_image2.shape[:2][1]), (0, 255, 0))
+cv2.line(blank_image2, findTopLeftPointOrar(contours, blank_image2), findBottomLeftPointOrar(contours, blank_image2), (0, 255, 0), 2)
+cv2.line(blank_image2, findTopLeftPointOrar(contours, blank_image2), findTopRightPointOrar(contours, blank_image2), (0, 255, 0), 2)
+
 cv2.imshow('after morph', blank_image2)
+
+gray = cv2.cvtColor(blank_image2, cv2.COLOR_BGR2GRAY)
+_, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
+
+#--- find contours ---
+contours, hierarchy = cv2.findContours(binary, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+
+#--- copy of original image ---
+img2 = resized.copy()
+
+#--- select contours having a parent contour and append them to a list ---
+
+#--- draw those contours ---
+for cnt in contours:
+    cv2.drawContours(img2, cnt, 0, (0,255,0), 5)
+
+cv2.imshow('img2', img2)
 cv2.waitKey()
-# for cnt in contours:
-#     if not cv2.contourArea(cnt) > 20:
-        
-    
-#     cv2.drawContours(blank_image, [cnt], 0, (0, 255, 0), 3)
-#     print(cnt)
-    # cv2.imshow('out + contours', blank_image)
-    # if cv2.waitKey(0) == ord('q'):
-    #     break
-
-
-# thresh = cv2.threshold(sharpen,160,255, cv2.THRESH_BINARY_INV)[1]
-# kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3,3))
-# close = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel, iterations=2)
-
-# cnts = cv2.findContours(close, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-# cnts = cnts[0] if len(cnts) == 2 else cnts[1]
-
-# min_area = 100
-# max_area = 1500
-# image_number = 0
-# for c in cnts:
-#     area = cv2.contourArea(c)
-#     if area > min_area and area < max_area:
-#         x,y,w,h = cv2.boundingRect(c)
-#         ROI = resized[y:y+h, x:x+h]
-#         cv2.rectangle(resized, (x, y), (x + w, y + h), (36,255,12), 2)
-#         image_number += 1
-
-# cv2.imshow('sharpen', sharpen)
-# cv2.imshow('close', close)
-# cv2.imshow('thresh', thresh)
-# cv2.imshow('image', resized)
-# cv2.waitKey()
