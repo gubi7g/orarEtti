@@ -2,6 +2,7 @@ from pdf2image import convert_from_path
 import imutils
 import cv2
 import numpy as np
+import os
 
 def findBottomLeftPointOrar(cnts, img):
     tmpX = img.shape[:2][1] # width
@@ -45,11 +46,6 @@ def findTopRightPointOrar(cnts, img):
                 tmpY = pY
     return tmpX, tmpY
 
-def detect(self, c):
-    shape = "unidentified"
-    peri = cv2.arcLength(c, True)
-    approx = cv2.approxPolyDP(c, 0.04 * peri, True)
-
 # pages = convert_from_path('res/orarPdf.pdf', 500)
 destSave = 'res/orarJpg.jpg'
 
@@ -62,7 +58,7 @@ destSave = 'res/orarJpg.jpg'
 boundaries = [([204, 204, 204], [204, 204, 204])]
 
 img = cv2.imread(destSave)
-resized = imutils.resize(img, width=1000)
+resized = imutils.resize(img, width=1500)
 
 (lower, upper) = boundaries[0]
 lower = np.array(lower, dtype= "uint8")
@@ -104,32 +100,53 @@ for cnt in contours:
     # momentan nu mai am nevoie de textul scris in coloanele/randurile delimitatoare gri, deci nu conteaza daca iau punctele de sus/jos - in cazul asta am luat mijlocul (sau coltul stanga jos?) conturului.
 
 
-structElem = cv2.getStructuringElement(cv2.MORPH_RECT, (50, 50))
+structElem = cv2.getStructuringElement(cv2.MORPH_RECT, (80, 80))
 blank_image2 = cv2.morphologyEx(blank_image, cv2.MORPH_CLOSE, structElem)
 
 # cv2.circle(blank_image2, findBottomLeftPointOrar(contours, blank_image2), 1, (255, 0, 0), 10)
 # cv2.circle(blank_image2, findTopLeftPointOrar(contours, blank_image2), 1, (255, 0, 0), 10)
 
 # trage liniile finale
-cv2.line(blank_image2, findTopLeftPointOrar(contours, blank_image2), findBottomLeftPointOrar(contours, blank_image2), (0, 255, 0), 2)
-cv2.line(blank_image2, findTopLeftPointOrar(contours, blank_image2), findTopRightPointOrar(contours, blank_image2), (0, 255, 0), 2)
+cv2.line(blank_image2, findTopLeftPointOrar(contours, blank_image2), findBottomLeftPointOrar(contours, blank_image2), (0, 255, 0), 1)
+cv2.line(blank_image2, findTopLeftPointOrar(contours, blank_image2), findTopRightPointOrar(contours, blank_image2), (0, 255, 0), 1)
 
 cv2.imshow('after morph', blank_image2)
 
 gray = cv2.cvtColor(blank_image2, cv2.COLOR_BGR2GRAY)
 _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
 
-#--- find contours ---
-contours, hierarchy = cv2.findContours(binary, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
 
-#--- copy of original image ---
+contours, hierarchy = cv2.findContours(binary, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
 img2 = resized.copy()
 
-#--- select contours having a parent contour and append them to a list ---
+for ind, cnt in enumerate(contours):
+    
+    if cv2.contourArea(cnt) < 20000 or cv2.contourArea(cnt) > 50000:
+        print('not included: ', cv2.contourArea(cnt))
+        continue
 
-#--- draw those contours ---
-for cnt in contours:
-    cv2.drawContours(img2, cnt, 0, (0,255,0), 5)
+    name = 'cel' + str(ind+1) + '.jpg'
+    folder = 'zileExtraseOrar'
+    print(name)
+
+    print(cv2.contourArea(cnt))
+    x, y, w, h = cv2.boundingRect(cnt)
+    cv2.rectangle(img2, (x, y), (x+w, y+h), (255, 0, 0))
+    ROI = img2[y:y+h, x:x+w]
+    # cv2.imshow('ROI', ROI)
+
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+
+    ROI = imutils.resize(ROI, width=900)
+    cv2.imwrite(os.path.join(folder, name), ROI)
+
+    # if cv2.waitKey() == ord(q):
+    #     break
+
+# TODO: In cazul in care OCR nu poate citi numele seriilor (top row cells), va trebui sa fac o functie care
+# gaseste upper top row points si sa le scada valoarea (aka sa le ridice un pic mai sus). functia findTopLeftPointOrar
+# o sa fie utila pt asta
 
 cv2.imshow('img2', img2)
 cv2.waitKey()
