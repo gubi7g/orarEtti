@@ -7,23 +7,24 @@ import os
 
 def getCoordinatedFromCropped(original, cropped, pointsx, pointsy):
     
-    print('orig dims (x, y): ', (original.shape[:2][0], original.shape[:2][1]))
-    print('cropped dims (x, y): ', (cropped.shape[:2][0], cropped.shape[:2][1]))
+    # print('orig dims (x, y): ', (original.shape[:2][0], original.shape[:2][1]))
+    # print('cropped dims (x, y): ', (cropped.shape[:2][0], cropped.shape[:2][1]))
     
     kx = original.shape[:2][0] / cropped.shape[:2][0]
     ky = original.shape[:2][1] / cropped.shape[:2][1]
     
-    print('kx ', kx)
-    print('ky ', ky)
+    # print('kx ', kx)
+    # print('ky ', ky)
 
     new_pointsx = [round(kx * p) for p in pointsx]
     new_pointsy = [round(ky * p) for p in pointsy]
-
-    return (min(new_pointsx)-20, min(new_pointsy)), (max(new_pointsx), max(new_pointsy)+5) # (x, y), (x+w, y+h)
+    
+    # return (new_x - 20, new_y), (new_x+w, new+y+h + 5)
+    return (min(new_pointsx)-20, min(new_pointsy)), (max(new_pointsx), max(new_pointsy)+5) 
 
 
 def findBottomLeftPointOrar(cnts, img):
-    tmpX = img.shape[:2][1] # width
+    tmpX = img.shape[:2][1] # width of the img
     tmpY = 0
 
     for cnt in cnts:
@@ -37,8 +38,8 @@ def findBottomLeftPointOrar(cnts, img):
     return tmpX, tmpY
 
 def findTopLeftPointOrar(cnts, img):
-    tmpX = img.shape[:2][1] # width
-    tmpY = img.shape[:2][0] # max height
+    tmpX = img.shape[:2][1] # width of the img
+    tmpY = img.shape[:2][0] # height of the img
 
     for cnt in cnts:
         for pnt in cnt:
@@ -51,8 +52,8 @@ def findTopLeftPointOrar(cnts, img):
     return tmpX, tmpY
 
 def findTopRightPointOrar(cnts, img):
-    tmpX = 0 # width
-    tmpY = img.shape[:2][0] # max height
+    tmpX = 0 # width of the img
+    tmpY = img.shape[:2][0] # height of the img
 
     for cnt in cnts:
         for pnt in cnt:
@@ -64,7 +65,6 @@ def findTopRightPointOrar(cnts, img):
                 tmpY = pY
     return tmpX, tmpY
 
-
 destSave = 'res/orarJpg.jpg'
 
 if not os.path.isfile(destSave):
@@ -75,33 +75,26 @@ if not os.path.isfile(destSave):
 
 # we start the image detection
 
-boundaries = [([204, 204, 204], [204, 204, 204])]
+boundary = [204, 204, 204]
 
 img = cv2.imread(destSave)
 resized = img.copy()
 final_orar = img.copy()
 resized = imutils.resize(img, width=1500)
 
-(lower, upper) = boundaries[0]
-lower = np.array(lower, dtype= "uint8")
-upper = np.array(upper, dtype= "uint8")
+boundary = np.array(boundary, dtype= "uint8")
 
-mask = cv2.inRange(resized, lower, upper)
-output = cv2.bitwise_and(resized, resized, mask=mask)
+mask = cv2.inRange(resized, boundary, boundary)
+gray_grid = cv2.bitwise_and(resized, resized, mask=mask)
 
 # show the images
-cv2.imshow("output", output)
+cv2.imshow("gray_grid", gray_grid)
 
-gray = cv2.cvtColor(output, cv2.COLOR_BGR2GRAY)
+gray = cv2.cvtColor(gray_grid, cv2.COLOR_BGR2GRAY)
 blur = cv2.medianBlur(gray, 5)
 edges = cv2.Canny(gray, 50, 150, apertureSize=3)
 
 cv2.imshow('edges', edges)
-
-sharpen_kernel = np.array([[-1,-1,-1], [-1, 9, -1], [-1, -1, -1]])
-sharpen = cv2.filter2D(blur, -1, sharpen_kernel)
-
-thresh = cv2.threshold(sharpen, 160, 255, cv2.THRESH_BINARY_INV)[1]
 
 
 blank_image = np.zeros((resized.shape[:2][0], resized.shape[:2][1], 3), np.uint8)
@@ -113,12 +106,18 @@ for cnt in contours:
     if not cv2.contourArea(cnt) > 20:
         continue
     
+    # mai bun decat draw contours
     x, y, *_ = cv2.boundingRect(cnt)
-    cv2.circle(blank_image, (x, y), 1, (0, 255, 0), 1) # mai bun decat draw contours
+    cv2.circle(blank_image, (x, y), 1, (0, 255, 0), 1) 
+    
     # momentan nu mai am nevoie de textul scris in coloanele/randurile delimitatoare gri, deci nu conteaza daca iau punctele de sus/jos - in cazul asta am luat mijlocul (sau coltul stanga jos?) conturului.
+
+cv2.imshow('before morph', blank_image)
 
 structElem = cv2.getStructuringElement(cv2.MORPH_RECT, (80, 80))
 blank_image2 = cv2.morphologyEx(blank_image, cv2.MORPH_CLOSE, structElem)
+
+cv2.imshow('after morph', blank_image2)
 
 # cv2.circle(blank_image2, findBottomLeftPointOrar(contours, blank_image2), 1, (255, 0, 0), 10)
 # cv2.circle(blank_image2, findTopLeftPointOrar(contours, blank_image2), 1, (255, 0, 0), 10)
@@ -127,7 +126,7 @@ blank_image2 = cv2.morphologyEx(blank_image, cv2.MORPH_CLOSE, structElem)
 cv2.line(blank_image2, findTopLeftPointOrar(contours, blank_image2), findBottomLeftPointOrar(contours, blank_image2), (0, 255, 0), 1)
 cv2.line(blank_image2, findTopLeftPointOrar(contours, blank_image2), findTopRightPointOrar(contours, blank_image2), (0, 255, 0), 1)
 
-cv2.imshow('after morph', blank_image2)
+cv2.imshow('after morph + lines', blank_image2)
 
 gray = cv2.cvtColor(blank_image2, cv2.COLOR_BGR2GRAY)
 _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
@@ -137,6 +136,8 @@ contours, hierarchy = cv2.findContours(binary, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_
 
 cv2.waitKey()
 cv2.destroyAllWindows()
+
+# showing each cel:
 
 for ind, cnt in enumerate(contours):
     
@@ -149,26 +150,21 @@ for ind, cnt in enumerate(contours):
 
     # print(cv2.contourArea(cnt))
     x, y, w, h = cv2.boundingRect(cnt)
+    
     print('cropped coords: ', y, y+h, x, x+w)
     ROI_cropped = resized[y:y+h, x:x+w]
     cv2.imshow('ROI_cropped', ROI_cropped)
     
-    tmp = getCoordinatedFromCropped(final_orar, resized, [x, x+w], [y, y+h])
-    cv2.rectangle(final_orar, tmp[0], tmp[1], (255, 0, 0))
+    newCoords = getCoordinatedFromCropped(final_orar, resized, [x, x+w], [y, y+h])
+    print('orig coords: ', newCoords[0][1], newCoords[1][1], newCoords[0][0], newCoords[1][0])
+    ROI_original = final_orar[newCoords[0][1]:newCoords[1][1], newCoords[0][0]:newCoords[1][0]]
     
-    print('orig coords: ', tmp[0][1], tmp[1][1], tmp[0][0], tmp[1][0])
-    ROI = final_orar[tmp[0][1]:tmp[1][1], tmp[0][0]:tmp[1][0]]
-    
-    cv2.imshow('ROI_original', ROI)
+    cv2.imshow('ROI_original', ROI_original)
 
     if not os.path.exists(folder):
         os.makedirs(folder)
 
-    cv2.imwrite(os.path.join(folder, name), ROI)
+    cv2.imwrite(os.path.join(folder, name), ROI_original)
 
     if cv2.waitKey() == ord('q'):
         break
-
-# TODO: In cazul in care OCR nu poate citi numele seriilor (top row cells), va trebui sa fac o functie care
-# gaseste upper top row points si sa le scada valoarea (aka sa le ridice un pic mai sus). functia findTopLeftPointOrar
-# o sa fie utila pt asta
