@@ -106,7 +106,6 @@ for cnt in contours:
     if not cv2.contourArea(cnt) > 20:
         continue
     
-    # mai bun decat draw contours
     x, y, *_ = cv2.boundingRect(cnt)
     cv2.circle(blank_image, (x, y), 1, (0, 255, 0), 1) 
     
