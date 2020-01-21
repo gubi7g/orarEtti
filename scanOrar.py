@@ -6,13 +6,20 @@ import os
 
 
 def getCoordinatedFromCropped(original, cropped, pointsx, pointsy):
-    kx = round(original.shape[:2][1] / cropped.shape[:2][1])
-    ky = round(original.shape[:2][0] / cropped.shape[:2][0])
+    
+    print('orig dims (x, y): ', (original.shape[:2][0], original.shape[:2][1]))
+    print('cropped dims (x, y): ', (cropped.shape[:2][0], cropped.shape[:2][1]))
+    
+    kx = original.shape[:2][0] / cropped.shape[:2][0]
+    ky = original.shape[:2][1] / cropped.shape[:2][1]
+    
+    print('kx ', kx)
+    print('ky ', ky)
 
-    new_pointsx = [kx * p for p in pointsx]
-    new_pointsy = [ky * p for p in pointsy]
+    new_pointsx = [round(kx * p) for p in pointsx]
+    new_pointsy = [round(ky * p) for p in pointsy]
 
-    return (min(new_pointsx), min(new_pointsy)), (max(new_pointsx), max(new_pointsy)) # (x, y), (x+w, y+h)
+    return (min(new_pointsx)-20, min(new_pointsy)), (max(new_pointsx), max(new_pointsy)+5) # (x, y), (x+w, y+h)
 
 
 def findBottomLeftPointOrar(cnts, img):
@@ -96,26 +103,19 @@ sharpen = cv2.filter2D(blur, -1, sharpen_kernel)
 
 thresh = cv2.threshold(sharpen, 160, 255, cv2.THRESH_BINARY_INV)[1]
 
-kernel = np.ones((7, 7), np.uint8)  # note this is a horizontal kernel
-d_im = cv2.dilate(thresh, kernel, iterations=1)
-e_im = cv2.erode(d_im, kernel, iterations=1)
 
 blank_image = np.zeros((resized.shape[:2][0], resized.shape[:2][1], 3), np.uint8)
 blank_image2 = np.zeros((resized.shape[:2][0], resized.shape[:2][1], 3), np.uint8)
 
 contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-
 for cnt in contours:
     if not cv2.contourArea(cnt) > 20:
         continue
-
-    # not necessary:
-
+    
     x, y, *_ = cv2.boundingRect(cnt)
     cv2.circle(blank_image, (x, y), 1, (0, 255, 0), 1) # mai bun decat draw contours
     # momentan nu mai am nevoie de textul scris in coloanele/randurile delimitatoare gri, deci nu conteaza daca iau punctele de sus/jos - in cazul asta am luat mijlocul (sau coltul stanga jos?) conturului.
-
 
 structElem = cv2.getStructuringElement(cv2.MORPH_RECT, (80, 80))
 blank_image2 = cv2.morphologyEx(blank_image, cv2.MORPH_CLOSE, structElem)
@@ -135,6 +135,9 @@ _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
 
 contours, hierarchy = cv2.findContours(binary, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
 
+cv2.waitKey()
+cv2.destroyAllWindows()
+
 for ind, cnt in enumerate(contours):
     
     if cv2.contourArea(cnt) < 20000 or cv2.contourArea(cnt) > 50000:
@@ -143,27 +146,29 @@ for ind, cnt in enumerate(contours):
 
     name = 'cel' + str(ind+1) + '.jpg'
     folder = 'zileExtraseOrar'
-    print(name)
 
-    print(cv2.contourArea(cnt))
+    # print(cv2.contourArea(cnt))
     x, y, w, h = cv2.boundingRect(cnt)
+    print('cropped coords: ', y, y+h, x, x+w)
+    ROI_cropped = resized[y:y+h, x:x+w]
+    cv2.imshow('ROI_cropped', ROI_cropped)
+    
     tmp = getCoordinatedFromCropped(final_orar, resized, [x, x+w], [y, y+h])
     cv2.rectangle(final_orar, tmp[0], tmp[1], (255, 0, 0))
-    print(tmp[0][1], tmp[1][1], tmp[0][0], tmp[0][1])
+    
+    print('orig coords: ', tmp[0][1], tmp[1][1], tmp[0][0], tmp[1][0])
     ROI = final_orar[tmp[0][1]:tmp[1][1], tmp[0][0]:tmp[1][0]]
-    # cv2.imshow('ROI', ROI)
+    
+    cv2.imshow('ROI_original', ROI)
 
     if not os.path.exists(folder):
         os.makedirs(folder)
 
     cv2.imwrite(os.path.join(folder, name), ROI)
 
-    # if cv2.waitKey() == ord(q):
-    #     break
+    if cv2.waitKey() == ord('q'):
+        break
 
 # TODO: In cazul in care OCR nu poate citi numele seriilor (top row cells), va trebui sa fac o functie care
 # gaseste upper top row points si sa le scada valoarea (aka sa le ridice un pic mai sus). functia findTopLeftPointOrar
 # o sa fie utila pt asta
-
-cv2.imshow('final_orar', final_orar)
-cv2.waitKey()
