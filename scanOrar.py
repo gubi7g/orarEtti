@@ -4,6 +4,7 @@ import cv2
 import numpy as np
 import os
 
+
 def getCoordinatedFromCropped(original, cropped, pointsx, pointsy):
     kx = round(original.shape[:2][1] / cropped.shape[:2][1])
     ky = round(original.shape[:2][0] / cropped.shape[:2][0])
@@ -56,11 +57,13 @@ def findTopRightPointOrar(cnts, img):
                 tmpY = pY
     return tmpX, tmpY
 
-# pages = convert_from_path('res/orarPdf.pdf', 500)
+
 destSave = 'res/orarJpg.jpg'
 
-# for page in pages:
-#     page.save(destSave, 'JPEG')
+if not os.path.isfile(destSave):
+    pages = convert_from_path('res/orarPdf.pdf', 500)
+    for page in pages:
+        page.save(destSave, 'JPEG')
 
 
 # we start the image detection
