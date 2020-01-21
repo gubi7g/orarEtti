@@ -3,7 +3,10 @@ import imutils
 import cv2
 import numpy as np
 import os
+from PIL import Image
+import pytesseract
 
+pytesseract.pytesseract.tesseract_cmd = 'D:\\Program Files (x86)\\Tesseract\\tesseract.exe'
 
 def getCoordinatedFromCropped(original, cropped, pointsx, pointsy):
     
@@ -129,8 +132,6 @@ cv2.imshow('after morph + lines', blank_image2)
 
 gray = cv2.cvtColor(blank_image2, cv2.COLOR_BGR2GRAY)
 _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
-
-
 contours, hierarchy = cv2.findContours(binary, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
 
 cv2.waitKey()
@@ -151,19 +152,39 @@ for ind, cnt in enumerate(contours):
     x, y, w, h = cv2.boundingRect(cnt)
     
     print('cropped coords: ', y, y+h, x, x+w)
-    ROI_cropped = resized[y:y+h, x:x+w]
-    cv2.imshow('ROI_cropped', ROI_cropped)
+    # ROI_cropped = resized[y:y+h, x:x+w]
+    # cv2.imshow('ROI_cropped', ROI_cropped)
     
     newCoords = getCoordinatedFromCropped(final_orar, resized, [x, x+w], [y, y+h])
-    print('orig coords: ', newCoords[0][1], newCoords[1][1], newCoords[0][0], newCoords[1][0])
     ROI_original = final_orar[newCoords[0][1]:newCoords[1][1], newCoords[0][0]:newCoords[1][0]]
+    print('orig coords: ', newCoords[0][1], newCoords[1][1], newCoords[0][0], newCoords[1][0])
     
-    cv2.imshow('ROI_original', ROI_original)
+    
+    grayROI_original = cv2.cvtColor(ROI_original, cv2.COLOR_BGR2GRAY)
+    _, binaryROI_original = cv2.threshold(grayROI_original, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
+    contoursROI_original, hierarchy = cv2.findContours(binaryROI_original, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+
+    for cnt in contoursROI_original:
+        x, y, w, h = cv2.boundingRect(cnt)
+        if cv2.contourArea(cnt) > 100:
+            cv2.rectangle(ROI_original, (x, y), (x+w, y+h), (0, 255, 0), 1)
+        
+
+    # cv2.imshow('ROI_original', ROI_original)
 
     if not os.path.exists(folder):
         os.makedirs(folder)
 
-    cv2.imwrite(os.path.join(folder, name), ROI_original)
+    destination_cell = os.path.join(folder, name)
+    cv2.imwrite(destination_cell, ROI_original)
+
+
+
+    # text = pytesseract.image_to_string(Image.open(destination_cell))
+    # txt = [x for x in text.split() if not x == '']
+    # print(txt)
 
     if cv2.waitKey() == ord('q'):
         break
+
+
