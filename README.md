@@ -1,5 +1,5 @@
 # orarEtti
-din ~csv~ jpg -> JSON pt fiecare grupa
+din ~csv~ ~jpg~ csv -> JSON pt fiecare grupa
 
 exemplu output dorit:
 
