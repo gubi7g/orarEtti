@@ -167,10 +167,10 @@ for ind, cnt in enumerate(contours):
     for cnt in contoursROI_original:
         x, y, w, h = cv2.boundingRect(cnt)
         if cv2.contourArea(cnt) > 100:
-            cv2.rectangle(ROI_original, (x, y), (x+w, y+h), (0, 255, 0), 1)
+            cv2.rectangle(ROI_original, (x, y), (x+w, y+h), (255, 0, 0), 1)
         
 
-    # cv2.imshow('ROI_original', ROI_original)
+    cv2.imshow('ROI_original', ROI_original)
 
     if not os.path.exists(folder):
         os.makedirs(folder)
