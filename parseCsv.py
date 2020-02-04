@@ -5,20 +5,54 @@ from os.path import basename, splitext, join
 from os import listdir
 
 # TODO:
-#   - de verificat daca avem ore care incep de la ora 8
+
 #   - de implementat cursuri/sem/lab care isi extind intervalul orar
 #       -> salvam intr-o lista laboratoarele pe 3 ore (speciale)
+
+def checkWhatCourse(course):
+    print(course)
+    if course.find('curs') >= 0:
+        tmpKey =  'curs'
+    elif course.find('(s)') >= 0:
+        tmpKey = 'seminar'
+    elif course.find('(l)') >= 0:
+        tmpKey = 'lab'
+    elif course.find('(p)') >= 0:
+        tmpKey = 'lab [SP]'
+    else: # no special case
+        return {'course': course}
+    
+    return {tmpKey: course}
+
+def getGroupBasename(semigroup):
+    return re.split(r'(\d+\w{1})', semigroup)[1]
+
+def checkIfBothSemigroups(groupName, groupsList):
+    x = [getGroupBasename(x) for x in groupsList].count(getGroupBasename(groupName))
+    if x == 2:
+        return True
+
+def extendCellFlag(groupName, groupsList):
+    if checkIfBothSemigroups(groupName, groupsList) and groupName[-1] == 'b':
+        return True
 
 def findIndexGrupa(orar, listaGrupe):
     return orar[1].index(listaGrupe[0]), orar[1].index(listaGrupe[-1])
 
-def buildOrar(path, writeToFile=True):
+def buildOrar(path, writeToFile=False):
     orar = []
     with open(path) as f:
         reader = csv.reader(f)
 
         for row in reader:
             orar.append(row)
+
+    intervaleOrare = list(set([line[1] for line in orar]))
+
+    pattern_interval = re.compile(r'(\w{3}|[0-9]{2})-(\w{3}|[0-9]{2})')
+    intervaleOrare = [x for x in intervaleOrare if pattern_interval.findall(x)]
+    nrIntervaleOrare = len(intervaleOrare)
+    # print(nrIntervaleOrare)
 
 
     # serii & re patterns
@@ -35,7 +69,11 @@ def buildOrar(path, writeToFile=True):
     grupe = [x for x in grupe if pattern_grupa.findall(x)]
     nr_grupe = len(grupe)
 
-    intervaleOre = [f'{i:02}-{(i+1):02}' for i in range(8, 21)]
+    if nrIntervaleOrare == 13:
+        intervaleOre = [f'{i:02}-{(i+1):02}' for i in range(8, 21)]
+    else:
+        intervaleOre = [f'{i:02}-{(i+1):02}' for i in range(9, 21)]
+
     dict_serii = [{'serie': x, 'numarGrupe': 0, 'grupe': []} for x in 'ABCDEFG']
 
     for d in dict_serii:
@@ -60,7 +98,7 @@ def buildOrar(path, writeToFile=True):
     orar_final = []
     for serie in dict_serii:
         for grupa, indexGrupa in zip(serie['grupe'], range(serie['startIndexSerie'], serie['stopIndexSerie'] + 1)):
-            
+
             currentGroup = {}
             currentGroup['grupa'] = grupa
             currentGroup['orar'] = {}
@@ -70,11 +108,19 @@ def buildOrar(path, writeToFile=True):
                 
                 for ora, indexOra in zip(intervaleOre, range(indexiInterval[0], indexiInterval[1]+1)):
                     
-                    
-                    if orar[indexOra][indexGrupa] != '':
-                        currentGroup['orar'][zi][ora] = {'course': orar[indexOra][indexGrupa]}
-                    
-        
+                    if extendCellFlag(grupa, serie['grupe']): # daca este semigrupa cu b la final...
+
+                        if orar[indexOra][indexGrupa] != '': # daca este, dar are ceva trecut, pune-l pe ala
+                            currentGroup['orar'][zi][ora] = checkWhatCourse(orar[indexOra][indexGrupa])
+
+                        elif orar[indexOra][indexGrupa - 1] != '': # daca este, dar nu are nimic trecut, ia-l pe cel din stanga
+                            currentGroup['orar'][zi][ora] = checkWhatCourse(orar[indexOra][indexGrupa - 1])
+
+                    elif orar[indexOra][indexGrupa] != '': # daca nu este semigrupa cu b, dar are ceva trecut, scrie
+                        currentGroup['orar'][zi][ora] = checkWhatCourse(orar[indexOra][indexGrupa])
+                    else: # daca nu are nimic trecut, nu scrie nimic (ANTI-BLOAT)
+                        pass
+
             orar_final.append(currentGroup)
     
     if writeToFile:
@@ -86,4 +132,4 @@ def buildOrar(path, writeToFile=True):
     
 for file in listdir('res'):
     if file.endswith('.csv'):
-        buildOrar(join('res', file))
+        buildOrar(join('res', file), writeToFile=True)
