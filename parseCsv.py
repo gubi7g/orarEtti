@@ -6,11 +6,11 @@ from os import listdir
 
 # TODO:
 
-#   - de implementat cursuri/sem/lab care isi extind intervalul orar
+#   - de implementat cursuri/sem/lab care isi extind intervalul orar (verticala, orizontala este implementat)
 #       -> salvam intr-o lista laboratoarele pe 3 ore (speciale)
+#       -> caz super special: verifica daca este semigrupa cu 'a', si daca nu are pereche cu 'b', atunci ataseaza la grupa din stanga ====> semigrupa despre care vorbesc este o a 3-a semigrupa...
 
 def checkWhatCourse(course):
-    print(course)
     if course.find('curs') >= 0:
         tmpKey =  'curs'
     elif course.find('(s)') >= 0:
@@ -20,9 +20,9 @@ def checkWhatCourse(course):
     elif course.find('(p)') >= 0:
         tmpKey = 'lab [SP]'
     else: # no special case
-        return {'course': course}
+        tmpKey = 'unknown'
     
-    return {tmpKey: course}
+    return {'type': tmpKey}
 
 def getGroupBasename(semigroup):
     return re.split(r'(\d+\w{1})', semigroup)[1]
@@ -47,8 +47,10 @@ def buildOrar(path, writeToFile=False):
         for row in reader:
             orar.append(row)
 
-    intervaleOrare = list(set([line[1] for line in orar]))
+    pattern_sala = re.compile(r'([AB][0-9]+|Infineon)')
 
+
+    intervaleOrare = list(set([line[1] for line in orar]))
     pattern_interval = re.compile(r'(\w{3}|[0-9]{2})-(\w{3}|[0-9]{2})')
     intervaleOrare = [x for x in intervaleOrare if pattern_interval.findall(x)]
     nrIntervaleOrare = len(intervaleOrare)
@@ -107,19 +109,37 @@ def buildOrar(path, writeToFile=False):
                 currentGroup['orar'][zi] = {}
                 
                 for ora, indexOra in zip(intervaleOre, range(indexiInterval[0], indexiInterval[1]+1)):
-                    
+                    m = None
+                    currentCell = orar[indexOra][indexGrupa]
                     if extendCellFlag(grupa, serie['grupe']): # daca este semigrupa cu b la final...
 
-                        if orar[indexOra][indexGrupa] != '': # daca este, dar are ceva trecut, pune-l pe ala
-                            currentGroup['orar'][zi][ora] = checkWhatCourse(orar[indexOra][indexGrupa])
+                        if currentCell != '': # daca este, dar are ceva trecut, pune-l pe ala
+                            currentGroup['orar'][zi][ora] = checkWhatCourse(currentCell)
+                            m = pattern_sala.search(currentCell)
+                            currentGroup['orar'][zi][ora]['course'] = currentCell
 
                         elif orar[indexOra][indexGrupa - 1] != '': # daca este, dar nu are nimic trecut, ia-l pe cel din stanga
-                            currentGroup['orar'][zi][ora] = checkWhatCourse(orar[indexOra][indexGrupa - 1])
+                            currentCell = orar[indexOra][indexGrupa - 1]
 
-                    elif orar[indexOra][indexGrupa] != '': # daca nu este semigrupa cu b, dar are ceva trecut, scrie
-                        currentGroup['orar'][zi][ora] = checkWhatCourse(orar[indexOra][indexGrupa])
+                            currentGroup['orar'][zi][ora] = checkWhatCourse(currentCell)
+                            m = pattern_sala.search(currentCell)
+                            currentGroup['orar'][zi][ora]['course'] = currentCell
+
+                    elif currentCell != '': # daca nu este semigrupa cu b, dar are ceva trecut, scrie
+                        currentGroup['orar'][zi][ora] = checkWhatCourse(currentCell)
+                        m = pattern_sala.search(currentCell)
+                        currentGroup['orar'][zi][ora]['course'] = currentCell
+
                     else: # daca nu are nimic trecut, nu scrie nimic (ANTI-BLOAT)
                         pass
+                        
+                    if m is not None:
+                        currentGroup['orar'][zi][ora]['sala'] = m.group(0)
+                    elif ora in currentGroup['orar'][zi]: # check if ora dict exists...
+                        if 'type' in currentGroup['orar'][zi][ora]:
+                            if currentGroup['orar'][zi][ora]['type'] == 'lab':
+                                currentGroup['orar'][zi][ora]['sala'] = 'Please check announcements sheet.'
+
 
             orar_final.append(currentGroup)
     
