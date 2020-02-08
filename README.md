@@ -6,20 +6,26 @@ exemplu output dorit:
 ```
 [   
     {
-        'grupa': 'x',
+        'grupa': '43xYz',
         'orar': {
             'luni': {
-                '9-11': {
-                    'type': 'sem/curs',
-                    'course': 'AM2',
-                    'room': 'A03',
+                'par': {
+                    'interval_orar': {
+                        'type': 'sem/curs/lab/sport',
+                        'course': 'X',
+                        'room': 'Y',
+                        'prof': 'Z'
+                    },
                     ...
                 },
-                ...
+                'impar': {
+                    ...
+                }
             },
             ...
         }
-    }
+    },
+    ...
 ]
 ```
 

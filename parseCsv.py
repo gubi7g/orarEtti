@@ -8,11 +8,46 @@ from os import listdir
 
 #   - de implementat cursuri/sem/lab care isi extind intervalul orar (verticala, orizontala este implementat)
 #       -> salvam intr-o lista laboratoarele pe 3 ore (speciale)
-#       -> caz super special: verifica daca este semigrupa cu 'a', si daca nu are pereche cu 'b', atunci ataseaza la grupa din stanga ====> semigrupa despre care vorbesc este o a 3-a semigrupa...
+#       -> caz super special: verifica daca este semigrupa cu 'a', si daca nu are pereche cu 'b', atunci ataseaza la grupa din stanga ====> semigrupa este o a 3-a semigrupa...
+
+
+def splitCoursesByWeekParity(cell):
+    d = {'par': '', 'impar': ''}
+
+    if len(cell.split('\n')) == 1: # nu avem sali sau prof mentionat
+        
+        if len(cell.split('/')) == 1:
+            d['par'] = d['impar'] = cell
+
+        if len(cell.split('/')) == 2:
+            courseImpar, coursePar = cell.split('/')
+            d['impar'] = courseImpar
+            d['par'] = coursePar
+
+    if len(cell.split('\n')) == 2:
+        course, extra = cell.split('\n') # avem sala sau prof mentionat
+
+        if len(course.split('/')) == 1:
+            d['par'] = d['impar'] = cell
+
+        if len(course.split('/')) == 2:
+            courseImpar, coursePar = course.split('/')
+
+            d['impar'] = courseImpar
+            d['par'] = coursePar
+
+        if len(extra.split('/')) == 2:
+            pass
+    # print(d)
+    return d
+
+
 
 def checkWhatCourse(course):
     if course.find('curs') >= 0:
         tmpKey =  'curs'
+    elif course.find('Sport') >= 0:
+        tmpKey = 'sport'
     elif course.find('(s)') >= 0:
         tmpKey = 'seminar'
     elif course.find('(l)') >= 0:
@@ -22,7 +57,7 @@ def checkWhatCourse(course):
     else: # no special case
         tmpKey = 'unknown'
     
-    return {'type': tmpKey}
+    return tmpKey
 
 def getGroupBasename(semigroup):
     return re.split(r'(\d+\w{1})', semigroup)[1]
@@ -41,13 +76,15 @@ def findIndexGrupa(orar, listaGrupe):
 
 def buildOrar(path, writeToFile=False):
     orar = []
-    with open(path) as f:
+
+    with open(path, encoding='utf-8') as f:
         reader = csv.reader(f)
 
         for row in reader:
             orar.append(row)
 
-    pattern_sala = re.compile(r'([AB][0-9]+|Infineon)')
+    # print(orar)
+    pattern_sala = re.compile(r'([AB]\s?[0-9]+|Infineon|[sS]ala \d*[ ]*d*e*[ ]*calc)')
 
 
     intervaleOrare = list(set([line[1] for line in orar]))
@@ -108,44 +145,68 @@ def buildOrar(path, writeToFile=False):
             for indexiInterval, zi in zip(indexiIntervaleOrare, ['luni', 'marti', 'miercuri', 'joi', 'vineri']):
                 currentGroup['orar'][zi] = {}
                 
-                for ora, indexOra in zip(intervaleOre, range(indexiInterval[0], indexiInterval[1]+1)):
-                    m = None
-                    currentCell = orar[indexOra][indexGrupa]
-                    if extendCellFlag(grupa, serie['grupe']): # daca este semigrupa cu b la final...
+                for parity in ['impar', 'par']:
+                    currentGroup['orar'][zi][parity] = {}
 
-                        if currentCell != '': # daca este, dar are ceva trecut, pune-l pe ala
-                            currentGroup['orar'][zi][ora] = checkWhatCourse(currentCell)
-                            m = pattern_sala.search(currentCell)
-                            currentGroup['orar'][zi][ora]['course'] = currentCell
-
-                        elif orar[indexOra][indexGrupa - 1] != '': # daca este, dar nu are nimic trecut, ia-l pe cel din stanga
-                            currentCell = orar[indexOra][indexGrupa - 1]
-
-                            currentGroup['orar'][zi][ora] = checkWhatCourse(currentCell)
-                            m = pattern_sala.search(currentCell)
-                            currentGroup['orar'][zi][ora]['course'] = currentCell
-
-                    elif currentCell != '': # daca nu este semigrupa cu b, dar are ceva trecut, scrie
-                        currentGroup['orar'][zi][ora] = checkWhatCourse(currentCell)
-                        m = pattern_sala.search(currentCell)
-                        currentGroup['orar'][zi][ora]['course'] = currentCell
-
-                    else: # daca nu are nimic trecut, nu scrie nimic (ANTI-BLOAT)
-                        pass
+                    for ora, indexOra in zip(intervaleOre, range(indexiInterval[0], indexiInterval[1]+1)):
+                        m = None
+                        currentCell = orar[indexOra][indexGrupa]
                         
-                    if m is not None:
-                        currentGroup['orar'][zi][ora]['sala'] = m.group(0)
-                    elif ora in currentGroup['orar'][zi]: # check if ora dict exists...
-                        if 'type' in currentGroup['orar'][zi][ora]:
-                            if currentGroup['orar'][zi][ora]['type'] == 'lab':
-                                currentGroup['orar'][zi][ora]['sala'] = 'Please check announcements sheet.'
+                        currentGroup['orar'][zi][parity][ora] = {}
+                        if extendCellFlag(grupa, serie['grupe']): # daca este semigrupa cu b la final...
+
+                            if currentCell != '': # daca este, dar are ceva trecut, pune-l pe ala
+                                # pass
+                                currentGroup['orar'][zi][parity][ora]['type'] = checkWhatCourse(currentCell)
+                                m = pattern_sala.search(currentCell)
+                                currentGroup['orar'][zi][parity][ora]['course'] = splitCoursesByWeekParity(currentCell)[parity]
+
+                            elif orar[indexOra][indexGrupa - 1] != '': # daca este, dar nu are nimic trecut, ia-l pe cel din stanga
+                                currentCell = orar[indexOra][indexGrupa - 1]
+
+                                currentGroup['orar'][zi][parity][ora]['type'] = checkWhatCourse(currentCell)
+                                m = pattern_sala.search(currentCell)
+                                currentGroup['orar'][zi][parity][ora]['course'] = splitCoursesByWeekParity(currentCell)[parity]
+
+                        elif currentCell != '': # daca nu este semigrupa cu b, dar are ceva trecut, scrie
+                            currentGroup['orar'][zi][parity][ora]['type'] = checkWhatCourse(currentCell)
+                            m = pattern_sala.search(currentCell)
+                            
+                            currentGroup['orar'][zi][parity][ora]['course'] = splitCoursesByWeekParity(currentCell)[parity]
+
+                        else: # daca nu are nimic trecut, nu scrie nimic
+                            # print(currentGroup['orar'][zi][parity][ora])
+                            del currentGroup['orar'][zi][parity][ora]
+                            continue
+
+                        # print(grupa, zi, ora)
+                        if currentGroup['orar'][zi][parity][ora] and '--' in currentGroup['orar'][zi][parity][ora]['course']:
+                            del currentGroup['orar'][zi][parity][ora]
+                            continue
+                            
+                            
+                        if m is not None:
+                            currentGroup['orar'][zi][parity][ora]['sala'] = m.group(0)
+
+                        else:
+                            try:
+                                if currentGroup['orar'][zi][parity][ora]['type'] in ['lab', 'sport']:
+                                    currentGroup['orar'][zi][parity][ora]['sala'] = 'Please check announcements sheet.'
+
+                                # if lab but we have room ,we overwrite the above if.
+                                if orar[indexOra][serie['stopIndexSerie'] + 1] != '':
+                                    currentGroup['orar'][zi][parity][ora]['sala'] = orar[indexOra][serie['stopIndexSerie'] + 1]
+
+                            except:
+                                del currentGroup['orar'][zi][parity][ora]
+                            
 
 
             orar_final.append(currentGroup)
     
     if writeToFile:
-        with open(splitext(basename(path))[0] + '.json', 'w') as f:
-            f.write(json.dumps(orar_final))
+        with open(splitext(basename(path))[0] + '.json', 'w', encoding='utf-8') as f:
+            json.dump(orar_final, f, ensure_ascii=False)
     else:
         return orar_final
     
