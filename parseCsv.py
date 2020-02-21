@@ -1,8 +1,10 @@
 import json
 import csv
 import re
-from os.path import basename, splitext, join
+from os.path import basename, splitext, join, abspath
 from os import listdir
+import config
+print(config.addresses['in'])
 
 # TODO:
 
@@ -13,6 +15,7 @@ from os import listdir
 
 def splitCoursesByWeekParity(cell):
     d = {'par': '', 'impar': ''}
+    extra = {'prof': ''}
 
     if len(cell.split('\n')) == 1: # nu avem sali sau prof mentionat
         
@@ -24,23 +27,23 @@ def splitCoursesByWeekParity(cell):
             d['impar'] = courseImpar
             d['par'] = coursePar
 
-    if len(cell.split('\n')) == 2:
+    elif len(cell.split('\n')) == 2:
         course, extra = cell.split('\n') # avem sala sau prof mentionat
 
         if len(course.split('/')) == 1:
-            d['par'] = d['impar'] = cell
+            d['par'] = d['impar'] = course
 
         if len(course.split('/')) == 2:
-            courseImpar, coursePar = course.split('/')
-
-            d['impar'] = courseImpar
-            d['par'] = coursePar
+            d['impar'] , d['par'] = course.split('/')
 
         if len(extra.split('/')) == 2:
             pass
+    else: 
+        # aici nu ajungem niciodata
+        print(cell)
+        d['par'] = d['impar'] = cell
     # print(d)
     return d
-
 
 
 def checkWhatCourse(course):
@@ -66,6 +69,8 @@ def checkIfBothSemigroups(groupName, groupsList):
     x = [getGroupBasename(x) for x in groupsList].count(getGroupBasename(groupName))
     if x == 2:
         return True
+    else:
+        return False
 
 def extendCellFlag(groupName, groupsList):
     if checkIfBothSemigroups(groupName, groupsList) and groupName[-1] == 'b':
@@ -75,6 +80,7 @@ def findIndexGrupa(orar, listaGrupe):
     return orar[1].index(listaGrupe[0]), orar[1].index(listaGrupe[-1])
 
 def buildOrar(path, writeToFile=False):
+    print(path)
     orar = []
 
     with open(path, encoding='utf-8') as f:
@@ -193,7 +199,7 @@ def buildOrar(path, writeToFile=False):
                                 if currentGroup['orar'][zi][parity][ora]['type'] in ['lab', 'sport']:
                                     currentGroup['orar'][zi][parity][ora]['sala'] = 'Please check announcements sheet.'
 
-                                # if lab but we have room ,we overwrite the above if.
+                                # if lab but we have room ,we overwrite the above.
                                 if orar[indexOra][serie['stopIndexSerie'] + 1] != '':
                                     currentGroup['orar'][zi][parity][ora]['sala'] = orar[indexOra][serie['stopIndexSerie'] + 1]
 
@@ -205,12 +211,13 @@ def buildOrar(path, writeToFile=False):
             orar_final.append(currentGroup)
     
     if writeToFile:
-        with open(splitext(basename(path))[0] + '.json', 'w', encoding='utf-8') as f:
+        print(join(splitext(basename(path))[0], 'jsonFiles'))
+        with open(join(config.addresses['out'], splitext(basename(path))[0]) + '.json', 'w', encoding='utf-8') as f:
             json.dump(orar_final, f, ensure_ascii=False)
     else:
         return orar_final
     
-    
-for file in listdir('res'):
+
+for file in listdir(config.addresses['in']):
     if file.endswith('.csv'):
-        buildOrar(join('res', file), writeToFile=True)
+        buildOrar(join(config.addresses['in'], file), writeToFile=True)
