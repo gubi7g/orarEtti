@@ -1,0 +1,21 @@
+{
+  "name": "orar-etti",
+  "version": "1.0.0",
+  "description": "din ~csv~ ~jpg~ csv -> JSON pt fiecare grupa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "python server/api/server.py",
+    "parse": "python ./parse/parseCsv.py"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gubi7g/orarEtti.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gubi7g/orarEtti/issues"
+  },
+  "homepage": "https://github.com/gubi7g/orarEtti#readme"
+}
