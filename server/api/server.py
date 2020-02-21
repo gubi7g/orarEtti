@@ -18,28 +18,36 @@ app = Flask(__name__)
 def hello():
     return f'Hello, World!'
 
-@app.route('/<queryGroup>/<zi>')
+@app.route('/api/<queryGroup>/<zi>')
 def getOrarDay(queryGroup, zi):
 
   if not pattern_grupa.match(queryGroup):
     return {'error': 'This group doesn\'t exist'}
+
+  if not len(queryGroup) == 5:
+    return {'error': 'Feature available only for precise semi-group. Please redo your search.'}
+
+  if zi.lower() not in ['luni', 'marti', 'miercuri', 'joi', 'vineri']:
+    return {'error': 'Please enter a correct day name.'}
+
 
   print(queryGroup)
   an = int(queryGroup[1])
 
   with open(path.join(projectRoot, config.addresses['out'], f'orar_an{an}' + '.json')) as f:
     orar = json.load(f)
-  for ind, group in enumerate(orar):
-    if queryGroup in group['grupa']:
+
+    for group in orar:
       if group['grupa'].lower() == queryGroup.lower() :
         orar = group
         break
-      else:
-        orar = [ orar[ind], orar[ind+1] ]
-        break
-  return jsonify(orar)
 
-@app.route('/<queryGroup>')
+    return orar['orar'][zi]
+
+    
+    
+
+@app.route('/api/<queryGroup>')
 def getOrarGroup(queryGroup):
 
   if not pattern_grupa.match(queryGroup):
