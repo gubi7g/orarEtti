@@ -111,6 +111,8 @@ def buildOrar(path, writeToFile=False):
                 for ora, indexOra in zip(intervaleOre, range(indexiInterval[0], indexiInterval[1]+1)):
                     m = None
                     currentCell = orar[indexOra][indexGrupa]
+                    currentGroup['orar'][zi][ora] = {}
+
                     if extendCellFlag(grupa, serie['grupe']): # daca este semigrupa cu b la final...
 
                         if currentCell != '': # daca este, dar are ceva trecut, pune-l pe ala
@@ -130,15 +132,24 @@ def buildOrar(path, writeToFile=False):
                         m = pattern_sala.search(currentCell)
                         currentGroup['orar'][zi][ora]['course'] = currentCell
 
-                    else: # daca nu are nimic trecut, nu scrie nimic (ANTI-BLOAT)
-                        pass
+                    else: # daca nu are nimic trecut, nu scrie nimic
+                        del currentGroup['orar'][zi][ora]
+                        continue
                         
                     if m is not None:
                         currentGroup['orar'][zi][ora]['sala'] = m.group(0)
-                    elif ora in currentGroup['orar'][zi]: # check if ora dict exists...
-                        if 'type' in currentGroup['orar'][zi][ora]:
-                            if currentGroup['orar'][zi][ora]['type'] == 'lab':
+
+                    else:
+                        try:
+                            if currentGroup['orar'][zi][ora]['type'] in ['lab', 'sport']:
                                 currentGroup['orar'][zi][ora]['sala'] = 'Please check announcements sheet.'
+
+                            # if lab but we have room ,we overwrite the above.
+                            if orar[indexOra][serie['stopIndexSerie'] + 1] != '':
+                                currentGroup['orar'][zi][ora]['sala'] = orar[indexOra][serie['stopIndexSerie'] + 1]
+
+                        except:
+                            del currentGroup['orar'][zi][ora]
 
 
             orar_final.append(currentGroup)
