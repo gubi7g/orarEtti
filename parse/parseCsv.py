@@ -1,8 +1,8 @@
 import json
 import csv
 import re
-from os.path import basename, splitext, join
-from os import listdir, path
+from os.path import basename, splitext, join, isdir
+from os import listdir, path, mkdir
 import sys
 projectRoot = path.abspath('./')
 sys.path.append(projectRoot)
@@ -165,6 +165,8 @@ def buildOrar(path, writeToFile=False):
             orar_final.append(currentGroup)
     
     if writeToFile:
+        if not isdir(config.addresses['out']):
+            mkdir(config.addresses['out'])
         with open(join(config.addresses['out'], splitext(basename(path))[0] + '.json'), 'w') as f:
             json.dump(orar_final, f, ensure_ascii=False)
     else:
