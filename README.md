@@ -44,10 +44,11 @@ npm start
 ```
 
 ### Routes:
-
+```
 localhost:5000/api/:group/
 localhost:5000/api/:semigroup/
 localhost:5000/api/:semigroup/:day
+```
 
 ## Resources
 
