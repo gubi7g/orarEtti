@@ -109,7 +109,7 @@ def buildOrar(path, writeToFile=False):
     orar_final = []
     for serie in dict_serii:
         for grupa, indexGrupa in zip(serie['grupe'], range(serie['startIndexSerie'], serie['stopIndexSerie'] + 1)):
-            print(grupa)
+            # print(grupa)
             currentGroup = {}
             currentGroup['grupa'] = grupa
             currentGroup['orar'] = {}
@@ -160,9 +160,6 @@ def buildOrar(path, writeToFile=False):
                         except:
                             del currentGroup['orar'][zi][ora]
                     
-
-                if not currentGroup['orar'][zi]:
-                    del currentGroup['orar'][zi]
                     
             # print(currentGroup)
             orar_final.append(currentGroup)
