@@ -10,16 +10,16 @@ db orarEtti:
 		- has_projector 	BOOL
 		- has_wifi			BOOL
 	
-	* RESERVATIONS
-		- reservation_id 	INT
+	* CLASSES
+		- class_id 			INT
 		- start_time		DATE
 		- end_time			DATE
 		- room_id			INT
 		- prof_id			INT
-		- group				STRING
-		- course_type		STRING (curs/seminar/lab)
-	
-	* CURSURI
+		- class_type		STRING (curs/seminar/lab)
+		- course_id			INT
+		
+	* COURSES
 		- course_id			INT
 		- name				STRING
 		- prof_id			INT		-> PROF_ACCOUNT
@@ -35,6 +35,21 @@ db orarEtti:
 		- teached_courses	STRING
 		- bio				STRING
 		
+	* GROUPS
+		- group_id
+		- name
+		- sef_grupa
+		- nr_telefon
+		- mail
+		- size
+	
+	* SERIES
+		- id
+		- name
+		
+	* GROUP_CLASSES (intermediary table)
+		- group_id
+		- class_id
 
  - Notes:
 	* we need to update the site each time the db is updated from ANYWHERE, not just from the current session.
