@@ -1,24 +1,33 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
 
-    <draggable v-model="myArray" @start="drag=true" @end="drag=false" @choose="onChoose">
-      <div class="sortable" v-for="element in myArray" :key="element.id" >
-        <strong>{{element.name}}</strong>
-        <span>{{element.id}}</span>
-      </div>
-    </draggable>
-    
+  <div id="app">
+
+    <table>
+      <thead>
+        <tr>
+          <th v-for="grupa in ['', ...grupe]" :key="grupa.key">{{grupa}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(ora, ind_ora) in ore" v-bind:key="ora.id">
+          <template v-for="grupa in ['', ...grupe]">
+            <td v-if="grupa == ''" v-bind:key="grupa.id">{{ore[ind_ora]}}</td>
+            <td v-else v-bind:key="grupa.id">haha</td>
+          </template>
+          
+        </tr>
+      </tbody>
+
+    </table>
   </div>
 </template>
 
 <script>
-import draggable from "vuedraggable";
+
 
 export default {
   name: "App",
   components: {
-    draggable
   },
   methods: {
     onChoose: (evt) => {
@@ -33,7 +42,9 @@ export default {
         { name: "matei", id: 2 },
         { name: "masinuta", id: 3 },
         { name: "galer", id: 4 }
-      ]
+      ],
+      grupe: ['432A', '432B', '432C', '432D', '432E', '432F'],
+      ore: ['08-09', '09-10', '10-11', '11-12', '12-13', '13-14', '14-15', '15-16', '16-17', '17-18', '18-19', '19-20', '20-21']
     };
   }
 };
@@ -58,5 +69,25 @@ export default {
   span {
     float: right;
   }
+}
+
+.orar {
+    display: inline-block;
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    // display: flex;
+    position: relative;
+    box-sizing: border-box;
+    vertical-align: inherit;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.title {
+  flex: 0 0 100%;
+  max-width: 100%;
 }
 </style>
