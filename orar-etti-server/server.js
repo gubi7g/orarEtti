@@ -9,7 +9,7 @@ var db = mysql.createConnection({
   database : 'orarEtti'
 });
 
-
+// just for creating tables
 app.get('/createtables', (req, res) => {
   let sql = 'CREATE TABLE IF NOT EXISTS rooms(id int primary key AUTO_INCREMENT unique, name VARCHAR(255) unique, capacity int, building VARCHAR(255), floor int, has_wifi BOOL, has_projector BOOL)'
   db.query(sql, (err, result) => {
