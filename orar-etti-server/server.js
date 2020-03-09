@@ -8,52 +8,52 @@ const app = express()
 app.use(cors())
 
 var db = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  database : 'orarEtti'
+  host: 'localhost',
+  user: 'root',
+  database: 'orarEtti'
 });
 
 // just for creating tables
 app.get('/createtables', (req, res) => {
   let sql = 'CREATE TABLE IF NOT EXISTS rooms(id int primary key AUTO_INCREMENT unique, name VARCHAR(255) unique, capacity int, building VARCHAR(255), floor int, has_wifi BOOL, has_projector BOOL)'
   db.query(sql, (err, result) => {
-    if(err) throw err
+    if (err) throw err
     console.log('rooms created')
   })
 
   sql = 'CREATE TABLE IF NOT EXISTS classes(id int primary key AUTO_INCREMENT, start_time DATE, end_time DATE, room_id int, prof_id int, course_id int, class_type varchar(255))'
   db.query(sql, (err, result) => {
-    if(err) throw err
+    if (err) throw err
     console.log('classes created')
   })
 
   sql = 'CREATE TABLE IF NOT EXISTS courses(id int primary key AUTO_INCREMENT, name VARCHAR(255), prof_id varchar(255), course_type varchar(255), language varchar(255), description varchar(255))'
   db.query(sql, (err, result) => {
-    if(err) throw err
+    if (err) throw err
     console.log('courses created')
   })
 
   sql = 'CREATE TABLE IF NOT EXISTS contributors(id int primary key AUTO_INCREMENT, name varchar(255), email varchar(255), password varchar(255), contributor_type varchar(255), teached_courses varchar(255), bio varchar(255))'
   db.query(sql, (err, result) => {
-    if(err) throw err
+    if (err) throw err
     console.log('contributors created')
   })
 
   sql = 'CREATE TABLE IF NOT EXISTS groups(id int primary key AUTO_INCREMENT, name varchar(255) unique, sef_grupa varchar(255), nr_telefon varchar(255), mail varchar(255), size varchar(255), series varchar(2))'
   db.query(sql, (err, result) => {
-    if(err) throw err
+    if (err) throw err
     console.log('groups created')
   })
 
   sql = 'CREATE TABLE IF NOT EXISTS group_classes(group_id int primary key, class_id int)'
   db.query(sql, (err, result) => {
-    if(err) throw err
+    if (err) throw err
     console.log('group_classes created')
 
   })
 
   grupe_example = []
-  for(grupa of config.grupe){
+  for (grupa of config.grupe) {
     let currSerie = ''
     if (grupa.length == 5) {
       currSerie = grupa.slice(-2)[0];
@@ -61,26 +61,45 @@ app.get('/createtables', (req, res) => {
     if (grupa.length == 4) {
       currSerie = grupa.slice(-1);
     }
-    grupe_example.push([grupa, Math.round(Math.random()*100), currSerie])
+    grupe_example.push([grupa, Math.round(Math.random() * 100), currSerie])
   }
-  console.log(grupe_example)
+
   sql = 'INSERT INTO groups (name, size, series) VALUES ?'
-  console
   db.query(sql, [grupe_example], (err, result) => {
-    if(err) throw err
+    if (err) throw err
     console.log(`added ${result.affectedRows} entries in classes.`)
-    
+
     res.send('tables succesfully created')
   })
+
+  courses_example = []
+  for (const i = 0; i < 100; i++) {
+    courses_example.push(Math.random().toString(36).substr(10))
+  }
+  sql = 'INSERT INTO courses (name) VALUES ?'
 
 })
 
 // select from tables
+app.get('/api/getgroups/:an/', (req, res) => {
+  let sql = 'SELECT name, size, series FROM groups WHERE name '
+  console.log(`Serving groups for year ${req.params.an}...`)
+  db.query(sql, (err, result) => {
+    if (err) throw err
+    const filtered = []
+    for(grupa of result){
+      if(grupa.name[1] == req.params.an)
+        filtered.push(grupa)
+    }
+    res.send(filtered)
+  })
+})
+
 app.get('/api/getgroups/', (req, res) => {
-  let sql = 'SELECT name, size, series FROM groups'
+  let sql = 'SELECT name, size, series FROM groups WHERE name '
   console.log('Serving groups...')
-  db.query(sql, (err, result, fields) => {
-    if(err) throw err
+  db.query(sql, (err, result) => {
+    if (err) throw err
     res.send(result)
   })
 })
@@ -90,7 +109,7 @@ app.get('/api/getgroups/', (req, res) => {
 //   console.log(req.query)
 
 //   query = req.query
-  
+
 //   fields = []
 //   values = []
 //   for(var key in query){
