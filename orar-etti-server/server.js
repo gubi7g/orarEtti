@@ -1,7 +1,11 @@
 const express = require('express')
 const mysql = require('mysql')
+const config = require('./config.json')
+var cors = require('cors')
+
 
 const app = express()
+app.use(cors())
 
 var db = mysql.createConnection({
   host     : 'localhost',
@@ -35,51 +39,75 @@ app.get('/createtables', (req, res) => {
     console.log('contributors created')
   })
 
-  sql = 'CREATE TABLE IF NOT EXISTS groups(id int primary key AUTO_INCREMENT, name varchar(255), sef_grupa varchar(255), nr_telefon varchar(255), mail varchar(255), size varchar(255), series_id int)'
+  sql = 'CREATE TABLE IF NOT EXISTS groups(id int primary key AUTO_INCREMENT, name varchar(255) unique, sef_grupa varchar(255), nr_telefon varchar(255), mail varchar(255), size varchar(255), series varchar(2))'
   db.query(sql, (err, result) => {
     if(err) throw err
     console.log('groups created')
-  })
-
-  sql = 'CREATE TABLE IF NOT EXISTS series(id int primary key AUTO_INCREMENT, name varchar(255))'
-  db.query(sql, (err, result) => {
-    if(err) throw err
-    console.log('series created')
   })
 
   sql = 'CREATE TABLE IF NOT EXISTS group_classes(group_id int primary key, class_id int)'
   db.query(sql, (err, result) => {
     if(err) throw err
     console.log('group_classes created')
-    res.send('tables succesfully created')
 
   })
 
-})
-
-app.get('/api/:table/', (req, res) => {
-  console.log(req.params.table)
-  console.log(req.query)
-
-  query = req.query
-  
-  fields = []
-  values = []
-  for(var key in query){
-    fields.push(key)
-    values.push('\'' + query[key] + '\'')
+  grupe_example = []
+  for(grupa of config.grupe){
+    let currSerie = ''
+    if (grupa.length == 5) {
+      currSerie = grupa.slice(-2)[0];
+    }
+    if (grupa.length == 4) {
+      currSerie = grupa.slice(-1);
+    }
+    grupe_example.push([grupa, Math.round(Math.random()*100), currSerie])
   }
-
-  console.log(fields)
-  console.log(values)
-
-  let sql = `INSERT INTO ${req.params.table} (${fields.join(',')}) VALUES (${values.join(',')})`
-  db.query(sql, (err, result) => {
+  console.log(grupe_example)
+  sql = 'INSERT INTO groups (name, size, series) VALUES ?'
+  console
+  db.query(sql, [grupe_example], (err, result) => {
     if(err) throw err
-    console.log(result)
-    res.send('Entry succesfully created!')
+    console.log(`added ${result.affectedRows} entries in classes.`)
+    
+    res.send('tables succesfully created')
+  })
+
+})
+
+// select from tables
+app.get('/api/getgroups/', (req, res) => {
+  let sql = 'SELECT name, size, series FROM groups'
+  console.log('Serving groups...')
+  db.query(sql, (err, result, fields) => {
+    if(err) throw err
+    res.send(result)
   })
 })
+
+// app.get('/api/:table/', (req, res) => {
+//   console.log(req.params.table)
+//   console.log(req.query)
+
+//   query = req.query
+  
+//   fields = []
+//   values = []
+//   for(var key in query){
+//     fields.push(key)
+//     values.push('\'' + query[key] + '\'')
+//   }
+
+//   console.log(fields)
+//   console.log(values)
+
+//   let sql = `INSERT INTO ${req.params.table} (${fields.join(',')}) VALUES (${values.join(',')})`
+//   db.query(sql, (err, result) => {
+//     if(err) throw err
+//     console.log(result)
+//     res.send('Entry succesfully created!')
+//   })
+// })
 
 
 

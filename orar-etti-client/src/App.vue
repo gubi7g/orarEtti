@@ -3,29 +3,29 @@
     <h1>Orar ETTI</h1>
 
     <img id="ettigif" src="./assets/logo.gif" width="100" />
-
     <!-- <h1>{{createSerii}}</h1> -->
     <img id="vuelogo" src="./assets/logo.png" width="100" />
-    <b-row>
-      <b-col>
-        <p>Clicked: {{clickElem()}} </p>
+      <p>Clicked: {{clickElem()}}</p>
 
-        <table>
-          <thead>
-            <tr>
-              <th v-for="grupa in ['', ...grupe]" :key="grupa.key">{{grupa}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(ora, ind_ora) in ore" v-bind:key="ora.id">
-              <template v-for="grupa in ['', ...grupe]">
-                <td v-if="grupa == ''" v-bind:key="grupa.id">{{ore[ind_ora]}}</td>
-                <td v-else v-bind:key="grupa.id" :id="grupa + ora.split('-').join('')"></td>
-              </template>
-            </tr>
-          </tbody>
-        </table>
-      </b-col>
+    <b-row>
+
+      <table class="orar">
+        <thead>
+          <tr>
+            <th v-for="grupa in ['', ...grupeArray]" :key="grupa.key">{{grupa}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(ora, ind_ora) in ore" v-bind:key="ora.id">
+            <template v-for="grupa in ['', ...grupeArray]">
+              <td v-if="grupa == ''" v-bind:key="grupa.id">{{ore[ind_ora]}}</td>
+              <td v-else v-bind:key="grupa.id" :id="grupa + ora.split('-').join('')"></td>
+            </template>
+          </tr>
+        </tbody>
+      </table>
+    </b-row>
+    <b-row>
       <b-col>
         <h1>Edit your course</h1>
 
@@ -71,19 +71,30 @@
 </template>
 
 <script>
+const config = require("./config.json");
+
 export default {
   name: "App",
   components: {},
-  computed: {
-  },
+  computed: {},
   methods: {
+    fetchGroups: function() {
+      console.log(config.api.groups);
+      this.$http.get(config.api.groups).then(result => {
+        this.grupe = result.data;
+        console.log("groups from api: ", this.grupe);
+        for (const grupa of this.grupe) {
+          this.grupeArray.push(grupa.name);
+        }
+        console.log(this.grupeArray);
+      });
+    },
     clickElem() {
       window.onclick = e => {
         this.selectedCell = e.target.id;
-        console.log(e.target.id)
-        
+        console.log(e.target.id);
       };
-      return this.selectedCell
+      return this.selectedCell;
     },
     seriiDict() {
       let currSerie;
@@ -123,15 +134,14 @@ export default {
     }
   },
   created: function() {
+    this.fetchGroups();
     console.log("created!");
     this.serii = this.seriiDict();
-    console.log(this.serii);
-    this.currentSerie = this.serii[0];
-    console.log(this.currentSerie);
   },
   data: () => {
     return {
-      grupe: ["432A", "433A", "432B", "432C", "432D", "432E", "432F"],
+      grupe: [],
+      grupeArray: [],
       ore: [
         "08-09",
         "09-10",
@@ -212,33 +222,22 @@ export default {
   }
 }
 
-.orar {
-  display: inline-block;
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
-  // display: flex;
-  position: relative;
-  box-sizing: border-box;
-  vertical-align: inherit;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-}
-
 .title {
   flex: 0 0 100%;
   max-width: 100%;
 }
 
 table {
-  border-collapse: collapse;
+  // overflow: scroll;
+  display: block;
+  max-width: 100%;
+  overflow-x: scroll;
+
 }
 td {
   border: 1px solid black;
-  width: 100px;
-  height: 50px;
+  min-width: 200px;
+  height: 40px;
 }
 
 #vuelogo {
