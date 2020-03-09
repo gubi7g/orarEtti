@@ -1,3 +1,8 @@
+TODO:
+	* generate an empty table with a v-for
+	* after you did that ^, do the same with the content from a list generated from a db query
+	
+
 db orarEtti:
 
  - Necessary tables:
