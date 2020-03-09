@@ -5,8 +5,15 @@
     <img id="ettigif" src="./assets/logo.gif" width="100" />
     <!-- <h1>{{createSerii}}</h1> -->
     <img id="vuelogo" src="./assets/logo.png" width="100" />
-      <p>Clicked: {{clickElem()}}</p>
+    <p>Clicked: {{clickCell()}}</p>
+    <h3>Selected Year: {{selectedYear}}</h3>
+    <b-row>
 
+      <b-col><b-button @click.stop="selectedYear = 1">An 1</b-button></b-col>
+      <b-col><b-button @click.stop="selectedYear = 2">An 2</b-button></b-col>
+      <b-col><b-button @click.stop="selectedYear = 3">An 3</b-button></b-col>
+      <b-col><b-button @click.stop="selectedYear = 4">An 4</b-button></b-col>
+    </b-row>
     <b-row>
 
       <table class="orar">
@@ -19,7 +26,7 @@
           <tr v-for="(ora, ind_ora) in ore" v-bind:key="ora.id">
             <template v-for="grupa in ['', ...grupeArray]">
               <td v-if="grupa == ''" v-bind:key="grupa.id">{{ore[ind_ora]}}</td>
-              <td v-else v-bind:key="grupa.id" :id="grupa + ora.split('-').join('')"></td>
+              <td v-else v-bind:key="grupa.id" :id="grupa + ora.split('-').join('')" :class="createSelectedClass(grupa + ora.split('-').join('')).includes() ? 'selected' : ''"></td>
             </template>
           </tr>
         </tbody>
@@ -53,7 +60,7 @@
             @change="toggleAllGroups"
           >{{ allGroupsSelected ? 'Un-select all ' : 'Select all ' }}</b-form-checkbox>
 
-          <b-form-checkbox-group v-model="selectedGroups" :options="currentSerie.grupe"></b-form-checkbox-group>
+          <b-form-checkbox-group v-model="selectedGroups" :options="grupeArray"></b-form-checkbox-group>
         </b-form-group>
         <div>
           Selected:
@@ -63,6 +70,8 @@
           <br />Indeterminate:
           <strong>{{ indeterminate }}</strong>
         </div>
+        <div>selected start time: {{this.selectedTimeInt.substr(0,2)}}</div>
+        <div>selected class: {{createSelectedClass()}}</div>
       </b-col>
     </b-row>
 
@@ -78,9 +87,11 @@ export default {
   components: {},
   computed: {},
   methods: {
-    fetchGroups: function() {
+    fetchGroups: function(an) {
       console.log(config.api.groups);
-      this.$http.get(config.api.groups).then(result => {
+      this.$http.get(config.api.groups + `/${an}/`).then(result => {
+        this.grupeArray = []
+
         this.grupe = result.data;
         console.log("groups from api: ", this.grupe);
         for (const grupa of this.grupe) {
@@ -89,54 +100,62 @@ export default {
         console.log(this.grupeArray);
       });
     },
-    clickElem() {
-      window.onclick = e => {
-        this.selectedCell = e.target.id;
-        console.log(e.target.id);
-      };
-      return this.selectedCell;
+
+
+    createSelectedClass: function() {
+      let x = ""
+      this.selectedGroups.forEach(group => {
+        x += '#' + group + this.selectedTimeInt + ','
+      })
+      return x
     },
-    seriiDict() {
-      let currSerie;
-      let found;
-      let res = [];
-      for (const grupa of this.grupe) {
-        if (grupa.length == 5) {
-          currSerie = grupa.slice(-2)[0];
-        }
-        if (grupa.length == 4) {
-          currSerie = grupa.slice(-1);
-        }
-        found = false;
+    
+    clickCell() {
+      window.onclick = e => {
+        console.log(e.target.id);
 
-        for (const serie of res) {
-          if (serie.serie == currSerie && serie.serie) {
-            serie.grupe.push(grupa);
-            found = true;
-            break;
+        if(/^4[1-4]\d[A-G](a|b|)\d{4}$/.test(e.target.id)){
+          let clickedGroupName
+          if(e.target.id.length == 9){
+            clickedGroupName = e.target.id.substr(0, 5)
+            
+          } else if (e.target.id.length == 8){
+            clickedGroupName = e.target.id.substr(0, 4)
+
           }
+          else{
+            return console.log('error on click group name length')
+          }
+
+          console.log(clickedGroupName)
+          if(this.selectedGroups.includes(clickedGroupName)){
+            console.log(this.selectedGroups[this.selectedGroups.indexOf(clickedGroupName)].substr(e.target.id.length-4, e.target.id.length))
+            if (e.target.id.substr(e.target.id.length-4, e.target.id.length) == this.selectedTimeInt){ // daca este acelasi interval selectat, sterge-l din selectate
+              this.selectedGroups.splice(this.selectedGroups.indexOf(clickedGroupName), 1)
+            }
+            else {
+              //pass
+            }
+          }
+          else{
+            console.log('added new group to selected')
+            this.selectedGroups.push(clickedGroupName)
+          }
+          this.selectedTimeInt = e.target.id.substr(e.target.id.length-4, e.target.id.length)
         }
 
-        if (found == false) {
-          res.push({
-            serie: currSerie,
-            grupe: [grupa],
-            allGroupsSelected: false,
-            selectedGroups: [],
-            indeterminate: false
-          });
-        }
-      }
-      return res;
+        return e.target.id;
+
+      };
     },
     toggleAllGroups(checked) {
-      this.selectedGroups = checked ? this.currentSerie.grupe.slice() : [];
+      this.selectedGroups = checked ? this.grupeArray.slice() : [];
     }
   },
   created: function() {
-    this.fetchGroups();
+    this.fetchGroups(this.selectedYear);
     console.log("created!");
-    this.serii = this.seriiDict();
+
   },
   data: () => {
     return {
@@ -166,7 +185,6 @@ export default {
         "Friday"
       ],
       selectedDay: null,
-      serii: [],
       selectedGroups: [],
       allGroupsSelected: false,
       indeterminate: false,
@@ -176,26 +194,28 @@ export default {
         { value: "am2", text: "Analiza Matematica 2 - Seria G", left: 5 }
       ],
       currentSerie: {},
-      startTime: 0,
-      endTime: 0,
-      selectedCell: ""
+      selectedTimeInt: "",
+      selectedYear: 1,
+      selectedGroupsIds: [],
+      selectedClass: ''
     };
   },
   watch: {
-    selectedGroups(newVal, oldVal) {
-      console.log(newVal);
-      console.log(oldVal);
+    selectedGroups(newVal) {
       // Handle changes in individual flavour checkboxes
       if (newVal.length === 0) {
         this.indeterminate = false;
         this.allGroupsSelected = false;
-      } else if (newVal.length === this.currentSerie.grupe.length) {
+      } else if (newVal.length === this.grupeArray.length) {
         this.indeterminate = false;
         this.allGroupsSelected = true;
       } else {
         this.indeterminate = true;
         this.allGroupsSelected = false;
       }
+    },
+    selectedYear(val) {
+      this.fetchGroups(val)
     }
   }
 };
@@ -244,5 +264,9 @@ td {
   position: absolute;
   top: 0px;
   left: 0px;
+}
+
+this.selectedClass {
+  background: black;
 }
 </style>
