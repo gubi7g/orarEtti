@@ -5,6 +5,7 @@
     <img id="ettigif" src="./assets/logo.gif" width="100" />
     <!-- <h1>{{createSerii}}</h1> -->
     <img id="vuelogo" src="./assets/logo.png" width="100" />
+    <h3>right click: {{rightClick()}}</h3>
     <p>Clicked: {{clickCell()}}</p>
     <h3>Selected Year: {{selectedYear}}</h3>
     <b-row>
@@ -26,7 +27,7 @@
           <tr v-for="(ora, ind_ora) in ore" v-bind:key="ora.id">
             <template v-for="grupa in ['', ...grupeArray]">
               <td v-if="grupa == ''" v-bind:key="grupa.id">{{ore[ind_ora]}}</td>
-              <td v-else v-bind:key="grupa.id" :id="grupa + ora.split('-').join('')" :class="createSelectedClass(grupa + ora.split('-').join('')).includes() ? 'selected' : ''"></td>
+              <td v-else v-bind:key="grupa.id" :id="grupa + ora.split('-').join('')" :class="createSelectedClass(grupa + ora.split('-').join('')).includes(grupa + ora.split('-').join('')) ? 'selectedCells' : ''"></td>
             </template>
           </tr>
         </tbody>
@@ -109,11 +110,25 @@ export default {
       })
       return x
     },
-    
+    rightClick() {
+      window.oncontextmenu = e => {
+        let isRightMB
+        e = e || window.event;
+        if ("which" in e)  // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
+          isRightMB = e.which == 3; 
+        else if ("button" in e)  // IE, Opera 
+          isRightMB = e.button == 2; 
+
+        alert(isRightMB)
+        return false;
+
+      }
+      
+    },
     clickCell() {
+
       window.onclick = e => {
         console.log(e.target.id);
-
         if(/^4[1-4]\d[A-G](a|b|)\d{4}$/.test(e.target.id)){
           let clickedGroupName
           if(e.target.id.length == 9){
@@ -266,7 +281,8 @@ td {
   left: 0px;
 }
 
-this.selectedClass {
-  background: black;
+.selectedCells {
+  border: 5px solid orangered;
 }
+
 </style>
