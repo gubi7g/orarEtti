@@ -27,7 +27,7 @@ app.get('/createtables', (req, res) => {
     console.log('classes created')
   })
 
-  sql = 'CREATE TABLE IF NOT EXISTS courses(id int primary key AUTO_INCREMENT, name VARCHAR(255), prof_id varchar(255), course_type varchar(255), language varchar(255), description varchar(255))'
+  sql = 'CREATE TABLE IF NOT EXISTS courses(id int primary key AUTO_INCREMENT, name VARCHAR(255), prof_id varchar(255), course_type varchar(255), language varchar(255), description varchar(255), an int)'
   db.query(sql, (err, result) => {
     if (err) throw err
     console.log('courses created')
@@ -52,6 +52,10 @@ app.get('/createtables', (req, res) => {
 
   })
 
+
+
+
+  // insert dummy data
   grupe_example = []
   for (grupa of config.grupe) {
     let currSerie = ''
@@ -69,20 +73,25 @@ app.get('/createtables', (req, res) => {
     if (err) throw err
     console.log(`added ${result.affectedRows} entries in classes.`)
 
-    res.send('tables succesfully created')
   })
 
+  courses_type = ['seminar', 'curs', 'lab', 'proiect', 'sport']
   courses_example = []
-  for (const i = 0; i < 100; i++) {
-    courses_example.push(Math.random().toString(36).substr(10))
+  for (let i = 0; i < 10; i++) {
+    courses_example.push([Math.random().toString(36).substr(10), Math.round(Math.random()*3+1), courses_type[Math.round(Math.random()*4)], Math.round(Math.random()*2 + 1)])
   }
-  sql = 'INSERT INTO courses (name) VALUES ?'
+  sql = 'INSERT INTO courses (name, an, course_type) VALUES ?'
+  db.query(sql, [courses_example], (err, result) => {
+    if (err) throw err
+    console.log(`added ${result.affectedRows} entries in courses.`)
+
+  })
 
 })
 
 // select from tables
 app.get('/api/getgroups/:an/', (req, res) => {
-  let sql = 'SELECT name, size, series FROM groups WHERE name '
+  let sql = 'SELECT name, size, series FROM groups'
   console.log(`Serving groups for year ${req.params.an}...`)
   db.query(sql, (err, result) => {
     if (err) throw err
@@ -96,8 +105,17 @@ app.get('/api/getgroups/:an/', (req, res) => {
 })
 
 app.get('/api/getgroups/', (req, res) => {
-  let sql = 'SELECT name, size, series FROM groups WHERE name '
+  let sql = 'SELECT * FROM groups'
   console.log('Serving groups...')
+  db.query(sql, (err, result) => {
+    if (err) throw err
+    res.send(result)
+  })
+})
+
+app.get('/api/getcourses/', (req, res) => {
+  let sql = 'SELECT * FROM courses'
+  console.log('Serving courses...')
   db.query(sql, (err, result) => {
     if (err) throw err
     res.send(result)
@@ -132,4 +150,5 @@ app.get('/api/getgroups/', (req, res) => {
 
 app.listen(3000, () => {
   console.log('Server started on port 3000')
+  console.log('http://localhost:3000/')
 })

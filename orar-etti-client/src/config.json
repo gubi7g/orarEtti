@@ -1,5 +1,6 @@
 {
   "api":{
-    "groups": "http://localhost:3000/api/getgroups"
+    "groups": "http://localhost:3000/api/getgroups",
+    "courses": "http://localhost:3000/api/getcourses"
   }
 }
