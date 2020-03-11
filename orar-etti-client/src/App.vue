@@ -35,7 +35,7 @@
                 v-else
                 v-bind:key="grupa.id"
                 :id="grupa + ora.split('-').join('')"
-                :class="createSelectedClass(grupa + ora.split('-').join('')).includes(grupa + ora.split('-').join('')) ? 'selectedCells' : ''"
+                :class="assignSelectedClasses(grupa + ora.split('-').join(''))"
               ></td>
             </template>
           </tr>
@@ -102,6 +102,9 @@
           <b-col>
             <h1>selected series: {{selectedSeries}}</h1>
           </b-col>
+          <b-col>
+            <h1>selected duration: {{selectedDuration}}</h1>
+          </b-col>
         </b-row>
 
         <b-row>
@@ -124,7 +127,6 @@
             <strong>{{ indeterminate }}</strong>
           </div>
           <div>selected start time: {{this.selectedTimeInt.substr(0,2)}}</div>
-          <div>selected class: {{createSelectedClass()}}</div>
         </b-row>
       </b-col>
       <b-col></b-col>
@@ -147,8 +149,8 @@ export default {
         this.allCoursesArray = [];
         console.log("all courses: ", this.allCoursesArray);
         for (const course of result.data) {
-          course.text = course.name
-          course.value = course.name
+          course.text = course.name;
+          course.value = course.name;
           this.allCoursesArray.push(course);
         }
 
@@ -194,16 +196,163 @@ export default {
         }
       }
     },
-    createSelectedClass: function() {
-      let x = "";
-      this.selectedGroups.forEach(group => {
-        x += "#" + group + this.selectedTimeInt + ",";
-      });
-      x.slice(0, -1)
-      return x;
+    findSelectedTimeInts: function() {
+      let selectedTimeInts = [];
+      if (this.selectedGroups.length > 0) {
+        for (let i = 0; i < this.selectedDuration; i++) {
+          let startTimeSelected = (
+            parseInt(this.selectedTimeInt.substr(0, 2)) + i
+          )
+            .toString()
+            .padStart(2, "0");
+          let endTimeSelected = (
+            parseInt(this.selectedTimeInt.substr(2, 2)) + i
+          )
+            .toString()
+            .padStart(2, "0");
+
+          selectedTimeInts.push(startTimeSelected + endTimeSelected);
+        }
+      }
+      return selectedTimeInts;
+
+    },
+    findMinGroupFromSelected() {
+      let min = this.groupsArray[this.groupsArray.length - 1]
+      for(const grupa of this.selectedGroups){
+        if(grupa[3] < min[3]){
+          min = grupa
+        } else if(grupa[3] == min[3]){
+          if(grupa[1] < min[1]){
+            min = grupa
+          } else if(grupa[1] == min[1]){
+            if(grupa[2] < min[2]){
+              min = grupa
+            } else if(grupa[2] == min[2]){
+              if(grupa.length == min.length == 5)
+                if(grupa[4] < min[4])
+                  min = grupa
+            }
+          }
+        }
+      }
+
+      return min
+    },
+    findMaxGroupFromSelected() {
+      let max = this.groupsArray[0]
+      for(const grupa of this.selectedGroups){
+        if(grupa[3] > max[3]){
+          max = grupa
+        } else if(grupa[3] == max[3]){
+          if(grupa[1] > max[1]){
+            max = grupa
+          } else if(grupa[1] == max[1]){
+            if(grupa[2] > max[2]){
+              max = grupa
+            } else if(grupa[2] == max[2]){
+              if(grupa.length == max.length == 5)
+                if(grupa[4] > max[4])
+                  max = grupa
+            }
+          }
+        }
+      }
+
+      return max
+
+    },
+    // is @gr1 >= than @gr2?
+    compareGroups: function(gr1, gr2){
+      if(gr1[3] > gr2[3]){
+        return true
+        } else if(gr1[3] == gr2[3]){
+          if(gr1[1] > gr2[1]){
+            return true
+          } else if(gr1[1] == gr2[1]){
+            if(gr1[2] > gr2[2]){
+              return true
+            } else if(gr1[2] == gr2[2]){
+              if(gr1.length == gr2.length == 5)
+                if(gr1[4] >= gr2[4])
+                  return true
+                else
+                  return false
+            }
+            else{
+              return false
+            }
+          }
+          else {
+            return false
+          }
+        } else {
+          return false
+        }
+    },
+    assignSelectedClasses: function(id) {
+      let res = "";
+
+      let selectedTimeInts = this.findSelectedTimeInts();
+      // if(selectedTimeInts.length > 0)
+      //   selectedTimeInts.sort();
+
+
+      let currCellGroup = "";
+      let minGroup = this.findMinGroupFromSelected()
+      let maxGroup = this.findMaxGroupFromSelected()
+
+      console.log('min: ', minGroup, ' max: ', maxGroup)
+      if (id.length == 9) {
+        currCellGroup = id.substr(0, 5);
+      } else if (id.length == 8) {
+        currCellGroup = id.substr(0, 4);
+      }
+
+      let currCellTimeInt = id.substr(-4, 4);
+      if (this.selectedGroups.length > 0) {
+        if (
+          currCellTimeInt >= selectedTimeInts[0] &&
+          selectedTimeInts[selectedTimeInts.length - 1] >= currCellTimeInt &&
+          currCellGroup == minGroup
+        ) {
+          res += "selectedCellsLeft ";
+        }
+
+        if (
+          currCellTimeInt >= selectedTimeInts[0] &&
+          selectedTimeInts[selectedTimeInts.length - 1] >= currCellTimeInt &&
+          currCellGroup == maxGroup
+        ) {
+          res += "selectedCellsRight ";
+        }
+
+        if (
+          this.compareGroups(currCellGroup, minGroup) &&
+          this.compareGroups(maxGroup, currCellGroup) &&
+          currCellTimeInt == selectedTimeInts[0]
+        ) {
+          print('res-top')
+
+          res += "selectedCellsTop ";
+        }
+
+        if (
+          this.compareGroups(currCellGroup, minGroup) &&
+          this.compareGroups(maxGroup, currCellGroup) &&
+          currCellTimeInt == selectedTimeInts[selectedTimeInts.length - 1]
+        ) {
+          print('res-bottom')
+          res += "selectedCellsBottom ";
+        }
+      }
+
+
+      return res;
     },
     rightClick() {
       window.oncontextmenu = e => {
+        e.preventDefault()
         let isRightMB;
         e = e || window.event;
         if ("which" in e)
@@ -219,6 +368,7 @@ export default {
     },
     clickCell() {
       window.onclick = e => {
+        e.preventDefault()
         if (/^4[1-4]\d[A-G](a|b|)\d{4}$/.test(e.target.id)) {
           let clickedGroupName;
           if (e.target.id.length == 9) {
@@ -338,7 +488,7 @@ export default {
       this.selectedGroups = [];
     },
     selectedCourse() {
-      console.log('new selected course: ', this.selectedCourse)
+      console.log("new selected course: ", this.selectedCourse);
     }
   }
 };
@@ -388,7 +538,19 @@ td {
   left: 0px;
 }
 
-.selectedCells {
-  border: 5px solid orangered;
+.selectedCellsTop {
+  border-top: 5px solid orangered;
+}
+
+.selectedCellsRight {
+  border-right: 5px solid orangered;
+}
+
+.selectedCellsLeft {
+  border-left: 5px solid orangered;
+}
+
+.selectedCellsBottom {
+  border-bottom: 5px solid orangered;
 }
 </style>
