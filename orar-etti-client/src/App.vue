@@ -24,21 +24,28 @@
       <table class="orar" @click="clickCell(); rightClick()">
         <thead>
           <tr>
-            <th v-for="grupa in ['', ...groupsArray]" :key="grupa.key">{{grupa}}</th>
+            <th v-for="grupa in ['Day', 'Time', ...groupsArray]" :key="grupa.key">{{grupa}}</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(ora, ind_ora) in ore" v-bind:key="ora.id">
-            <template v-for="grupa in ['', ...groupsArray]">
-              <td v-if="grupa == ''" v-bind:key="grupa.id">{{ore[ind_ora]}}</td>
-              <td
-                v-else
-                v-bind:key="grupa.id"
-                :id="grupa + ora.split('-').join('')"
-                :class="assignSelectedClasses(grupa + ora.split('-').join(''))"
-              ></td>
-            </template>
-          </tr>
+          <template v-for="(dayInt, dayIntIndex) in createDayIntTable()">
+            <tr v-bind:key="dayInt.id">
+              <template v-for="grupa in [1, 2, ...groupsArray]">
+                <td
+                  v-if="grupa == 1 && dayIntIndex % ore.length == 0"
+                  v-bind:key="grupa.id"
+                  :rowspan="ore.length"
+                >{{dayInt[0]}}</td>
+                <td v-else-if="grupa == 2" v-bind:key="grupa.id">{{dayInt[1]}}</td>
+                <td
+                  v-else-if="grupa != 1 && grupa != 2"
+                  v-bind:key="grupa.id"
+                  :id="grupa + dayInt[1].split('-').join('') + dayInt[0].substr(0,2)"
+                  :class="assignSelectedClasses(grupa + dayInt[1].split('-').join('') + dayInt[0].substr(0,2))"
+                ></td>
+              </template>
+            </tr>
+          </template>
         </tbody>
       </table>
     </b-row>
@@ -146,6 +153,17 @@ export default {
   components: {},
   computed: {},
   methods: {
+    createDayIntTable: function() {
+      let table = [];
+
+      for (const day of this.dotw.slice(1, this.dotw.length)) {
+        for (const int of this.ore) {
+          table.push([day, int]);
+        }
+      }
+
+      return table;
+    },
     fetchCourses: function() {
       this.$http.get(config.api.courses).then(result => {
         this.allCoursesArray = [];
@@ -266,9 +284,9 @@ export default {
       let res = "";
       let currCellGroup = "";
 
-      if (id.length == 9) {
+      if (id.length == 11) {
         currCellGroup = id.substr(0, 5);
-      } else if (id.length == 8) {
+      } else if (id.length == 10) {
         currCellGroup = id.substr(0, 4);
       }
 
@@ -280,45 +298,53 @@ export default {
       let maxGroup = this.findMaxGroupFromSelected();
       // console.log("min: ", minGroup, " max: ", maxGroup);
 
-      let currCellTimeInt = id.substr(-4, 4);
-      if (this.selectedGroups.length > 0) {
-        if (
-          currCellTimeInt >= selectedTimeInts[0] &&
-          selectedTimeInts[selectedTimeInts.length - 1] >= currCellTimeInt &&
-          currCellGroup == minGroup
-        ) {
-          res += "selectedCellsLeft ";
-        }
+      let currCellTimeInt = id.substr(-6, 4);
+      let currCellDay = id.substr(-2, 2);
 
-        if (
-          currCellTimeInt >= selectedTimeInts[0] &&
-          selectedTimeInts[selectedTimeInts.length - 1] >= currCellTimeInt &&
-          currCellGroup == maxGroup
-        ) {
-          res += "selectedCellsRight ";
-        }
-        // console.log(this.compareGroups(currCellGroup, minGroup))
-        // console.log(this.compareGroups(maxGroup, currCellGroup))
-        // console.log('current cell: ', currCellGroup)
+      if (this.selectedDay != null) {
+        if (currCellDay == this.selectedDay.substr(0, 2)) {
+          if (this.selectedGroups.length > 0) {
+            if (
+              currCellTimeInt >= selectedTimeInts[0] &&
+              selectedTimeInts[selectedTimeInts.length - 1] >=
+                currCellTimeInt &&
+              currCellGroup == minGroup
+            ) {
+              res += "selectedCellsLeft ";
+            }
 
-        // console.log(this.compareGroups(currCellGroup, minGroup))
-        // console.log( this.compareGroups(maxGroup, currCellGroup))
+            if (
+              currCellTimeInt >= selectedTimeInts[0] &&
+              selectedTimeInts[selectedTimeInts.length - 1] >=
+                currCellTimeInt &&
+              currCellGroup == maxGroup
+            ) {
+              res += "selectedCellsRight ";
+            }
+            // console.log(this.compareGroups(currCellGroup, minGroup))
+            // console.log(this.compareGroups(maxGroup, currCellGroup))
+            // console.log('current cell: ', currCellGroup)
 
-        // console.log(currCellTimeInt == selectedTimeInts[0])
-        if (
-          this.compareGroups(currCellGroup, minGroup) &&
-          this.compareGroups(maxGroup, currCellGroup) &&
-          currCellTimeInt == selectedTimeInts[0]
-        ) {
-          res += "selectedCellsTop ";
-        }
+            // console.log(this.compareGroups(currCellGroup, minGroup))
+            // console.log( this.compareGroups(maxGroup, currCellGroup))
 
-        if (
-          this.compareGroups(currCellGroup, minGroup) &&
-          this.compareGroups(maxGroup, currCellGroup) &&
-          currCellTimeInt == selectedTimeInts[selectedTimeInts.length - 1]
-        ) {
-          res += "selectedCellsBottom ";
+            // console.log(currCellTimeInt == selectedTimeInts[0])
+            if (
+              this.compareGroups(currCellGroup, minGroup) &&
+              this.compareGroups(maxGroup, currCellGroup) &&
+              currCellTimeInt == selectedTimeInts[0]
+            ) {
+              res += "selectedCellsTop ";
+            }
+
+            if (
+              this.compareGroups(currCellGroup, minGroup) &&
+              this.compareGroups(maxGroup, currCellGroup) &&
+              currCellTimeInt == selectedTimeInts[selectedTimeInts.length - 1]
+            ) {
+              res += "selectedCellsBottom ";
+            }
+          }
         }
       }
 
@@ -341,11 +367,11 @@ export default {
     },
     clickCell() {
       window.onclick = e => {
-        if (/^4[1-4]\d[A-G](a|b|)\d{4}$/.test(e.target.id)) {
+        if (/^4[1-4]\d[A-G](a|b|)\d{4}[A-Z][a-z]$/.test(e.target.id)) {
           let clickedGroupName;
-          if (e.target.id.length == 9) {
+          if (e.target.id.length == 11) {
             clickedGroupName = e.target.id.substr(0, 5);
-          } else if (e.target.id.length == 8) {
+          } else if (e.target.id.length == 10) {
             clickedGroupName = e.target.id.substr(0, 4);
           } else {
             return console.log("error on click group name length");
@@ -353,13 +379,9 @@ export default {
 
           console.log(clickedGroupName);
           if (this.selectedGroups.includes(clickedGroupName)) {
-            console.log(
-              this.selectedGroups[
-                this.selectedGroups.indexOf(clickedGroupName)
-              ].substr(e.target.id.length - 4, e.target.id.length)
-            );
+            console.log(e.target.id.substr(e.target.id.length - 6, 4));
             if (
-              e.target.id.substr(e.target.id.length - 4, e.target.id.length) ==
+              e.target.id.substr(e.target.id.length - 6, 4) ==
               this.selectedTimeInt
             ) {
               // daca este acelasi interval selectat, sterge-l din selectate
@@ -371,13 +393,14 @@ export default {
               //pass
             }
           } else {
+            for(const day of this.dotw.slice(1, this.dotw.lengh)){
+              if(day.substr(0, 2) == e.target.id.substr(-2, 2))
+                this.selectedDay = day
+            }
             console.log("added new group to selected");
             this.selectedGroups.push(clickedGroupName);
           }
-          this.selectedTimeInt = e.target.id.substr(
-            e.target.id.length - 4,
-            e.target.id.length
-          );
+          this.selectedTimeInt = e.target.id.substr(e.target.id.length - 6, 4);
         }
 
         return e.target.id;
