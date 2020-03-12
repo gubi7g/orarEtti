@@ -129,7 +129,7 @@
           <div>selected start time: {{this.selectedTimeInt.substr(0,2)}}</div>
         </b-row>
       </b-col>
-      <b-col></b-col>
+      <b-col><p>{{(this.compareGroups('414A', '414A') == undefined) ? 'yes' : 'no' }}</p></b-col>
     </b-row>
 
     <!-- <p>{{this.serii}}</p> -->
@@ -215,99 +215,105 @@ export default {
         }
       }
       return selectedTimeInts;
-
     },
     findMinGroupFromSelected() {
-      let min = this.groupsArray[this.groupsArray.length - 1]
-      for(const grupa of this.selectedGroups){
-        if(grupa[3] < min[3]){
+      let min = this.groupsArray[this.groupsArray.length - 1];
+      for (const grupa of this.selectedGroups) {
+      //   if (grupa[3] < min[3]) {
+      //     min = grupa;
+      //   } else if (grupa[3] == min[3]) {
+      //     if (grupa[1] < min[1]) {
+      //       min = grupa;
+      //     } else if (grupa[1] == min[1]) {
+      //       if (grupa[2] < min[2]) {
+      //         min = grupa;
+      //       } else if (grupa[2] == min[2]) {
+      //         if ((grupa.length == min.length) == 5)
+      //           if (grupa[4] < min[4]) min = grupa;
+      //       }
+      //     }
+      //   }
+        if(this.compareGroups(min, grupa))
           min = grupa
-        } else if(grupa[3] == min[3]){
-          if(grupa[1] < min[1]){
-            min = grupa
-          } else if(grupa[1] == min[1]){
-            if(grupa[2] < min[2]){
-              min = grupa
-            } else if(grupa[2] == min[2]){
-              if(grupa.length == min.length == 5)
-                if(grupa[4] < min[4])
-                  min = grupa
-            }
-          }
-        }
       }
 
-      return min
+      return min;
     },
     findMaxGroupFromSelected() {
-      let max = this.groupsArray[0]
-      for(const grupa of this.selectedGroups){
-        if(grupa[3] > max[3]){
+      let max = this.groupsArray[0];
+      for (const grupa of this.selectedGroups) {
+        // if (grupa[3] > max[3]) {
+        //   max = grupa;
+        // } else if (grupa[3] == max[3]) {
+        //   if (grupa[1] > max[1]) {
+        //     max = grupa;
+        //   } else if (grupa[1] == max[1]) {
+        //     if (grupa[2] > max[2]) {
+        //       max = grupa;
+        //     } else if (grupa[2] == max[2]) {
+        //       if ((grupa.length == max.length) == 5)
+        //         if (grupa[4] > max[4]) max = grupa;
+        //     }
+        //   }
+        // }
+        if(this.compareGroups(grupa, max))
           max = grupa
-        } else if(grupa[3] == max[3]){
-          if(grupa[1] > max[1]){
-            max = grupa
-          } else if(grupa[1] == max[1]){
-            if(grupa[2] > max[2]){
-              max = grupa
-            } else if(grupa[2] == max[2]){
-              if(grupa.length == max.length == 5)
-                if(grupa[4] > max[4])
-                  max = grupa
-            }
-          }
-        }
       }
 
-      return max
-
+      return max;
     },
     // is @gr1 >= than @gr2?
-    compareGroups: function(gr1, gr2){
-      if(gr1[3] > gr2[3]){
-        return true
-        } else if(gr1[3] == gr2[3]){
-          if(gr1[1] > gr2[1]){
-            return true
-          } else if(gr1[1] == gr2[1]){
-            if(gr1[2] > gr2[2]){
-              return true
-            } else if(gr1[2] == gr2[2]){
-              if(gr1.length == gr2.length == 5)
-                if(gr1[4] >= gr2[4])
-                  return true
-                else
-                  return false
+    compareGroups: function(gr1, gr2) {
+      if (gr1[1] > gr2[1]) {
+        return true;
+      } else if (gr1[1] == gr2[1]) {
+        if (gr1[3] > gr2[3]) {
+          return true;
+        } else if (gr1[3] == gr2[3]) {
+          if (gr1[2] > gr2[2]) {
+            return true;
+          } else if (gr1[2] == gr2[2]) {
+            if (gr1.length == 5 && gr2.length == 5){
+              if (gr1[4] >= gr2[4]) return true;
+              else return false;
             }
-            else{
-              return false
-            }
+            else return true
+              
+          } else { // gr1[2] < gr2[2] 
+            return false;
           }
-          else {
-            return false
-          }
-        } else {
-          return false
+        } else { // gr1[3] < gr2[3] 
+          return false;
         }
+      } else { // gr[1] < gr2[1]
+        return false;
+      }
     },
     assignSelectedClasses: function(id) {
       let res = "";
-
-      let selectedTimeInts = this.findSelectedTimeInts();
-      // if(selectedTimeInts.length > 0)
-      //   selectedTimeInts.sort();
-
-
       let currCellGroup = "";
-      let minGroup = this.findMinGroupFromSelected()
-      let maxGroup = this.findMaxGroupFromSelected()
 
-      console.log('min: ', minGroup, ' max: ', maxGroup)
       if (id.length == 9) {
         currCellGroup = id.substr(0, 5);
       } else if (id.length == 8) {
         currCellGroup = id.substr(0, 4);
       }
+
+      if(!this.selectedGroups.includes(currCellGroup))
+        return res
+
+
+      let selectedTimeInts = this.findSelectedTimeInts();
+      console.log(selectedTimeInts)
+      // if(selectedTimeInts.length > 0)
+      //   selectedTimeInts.sort();
+
+      let minGroup = this.findMinGroupFromSelected();
+      let maxGroup = this.findMaxGroupFromSelected();
+      console.log("min: ", minGroup, " max: ", maxGroup);
+
+
+      
 
       let currCellTimeInt = id.substr(-4, 4);
       if (this.selectedGroups.length > 0) {
@@ -326,13 +332,20 @@ export default {
         ) {
           res += "selectedCellsRight ";
         }
+        // console.log(this.compareGroups(currCellGroup, minGroup))
+        // console.log(this.compareGroups(maxGroup, currCellGroup))
+        console.log('current cell: ', currCellGroup)
 
+        console.log(this.compareGroups(currCellGroup, minGroup))
+        console.log( this.compareGroups(maxGroup, currCellGroup))
+
+        console.log(currCellTimeInt == selectedTimeInts[0])
         if (
           this.compareGroups(currCellGroup, minGroup) &&
           this.compareGroups(maxGroup, currCellGroup) &&
           currCellTimeInt == selectedTimeInts[0]
         ) {
-          print('res-top')
+          console.log("res-top");
 
           res += "selectedCellsTop ";
         }
@@ -342,17 +355,15 @@ export default {
           this.compareGroups(maxGroup, currCellGroup) &&
           currCellTimeInt == selectedTimeInts[selectedTimeInts.length - 1]
         ) {
-          print('res-bottom')
+          console.log("res-bottom");
           res += "selectedCellsBottom ";
         }
       }
-
 
       return res;
     },
     rightClick() {
       window.oncontextmenu = e => {
-        e.preventDefault()
         let isRightMB;
         e = e || window.event;
         if ("which" in e)
@@ -368,7 +379,6 @@ export default {
     },
     clickCell() {
       window.onclick = e => {
-        e.preventDefault()
         if (/^4[1-4]\d[A-G](a|b|)\d{4}$/.test(e.target.id)) {
           let clickedGroupName;
           if (e.target.id.length == 9) {
@@ -536,6 +546,9 @@ td {
   position: absolute;
   top: 0px;
   left: 0px;
+}
+.selectedCells {
+  border: 5px solid orangered;
 }
 
 .selectedCellsTop {
