@@ -129,7 +129,9 @@
           <div>selected start time: {{this.selectedTimeInt.substr(0,2)}}</div>
         </b-row>
       </b-col>
-      <b-col><p>{{(this.compareGroups('414A', '414A') == undefined) ? 'yes' : 'no' }}</p></b-col>
+      <b-col>
+        <p>{{(this.compareGroups('414A', '414A') == undefined) ? 'yes' : 'no' }}</p>
+      </b-col>
     </b-row>
 
     <!-- <p>{{this.serii}}</p> -->
@@ -219,22 +221,7 @@ export default {
     findMinGroupFromSelected() {
       let min = this.groupsArray[this.groupsArray.length - 1];
       for (const grupa of this.selectedGroups) {
-      //   if (grupa[3] < min[3]) {
-      //     min = grupa;
-      //   } else if (grupa[3] == min[3]) {
-      //     if (grupa[1] < min[1]) {
-      //       min = grupa;
-      //     } else if (grupa[1] == min[1]) {
-      //       if (grupa[2] < min[2]) {
-      //         min = grupa;
-      //       } else if (grupa[2] == min[2]) {
-      //         if ((grupa.length == min.length) == 5)
-      //           if (grupa[4] < min[4]) min = grupa;
-      //       }
-      //     }
-      //   }
-        if(this.compareGroups(min, grupa))
-          min = grupa
+        if (this.compareGroups(min, grupa)) min = grupa;
       }
 
       return min;
@@ -242,22 +229,7 @@ export default {
     findMaxGroupFromSelected() {
       let max = this.groupsArray[0];
       for (const grupa of this.selectedGroups) {
-        // if (grupa[3] > max[3]) {
-        //   max = grupa;
-        // } else if (grupa[3] == max[3]) {
-        //   if (grupa[1] > max[1]) {
-        //     max = grupa;
-        //   } else if (grupa[1] == max[1]) {
-        //     if (grupa[2] > max[2]) {
-        //       max = grupa;
-        //     } else if (grupa[2] == max[2]) {
-        //       if ((grupa.length == max.length) == 5)
-        //         if (grupa[4] > max[4]) max = grupa;
-        //     }
-        //   }
-        // }
-        if(this.compareGroups(grupa, max))
-          max = grupa
+        if (this.compareGroups(grupa, max)) max = grupa;
       }
 
       return max;
@@ -273,19 +245,20 @@ export default {
           if (gr1[2] > gr2[2]) {
             return true;
           } else if (gr1[2] == gr2[2]) {
-            if (gr1.length == 5 && gr2.length == 5){
+            if (gr1.length == 5 && gr2.length == 5) {
               if (gr1[4] >= gr2[4]) return true;
               else return false;
-            }
-            else return true
-              
-          } else { // gr1[2] < gr2[2] 
+            } else return true;
+          } else {
+            // gr1[2] < gr2[2]
             return false;
           }
-        } else { // gr1[3] < gr2[3] 
+        } else {
+          // gr1[3] < gr2[3]
           return false;
         }
-      } else { // gr[1] < gr2[1]
+      } else {
+        // gr[1] < gr2[1]
         return false;
       }
     },
@@ -299,21 +272,13 @@ export default {
         currCellGroup = id.substr(0, 4);
       }
 
-      if(!this.selectedGroups.includes(currCellGroup))
-        return res
-
+      if (!this.selectedGroups.includes(currCellGroup)) return res;
 
       let selectedTimeInts = this.findSelectedTimeInts();
-      console.log(selectedTimeInts)
-      // if(selectedTimeInts.length > 0)
-      //   selectedTimeInts.sort();
 
       let minGroup = this.findMinGroupFromSelected();
       let maxGroup = this.findMaxGroupFromSelected();
-      console.log("min: ", minGroup, " max: ", maxGroup);
-
-
-      
+      // console.log("min: ", minGroup, " max: ", maxGroup);
 
       let currCellTimeInt = id.substr(-4, 4);
       if (this.selectedGroups.length > 0) {
@@ -334,19 +299,17 @@ export default {
         }
         // console.log(this.compareGroups(currCellGroup, minGroup))
         // console.log(this.compareGroups(maxGroup, currCellGroup))
-        console.log('current cell: ', currCellGroup)
+        // console.log('current cell: ', currCellGroup)
 
-        console.log(this.compareGroups(currCellGroup, minGroup))
-        console.log( this.compareGroups(maxGroup, currCellGroup))
+        // console.log(this.compareGroups(currCellGroup, minGroup))
+        // console.log( this.compareGroups(maxGroup, currCellGroup))
 
-        console.log(currCellTimeInt == selectedTimeInts[0])
+        // console.log(currCellTimeInt == selectedTimeInts[0])
         if (
           this.compareGroups(currCellGroup, minGroup) &&
           this.compareGroups(maxGroup, currCellGroup) &&
           currCellTimeInt == selectedTimeInts[0]
         ) {
-          console.log("res-top");
-
           res += "selectedCellsTop ";
         }
 
@@ -355,7 +318,6 @@ export default {
           this.compareGroups(maxGroup, currCellGroup) &&
           currCellTimeInt == selectedTimeInts[selectedTimeInts.length - 1]
         ) {
-          console.log("res-bottom");
           res += "selectedCellsBottom ";
         }
       }
