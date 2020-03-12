@@ -5,50 +5,7 @@
     <img id="ettigif" src="./assets/logo.gif" width="100" />
     <!-- <h1>{{createSerii}}</h1> -->
     <img id="vuelogo" src="./assets/logo.png" width="100" />
-    <h3>Selected Year: {{selectedYear}}</h3>
-    <b-row>
-      <b-col>
-        <b-button @click.stop="selectedYear = 1">An 1</b-button>
-      </b-col>
-      <b-col>
-        <b-button @click.stop="selectedYear = 2">An 2</b-button>
-      </b-col>
-      <b-col>
-        <b-button @click.stop="selectedYear = 3">An 3</b-button>
-      </b-col>
-      <b-col>
-        <b-button @click.stop="selectedYear = 4">An 4</b-button>
-      </b-col>
-    </b-row>
-    <b-row>
-      <table class="orar" @click="clickCell(); rightClick()">
-        <thead>
-          <tr>
-            <th v-for="grupa in ['Day', 'Time', ...groupsArray]" :key="grupa.key">{{grupa}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <template v-for="(dayInt, dayIntIndex) in createDayIntTable()">
-            <tr v-bind:key="dayInt.id">
-              <template v-for="grupa in [1, 2, ...groupsArray]">
-                <td
-                  v-if="grupa == 1 && dayIntIndex % ore.length == 0"
-                  v-bind:key="grupa.id"
-                  :rowspan="ore.length"
-                >{{dayInt[0]}}</td>
-                <td v-else-if="grupa == 2" v-bind:key="grupa.id">{{dayInt[1]}}</td>
-                <td
-                  v-else-if="grupa != 1 && grupa != 2"
-                  v-bind:key="grupa.id"
-                  :id="grupa + dayInt[1].split('-').join('') + dayInt[0].substr(0,2)"
-                  :class="assignSelectedClasses(grupa + dayInt[1].split('-').join('') + dayInt[0].substr(0,2))"
-                ></td>
-              </template>
-            </tr>
-          </template>
-        </tbody>
-      </table>
-    </b-row>
+
     <b-row>
       <b-col cols="8">
         <h1>Edit your course</h1>
@@ -115,30 +72,84 @@
         </b-row>
 
         <b-row>
-          <h1>Please select groups/series:</h1>
-          <b-form-group id="checkbox-serie" text="Courses" class="m-md-2">
-            <b-form-checkbox
-              v-model="allGroupsSelected"
-              :indeterminate="indeterminate"
-              @change="toggleAllGroups"
-            >{{ allGroupsSelected ? 'Un-select all ' : 'Select all ' }}</b-form-checkbox>
+          <b-col>
+            <h1>Please select groups/series:</h1>
+            <b-form-group id="checkbox-serie" text="Courses" class="m-md-2">
+              <b-form-checkbox
+                v-model="allGroupsSelected"
+                :indeterminate="indeterminate"
+                @change="toggleAllGroups"
+              >{{ allGroupsSelected ? 'Un-select all ' : 'Select all ' }}</b-form-checkbox>
 
-            <b-form-checkbox-group v-model="selectedGroups" :options="groupsArray"></b-form-checkbox-group>
-          </b-form-group>
-          <div>
-            Selected:
-            <strong>{{ selectedGroups }}</strong>
-            <br />All Selected:
-            <strong>{{ allGroupsSelected }}</strong>
-            <br />Indeterminate:
-            <strong>{{ indeterminate }}</strong>
-          </div>
-          <div>selected start time: {{this.selectedTimeInt.substr(0,2)}}</div>
+              <b-form-checkbox-group v-model="selectedGroups" :options="groupsArray"></b-form-checkbox-group>
+            </b-form-group>
+          </b-col>
+          <b-col>
+            <div>
+              Selected groups:
+              <strong>{{ selectedGroups }}</strong>
+              <br />All Selected:
+              <strong>{{ allGroupsSelected }}</strong>
+              <br />Indeterminate:
+              <strong>{{ indeterminate }}</strong>
+            </div>
+          </b-col>
+          <b-col>
+            <h1>selected start time: {{this.selectedTimeInt.substr(0,2)}}</h1>
+          </b-col>
+          <b-col>
+            <h1>selected day: {{this.selectedDay}}</h1>
+          </b-col>
         </b-row>
       </b-col>
       <b-col>
         <p>{{(this.compareGroups('414A', '414A') == undefined) ? 'yes' : 'no' }}</p>
       </b-col>
+    </b-row>
+
+    <h3>Selected Year: {{selectedYear}}</h3>
+    <b-row>
+      <b-col>
+        <b-button @click.stop="selectedYear = 1">An 1</b-button>
+      </b-col>
+      <b-col>
+        <b-button @click.stop="selectedYear = 2">An 2</b-button>
+      </b-col>
+      <b-col>
+        <b-button @click.stop="selectedYear = 3">An 3</b-button>
+      </b-col>
+      <b-col>
+        <b-button @click.stop="selectedYear = 4">An 4</b-button>
+      </b-col>
+    </b-row>
+    <b-row>
+      <table class="orar" @click="clickCell(); rightClick()">
+        <thead>
+          <tr>
+            <th v-for="grupa in ['Day', 'Time', ...groupsArray]" :key="grupa.key">{{grupa}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template v-for="(dayInt, dayIntIndex) in createDayIntTable()">
+            <tr v-bind:key="dayInt.id">
+              <template v-for="grupa in [1, 2, ...groupsArray]">
+                <td
+                  v-if="grupa == 1 && dayIntIndex % ore.length == 0"
+                  v-bind:key="grupa.id"
+                  :rowspan="ore.length"
+                >{{dayInt[0]}}</td>
+                <td v-else-if="grupa == 2" v-bind:key="grupa.id">{{dayInt[1]}}</td>
+                <td
+                  v-else-if="grupa != 1 && grupa != 2"
+                  v-bind:key="grupa.id"
+                  :id="grupa + dayInt[1].split('-').join('') + dayInt[0].substr(0,2)"
+                  :class="assignSelectedClasses(grupa + dayInt[1].split('-').join('') + dayInt[0].substr(0,2))"
+                ></td>
+              </template>
+            </tr>
+          </template>
+        </tbody>
+      </table>
     </b-row>
 
     <!-- <p>{{this.serii}}</p> -->
@@ -379,28 +390,46 @@ export default {
 
           console.log(clickedGroupName);
           if (this.selectedGroups.includes(clickedGroupName)) {
+            // daca este deja in grupele selectate
             console.log(e.target.id.substr(e.target.id.length - 6, 4));
-            if (
-              e.target.id.substr(e.target.id.length - 6, 4) ==
-              this.selectedTimeInt
-            ) {
-              // daca este acelasi interval selectat, sterge-l din selectate
-              this.selectedGroups.splice(
-                this.selectedGroups.indexOf(clickedGroupName),
-                1
-              );
+            if (this.selectedDay.substr(0, 2) == e.target.id.substr(-2, 2)) {
+              // clicul este facut in aceeasi zi
+              console.log(this.selectedDay.substr(0, 2));
+              console.log(e.target.id.substr(-2, 2));
+              if (
+                e.target.id.substr(e.target.id.length - 6, 4) ==
+                this.selectedTimeInt
+              ) {
+                // daca este acelasi interval selectat SI aceeasi zi, sterge-l din selectate
+                this.selectedGroups.splice(
+                  this.selectedGroups.indexOf(clickedGroupName),
+                  1
+                );
+              } else {
+                for (const day of this.dotw.slice(1, this.dotw.lengh)) {
+                  // primul element e junk pt dropdown
+                  if (day.substr(0, 2) == e.target.id.substr(-2, 2))
+                    this.selectedDay = day;
+                }
+                //pass
+              }
             } else {
-              //pass
+              // we have to modify the entry with the same group
             }
           } else {
-            for(const day of this.dotw.slice(1, this.dotw.lengh)){
-              if(day.substr(0, 2) == e.target.id.substr(-2, 2))
-                this.selectedDay = day
-            }
             console.log("added new group to selected");
             this.selectedGroups.push(clickedGroupName);
           }
+
+          // intervalul selectat si ziua selectata trebuie neaparat schimbate DUPA verificare pt a pastra valoarea zilei/intervalului selectat
           this.selectedTimeInt = e.target.id.substr(e.target.id.length - 6, 4);
+
+          // facem schimbarea de zi in afara conditiei
+          for (const day of this.dotw.slice(1, this.dotw.lengh)) {
+            // primul element e junk pt dropdown
+            if (day.substr(0, 2) == e.target.id.substr(-2, 2))
+              this.selectedDay = day;
+          }
         }
 
         return e.target.id;
