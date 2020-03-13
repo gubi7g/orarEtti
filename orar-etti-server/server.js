@@ -1,13 +1,15 @@
 const express = require('express')
 const mysql = require('mysql')
 const config = require('./config.json')
-var cors = require('cors')
+const cors = require('cors')
 
 
 const app = express()
 app.use(cors())
+app.use(express.json())
 
-var db = mysql.createConnection({
+
+const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   database: 'orarEtti'
@@ -51,9 +53,6 @@ app.get('/createtables', (req, res) => {
     console.log('group_classes created')
 
   })
-
-
-
 
   // insert dummy data
   grupe_example = []
@@ -120,6 +119,12 @@ app.get('/api/getcourses/', (req, res) => {
     if (err) throw err
     res.send(result)
   })
+})
+
+app.post('/admin/newclass/', (req, res) => {
+  console.log('got a new reservation request...')
+  console.log(req.body)
+  res.status(200).send('Reservation registered!')
 })
 
 // app.get('/api/:table/', (req, res) => {

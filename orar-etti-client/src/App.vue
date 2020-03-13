@@ -151,7 +151,7 @@
         </tbody>
       </table>
       <div :style="findFloatingButtonPosition()" id="floatingDiv">
-        <button>BRUUH</button>
+        <b-button @click="postReservation()">Send</b-button>
       </div>
     </b-row>
 
@@ -170,11 +170,6 @@ export default {
     findFloatingButtonPosition: function() {
       let maxGroup = this.findMaxGroupFromSelected();
       if (this.findSelectedTimeInts().length > 0) {
-        // console.log(
-        //   maxGroup +
-        //     this.findSelectedTimeInts().pop() +
-        //     this.selectedDay.substr(0, 2)
-        // );
 
         if (this.selectedTimeInt) {
           let closestCell = document.getElementById(
@@ -195,9 +190,38 @@ export default {
           // );
 
           return `position:absolute; z-index:10; top:${y +
-            50}px; left:${x}px; border:2px solid #c00; background-color:#fff;`;
+            50}px; left:${x}px`;
         }
       }
+    },
+
+    postReservation: function() {
+      console.log({
+        name: this.selectedCourse,
+        duration: this.selectedDuration,
+        day: this.selectedDay,
+        startTime: this.findSelectedTimeInts()[0].substr(0, 2),
+        endTime: this.findSelectedTimeInts()[this.findSelectedTimeInts().length - 1].substr(2, 2),
+        prof: this.loggedProf,
+        room: this.selectedRoom,
+        groups: this.selectedGroups
+      })
+      let newClass = {
+        name: this.selectedCourse,
+        duration: this.selectedDuration,
+        day: this.selectedDay,
+        startTime: this.findSelectedTimeInts()[0].substr(0, 2),
+        endTime: this.findSelectedTimeInts()[this.findSelectedTimeInts().length - 1].substr(2, 2),
+        prof: this.loggedProf,
+        room: this.selectedRoom,
+        groups: this.selectedGroups
+      }
+      this.$http.post(config.admin.newclass, newClass)
+        .then(response => {
+          console.log(response)
+          console.log('succesfully reserved interval')
+        })
+        .catch(err => { console.log(err) })
     },
 
     createDayIntTable: function() {
@@ -343,7 +367,6 @@ export default {
 
       return res;
     },
-
     assignSelectedClasses: function(id) {
       let res = "";
       let currCellGroup = "";
@@ -552,7 +575,9 @@ export default {
       selectedSeries: null,
       allCoursesArray: [],
       coursesArray: [],
-      selectedDuration: 2
+      selectedDuration: 2,
+      loggedProf: null,
+      selectedRoom: null
     };
   },
   watch: {
