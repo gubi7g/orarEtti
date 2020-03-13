@@ -150,6 +150,9 @@
           </template>
         </tbody>
       </table>
+      <div :style="findFloatingButtonPosition()" id="floatingDiv">
+        <button>BRUUH</button>
+      </div>
     </b-row>
 
     <!-- <p>{{this.serii}}</p> -->
@@ -164,6 +167,39 @@ export default {
   components: {},
   computed: {},
   methods: {
+    findFloatingButtonPosition: function() {
+      let maxGroup = this.findMaxGroupFromSelected();
+      if (this.findSelectedTimeInts().length > 0) {
+        // console.log(
+        //   maxGroup +
+        //     this.findSelectedTimeInts().pop() +
+        //     this.selectedDay.substr(0, 2)
+        // );
+
+        if (this.selectedTimeInt) {
+          let closestCell = document.getElementById(
+            maxGroup +
+              this.findSelectedTimeInts().pop() +
+              this.selectedDay.substr(0, 2)
+          );
+
+          let x = Math.round(
+            window.scrollX + closestCell.getBoundingClientRect().left
+          );
+          let y = Math.round(
+            window.scrollY + closestCell.getBoundingClientRect().top
+          );
+          // console.log(x, y);
+          // console.log(
+          //   `position:absolute; z-index:10; top:${y+50}px; left:${x}px; border:2px solid #c00; background-color:#fff;`
+          // );
+
+          return `position:absolute; z-index:10; top:${y +
+            50}px; left:${x}px; border:2px solid #c00; background-color:#fff;`;
+        }
+      }
+    },
+
     createDayIntTable: function() {
       let table = [];
 
@@ -242,9 +278,11 @@ export default {
             .toString()
             .padStart(2, "0");
 
+            if(startTimeSelected >= '21') break
           selectedTimeInts.push(startTimeSelected + endTimeSelected);
         }
       }
+      console.log(selectedTimeInts);
       return selectedTimeInts;
     },
     findMinGroupFromSelected() {
@@ -291,9 +329,26 @@ export default {
         return false;
       }
     },
+    getGroupsBetweenMinMax: function() {
+      let res = [];
+      let minGroup = this.findMinGroupFromSelected();
+      let maxGroup = this.findMaxGroupFromSelected();
+
+      let indStart = this.groupsArray.indexOf(minGroup);
+      let indEnd = this.groupsArray.indexOf(maxGroup);
+
+      for (let i = indStart + 1; i < indEnd; i++) {
+        res.push(this.groupsArray[i]);
+      }
+
+      return res;
+    },
+
     assignSelectedClasses: function(id) {
       let res = "";
       let currCellGroup = "";
+      let currCellTimeInt = id.substr(-6, 4);
+      let currCellDay = id.substr(-2, 2);
 
       if (id.length == 11) {
         currCellGroup = id.substr(0, 5);
@@ -301,16 +356,25 @@ export default {
         currCellGroup = id.substr(0, 4);
       }
 
-      if (!this.selectedGroups.includes(currCellGroup)) return res;
+
+      if(this.selectedDay && currCellDay != this.selectedDay.substr(0, 2))
+        return res
+
+      if (!this.selectedGroups.includes(currCellGroup)) {
+        if (!this.getGroupsBetweenMinMax().includes(currCellGroup)) {
+          return res;
+        }
+        for (const group of this.getGroupsBetweenMinMax())
+          this.selectedGroups.push(group);
+      }
 
       let selectedTimeInts = this.findSelectedTimeInts();
 
       let minGroup = this.findMinGroupFromSelected();
       let maxGroup = this.findMaxGroupFromSelected();
-      // console.log("min: ", minGroup, " max: ", maxGroup);
+      console.log("min: ", minGroup, " max: ", maxGroup);
 
-      let currCellTimeInt = id.substr(-6, 4);
-      let currCellDay = id.substr(-2, 2);
+      
 
       if (this.selectedDay != null) {
         if (currCellDay == this.selectedDay.substr(0, 2)) {
@@ -401,6 +465,9 @@ export default {
                 this.selectedTimeInt
               ) {
                 // daca este acelasi interval selectat SI aceeasi zi, sterge-l din selectate
+                if (this.getGroupsBetweenMinMax().includes(clickedGroupName)) {
+                  this.selectedGroups = [];
+                }
                 this.selectedGroups.splice(
                   this.selectedGroups.indexOf(clickedGroupName),
                   1
@@ -579,5 +646,15 @@ td {
 
 .selectedCellsBottom {
   border-bottom: 5px solid orangered;
+}
+
+.floatingDiv {
+  position: absolute;
+  z-index: 10;
+  top: 30px;
+  left: 50px;
+  border: 3px solid #c00;
+  background-color: #fff;
+  width: 300px;
 }
 </style>
