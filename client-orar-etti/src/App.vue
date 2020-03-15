@@ -184,10 +184,6 @@ export default {
           let y = Math.round(
             window.scrollY + closestCell.getBoundingClientRect().top
           );
-          // console.log(x, y);
-          // console.log(
-          //   `position:absolute; z-index:10; top:${y+50}px; left:${x}px; border:2px solid #c00; background-color:#fff;`
-          // );
 
           return `position:absolute; z-index:10; top:${y +
             50}px; left:${x}px`;
@@ -467,6 +463,8 @@ export default {
       window.onclick = e => {
         if (/^4[1-4]\d[A-G](a|b|)\d{4}[A-Z][a-z]$/.test(e.target.id)) {
           let clickedGroupName;
+          let clickedInt
+          let clickedDay
           if (e.target.id.length == 11) {
             clickedGroupName = e.target.id.substr(0, 5);
           } else if (e.target.id.length == 10) {
@@ -475,19 +473,22 @@ export default {
             return console.log("error on click group name length");
           }
 
+          clickedDay = e.target.id.substr(-2, 2)
+          clickedInt = e.target.id.substr(e.target.id.length - 6, 4)
+
           console.log(clickedGroupName);
           if (this.selectedGroups.includes(clickedGroupName)) {
             // daca este deja in grupele selectate
-            console.log(e.target.id.substr(e.target.id.length - 6, 4));
-            if (this.selectedDay.substr(0, 2) == e.target.id.substr(-2, 2)) {
-              // clicul este facut in aceeasi zi
+            console.log(clickedInt);
+            if (this.selectedDay.substr(0, 2) == clickedDay) {
+              // daca clickul este in aceeasi zi
               console.log(this.selectedDay.substr(0, 2));
-              console.log(e.target.id.substr(-2, 2));
+              console.log(clickedDay);
               if (
-                e.target.id.substr(e.target.id.length - 6, 4) ==
+                clickedInt ==
                 this.selectedTimeInt
               ) {
-                // daca este acelasi interval selectat SI aceeasi zi, sterge-l din selectate
+                // daca este SI acelasi interval selectat (pe langa aceeasi zi), sterge-l din selectate
                 if (this.getGroupsBetweenMinMax().includes(clickedGroupName)) {
                   this.selectedGroups = [];
                 }
@@ -495,10 +496,10 @@ export default {
                   this.selectedGroups.indexOf(clickedGroupName),
                   1
                 );
-              } else {
+              } else { // daca este in aceeasi zi dar alt interval
                 for (const day of this.dotw.slice(1, this.dotw.lengh)) {
                   // primul element e junk pt dropdown
-                  if (day.substr(0, 2) == e.target.id.substr(-2, 2))
+                  if (day.substr(0, 2) == clickedDay)
                     this.selectedDay = day;
                 }
                 //pass
@@ -512,12 +513,12 @@ export default {
           }
 
           // intervalul selectat si ziua selectata trebuie neaparat schimbate DUPA verificare pt a pastra valoarea zilei/intervalului selectat
-          this.selectedTimeInt = e.target.id.substr(e.target.id.length - 6, 4);
+          this.selectedTimeInt = clickedInt
 
           // facem schimbarea de zi in afara conditiei
           for (const day of this.dotw.slice(1, this.dotw.lengh)) {
             // primul element e junk pt dropdown
-            if (day.substr(0, 2) == e.target.id.substr(-2, 2))
+            if (day.substr(0, 2) == clickedDay)
               this.selectedDay = day;
           }
         }
