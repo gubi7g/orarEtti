@@ -123,7 +123,7 @@
       </b-col>
     </b-row>
     <b-row>
-      <table class="orar" @click="clickCell(); rightClick()">
+      <table class="orar" @click="clickCell(); dblClk()">
         <thead>
           <tr>
             <th v-for="grupa in ['Day', 'Time', ...groupsArray]" :key="grupa.key">{{grupa}}</th>
@@ -167,8 +167,24 @@ export default {
   components: {},
   computed: {},
   methods: {
+    getCellProps(id) {
+      let currCellTimeInt = id.substr(-6, 4);
+      let currCellDay = id.substr(-2, 2);
+      let currCellGroup
+      if (id.length == 11) {
+        currCellGroup = id.substr(0, 5);
+      } else if (id.length == 10) {
+        currCellGroup = id.substr(0, 4);
+      }
+
+      for(const day of this.dotw){
+        if(day.substr(0, 2) == currCellDay) currCellDay = day.substr(0, 2)
+      }
+
+      return {group: currCellGroup, timeInt: currCellTimeInt, day: currCellDay}
+    },
     findFloatingButtonPosition: function() {
-      let maxGroup = this.findMaxGroupFromSelected();
+      let maxGroup = this.findMaxGroupFromSelected(this.selectedGroups);
       if (this.findSelectedTimeInts().length > 0) {
 
         if (this.selectedTimeInt) {
@@ -190,7 +206,6 @@ export default {
         }
       }
     },
-
     postReservation: function() {
       console.log({
         name: this.selectedCourse,
@@ -219,7 +234,6 @@ export default {
         })
         .catch(err => { console.log(err) })
     },
-
     createDayIntTable: function() {
       let table = [];
 
@@ -305,17 +319,17 @@ export default {
       console.log(selectedTimeInts);
       return selectedTimeInts;
     },
-    findMinGroupFromSelected() {
-      let min = this.groupsArray[this.groupsArray.length - 1];
-      for (const grupa of this.selectedGroups) {
+    findMinGroupFromSelected(x) {
+      let min = this.groupsArray[this.groupsArray.length - 1]; // initialize with max group
+      for (const grupa of x) {
         if (this.compareGroups(min, grupa)) min = grupa;
       }
 
       return min;
     },
-    findMaxGroupFromSelected() {
+    findMaxGroupFromSelected(x) {
       let max = this.groupsArray[0];
-      for (const grupa of this.selectedGroups) {
+      for (const grupa of x) {
         if (this.compareGroups(grupa, max)) max = grupa;
       }
 
@@ -349,10 +363,10 @@ export default {
         return false;
       }
     },
-    getGroupsBetweenMinMax: function() {
+    getGroupsBetweenMinMax: function(x) {
       let res = [];
-      let minGroup = this.findMinGroupFromSelected();
-      let maxGroup = this.findMaxGroupFromSelected();
+      let minGroup = this.findMinGroupFromSelected(x);
+      let maxGroup = this.findMaxGroupFromSelected(x);
 
       let indStart = this.groupsArray.indexOf(minGroup);
       let indEnd = this.groupsArray.indexOf(maxGroup);
@@ -380,17 +394,19 @@ export default {
         return res
 
       if (!this.selectedGroups.includes(currCellGroup)) {
-        if (!this.getGroupsBetweenMinMax().includes(currCellGroup)) {
-          return res;
-        }
-        for (const group of this.getGroupsBetweenMinMax())
-          this.selectedGroups.push(group);
+        return res
+        // if (!this.getGroupsBetweenMinMax().includes(currCellGroup)) {
+        //   return res;
+        // }
+        // asta trebuie mutata in click stanga: 
+        // for (const group of this.getGroupsBetweenMinMax())
+        //   this.selectedGroups.push(group);
       }
 
       let selectedTimeInts = this.findSelectedTimeInts();
 
-      let minGroup = this.findMinGroupFromSelected();
-      let maxGroup = this.findMaxGroupFromSelected();
+      let minGroup = this.findMinGroupFromSelected(this.selectedGroups);
+      let maxGroup = this.findMaxGroupFromSelected(this.selectedGroups);
       console.log("min: ", minGroup, " max: ", maxGroup);
 
       
@@ -446,8 +462,8 @@ export default {
     },
     rightClick() {
       window.oncontextmenu = e => {
-        let isRightMB;
-        e = e || window.event;
+        let isRightMB
+        e = e || window.event
         if ("which" in e)
           // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
           isRightMB = e.which == 3;
@@ -455,76 +471,128 @@ export default {
           // IE, Opera
           isRightMB = e.button == 2;
 
-        if (isRightMB) this.selectedGroups = [];
+        if (isRightMB){
+          if (/^4[1-4]\d[A-G](a|b|)\d{4}[A-Z][a-z]$/.test(e.target.id)) {
+            let clickedGroupName;
+            let clickedInt
+            let clickedDay
+            if (e.target.id.length == 11) {
+              clickedGroupName = e.target.id.substr(0, 5);
+            } else if (e.target.id.length == 10) {
+              clickedGroupName = e.target.id.substr(0, 4);
+            } else {
+              return console.log("error on click group name length");
+            }
+
+            clickedDay = e.target.id.substr(-2, 2)
+            clickedInt = e.target.id.substr(e.target.id.length-6, 4)
+
+            if (this.selectedGroups.includes(clickedGroupName)) {
+              // daca este deja in grupele selectate
+              console.log(clickedInt);
+              if (this.selectedDay.substr(0, 2) == clickedDay) {
+                // daca clickul este in aceeasi zi
+                console.log(this.selectedDay.substr(0, 2))
+                console.log(clickedDay)
+                if (clickedInt == this.selectedTimeInt) { // daca este SI acelasi interval selectat (pe langa aceeasi zi), sterge-l din selectate
+                  this.selectedGroupsRMB.splice(this.selectedGroupsRMB.indexOf(clickedGroupName), 1)
+                }
+              }
+            } else {
+              console.log("added new group to selected RMB");
+              this.selectedGroupsRMB.push(clickedGroupName);
+            }
+
+            // no matter what cell is clicked, we update selectedTimeInt and selectedDay after each click.
+            this.selectedTimeInt = clickedInt
+
+            // facem schimbarea de zi in afara conditiei
+            for (const day of this.dotw.slice(1, this.dotw.lengh)) {
+              // primul element e junk pt dropdown
+              if (day.substr(0, 2) == clickedDay)
+                this.selectedDay = day;
+            }
+          }
+        }
         return false;
-      };
+      }
     },
     clickCell() {
       window.onclick = e => {
-        if (/^4[1-4]\d[A-G](a|b|)\d{4}[A-Z][a-z]$/.test(e.target.id)) {
-          let clickedGroupName;
-          let clickedInt
-          let clickedDay
-          if (e.target.id.length == 11) {
-            clickedGroupName = e.target.id.substr(0, 5);
-          } else if (e.target.id.length == 10) {
-            clickedGroupName = e.target.id.substr(0, 4);
-          } else {
-            return console.log("error on click group name length");
-          }
-
-          clickedDay = e.target.id.substr(-2, 2)
-          clickedInt = e.target.id.substr(e.target.id.length - 6, 4)
-
-          console.log(clickedGroupName);
-          if (this.selectedGroups.includes(clickedGroupName)) {
-            // daca este deja in grupele selectate
-            console.log(clickedInt);
-            if (this.selectedDay.substr(0, 2) == clickedDay) {
-              // daca clickul este in aceeasi zi
-              console.log(this.selectedDay.substr(0, 2));
-              console.log(clickedDay);
-              if (
-                clickedInt ==
-                this.selectedTimeInt
-              ) {
-                // daca este SI acelasi interval selectat (pe langa aceeasi zi), sterge-l din selectate
-                if (this.getGroupsBetweenMinMax().includes(clickedGroupName)) {
-                  this.selectedGroups = [];
-                }
-                this.selectedGroups.splice(
-                  this.selectedGroups.indexOf(clickedGroupName),
-                  1
-                );
-              } else { // daca este in aceeasi zi dar alt interval
-                for (const day of this.dotw.slice(1, this.dotw.lengh)) {
-                  // primul element e junk pt dropdown
-                  if (day.substr(0, 2) == clickedDay)
-                    this.selectedDay = day;
-                }
-                //pass
+        this.prevent = false
+        this.maybeDblClick = setTimeout(() =>  {
+          if(!this.prevent){
+            if (/^4[1-4]\d[A-G](a|b|)\d{4}[A-Z][a-z]$/.test(e.target.id)) {
+              let clickedGroupName;
+              let clickedInt
+              let clickedDay
+              if (e.target.id.length == 11) {
+                clickedGroupName = e.target.id.substr(0, 5);
+              } else if (e.target.id.length == 10) {
+                clickedGroupName = e.target.id.substr(0, 4);
+              } else {
+                return console.log("error on click group name length");
               }
-            } else {
-              // we have to modify the entry with the same group
+
+              clickedDay = e.target.id.substr(-2, 2)
+              clickedInt = e.target.id.substr(e.target.id.length-6, 4)
+
+              console.log(clickedGroupName);
+              if (this.selectedGroups.includes(clickedGroupName)) {
+                // daca este deja in grupele selectate
+                console.log(clickedInt);
+                if (this.selectedDay.substr(0, 2) == clickedDay) {
+                  // daca clickul este in aceeasi zi
+                  console.log(this.selectedDay.substr(0, 2))
+                  console.log(clickedDay)
+                  if (clickedInt == this.selectedTimeInt) { // daca este SI acelasi interval selectat (pe langa aceeasi zi), sterge-l din selectate
+                    
+                    if(this.selectedGroupsLMB.includes(clickedGroupName)){ // daca a fost selectata cu click stanga inainte si acum dai click stanga pe ea
+                      if (this.getGroupsBetweenMinMax(this.selectedGroupsLMB).includes(clickedGroupName)) { // daca este click in mijloc, sterge tot 
+                        this.selectedGroupsLMB = [];
+                      }
+                      else{ // daca este la margini
+                        this.selectedGroupsLMB.splice(this.selectedGroupsLMB.indexOf(clickedGroupName), 1) // daca este la margini, sterge doar pe ea
+                      }
+                    }
+
+                    else if(this.selectedGroupsRMB.includes(clickedGroupName))  // daca a fost selectata cu click dreapta inainte si acum dai click stanga pe ea, sterge-o
+                      this.selectedGroupsRMB.splice(this.selectedGroupsRMB.indexOf(clickedGroupName), 1)
+                  }
+                }
+              } else {
+                console.log("added new group to selected");
+                this.selectedGroupsLMB.push(clickedGroupName);
+                if(this.selectedGroupsLMB.length > 1) {
+                  for(const group of this.getGroupsBetweenMinMax(this.selectedGroupsLMB))
+                    this.selectedGroupsLMB.push(group)
+                }
+              }
+
+              // no matter what cell is clicked, we update selectedTimeInt and selectedDay after each click.
+              this.selectedTimeInt = clickedInt
+
+              // facem schimbarea de zi in afara conditiei
+              for (const day of this.dotw.slice(1, this.dotw.lengh)) {
+                // primul element e junk pt dropdown
+                if (day.substr(0, 2) == clickedDay)
+                  this.selectedDay = day;
+              }
             }
-          } else {
-            console.log("added new group to selected");
-            this.selectedGroups.push(clickedGroupName);
+
+            return
           }
-
-          // intervalul selectat si ziua selectata trebuie neaparat schimbate DUPA verificare pt a pastra valoarea zilei/intervalului selectat
-          this.selectedTimeInt = clickedInt
-
-          // facem schimbarea de zi in afara conditiei
-          for (const day of this.dotw.slice(1, this.dotw.lengh)) {
-            // primul element e junk pt dropdown
-            if (day.substr(0, 2) == clickedDay)
-              this.selectedDay = day;
-          }
-        }
-
-        return e.target.id;
+        }, 200)
+        
       };
+    },
+    dblClk() {
+      
+      window.ondblclick = () => {
+        this.prevent = true
+        clearTimeout(this.maybeDblClick)
+        console.log('sike! dbl click')
+      }
     },
     toggleAllGroups(checked) {
       this.selectedGroups = checked ? this.groupsArray.slice() : [];
@@ -568,17 +636,20 @@ export default {
       allGroupsSelected: false,
       indeterminate: false,
       selectedCourse: null,
-      currentSerie: {},
       selectedTimeInt: "",
       selectedYear: 1,
-      selectedGroupsIds: [],
       selectedClass: "",
       selectedSeries: null,
       allCoursesArray: [],
       coursesArray: [],
       selectedDuration: 2,
       loggedProf: null,
-      selectedRoom: null
+      selectedRoom: null,
+      selectedGroupsRMB: [],
+      selectedGroupsLMB: [],
+      maybeDblClick: 0,
+      prevent: false,
+      clickSelection: []
     };
   },
   watch: {
@@ -598,14 +669,22 @@ export default {
     selectedYear() {
       this.filterGroupsArray();
       this.filterCoursesArray();
-      this.selectedGroups = [];
+      this.selectedGroupsLMB = [];
+      this.selectedGroupsRMB = [];
     },
     selectedSeries() {
       this.filterGroupsArray();
-      this.selectedGroups = [];
+      this.selectedGroupsLMB = [];
+      this.selectedGroupsRMB = [];
     },
     selectedCourse() {
       console.log("new selected course: ", this.selectedCourse);
+    },
+    selectedGroupsRMB() {
+      this.selectedGroups = [...this.selectedGroupsLMB, ...this.selectedGroupsRMB]
+    },
+    selectedGroupsLMB() {
+      this.selectedGroups = [...this.selectedGroupsLMB, ...this.selectedGroupsRMB]
     }
   }
 };
