@@ -164,6 +164,11 @@ export default {
   components: {},
   computed: {},
   methods: {
+    placeReservedClasses() {
+      for(const cls of this.allReservedClasses){
+        console.log(cls)
+      }
+    },
     getCellProps(id) {
       let currCellTimeInt = id.substr(-6, 4);
       let currCellDay = id.substr(-2, 2);
@@ -183,8 +188,8 @@ export default {
 
       return {group: currCellGroup, timeInt: currCellTimeInt, day: currCellDay}
     },
-    getId(props){
-      return props.currCellGroup + props.currCellDay + props.currCellTimeInt
+    createIdFromClass(group, day, start, stop){
+      return 'class' + group + start.substr(0,2) + stop.substr(0,2) + day.substr(0, 2)
     },
     findFloatingButtonPosition: function() {
       let maxGroup = this.findMaxGroupFromSelected(this.selectedGroups);
@@ -297,6 +302,7 @@ export default {
     fetchClasses: function() {
       this.$http.get(config.api.classes).then(result => {
         console.log('all classes: ', result.data);
+        this.allReservedClasses = result.data
       })
     },
     filterGroupsArray() {
@@ -645,7 +651,6 @@ export default {
       selectedCourse: null,
       selectedTimeInt: "",
       selectedYear: 1,
-      selectedClass: "",
       selectedSeries: null,
       allCoursesArray: [],
       coursesArray: [],
@@ -658,7 +663,8 @@ export default {
       prevent: false,
       clickSelection: [],
       selectedGroupsInt: [],
-      selectedGroupsUnique: []
+      selectedGroupsUnique: [],
+      allReservedClasses: []
     };
   },
   watch: {

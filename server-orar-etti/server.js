@@ -37,8 +37,21 @@ app.get('/createtables', (req, res) => {
     if (err) {
       console.log(err)
       res.status(409).send('table already exists')
+
     }
     console.log('courses created')
+
+    courses_type = ['seminar', 'curs', 'lab', 'proiect', 'sport']
+    courses_example = []
+    for (let i = 0; i < 10; i++) {
+      courses_example.push([Math.random().toString(36).substr(10), Math.round(Math.random() * 3 + 1), courses_type[Math.round(Math.random() * 4)]])
+    }
+    sql = 'INSERT INTO courses (name, an, course_type) VALUES ?'
+    db.query(sql, [courses_example], (err, result) => {
+      if (err) throw err
+      console.log(`added ${result.affectedRows} entries in courses.`)
+      res.send('succesfully created tables')
+    })
   })
 
   sql = 'CREATE TABLE IF NOT EXISTS contributors(id int primary key AUTO_INCREMENT, name varchar(255), email varchar(255), password varchar(255), contributor_type varchar(255), teached_courses varchar(255), bio varchar(255))'
@@ -57,9 +70,28 @@ app.get('/createtables', (req, res) => {
       res.status(409).send('table already exists')
     }
     console.log('groups created')
+
+    grupe_example = []
+    for (grupa of config.grupe) {
+      let currSerie = ''
+      if (grupa.length == 5) {
+        currSerie = grupa.slice(-2)[0];
+      }
+      if (grupa.length == 4) {
+        currSerie = grupa.slice(-1);
+      }
+      grupe_example.push([grupa, Math.round(Math.random() * 100), currSerie])
+    }
+
+    sql = 'INSERT IGNORE INTO groups (name, size, series) VALUES ?'
+    db.query(sql, [grupe_example], (err, result) => {
+      if (err) throw err
+      console.log(`added ${result.affectedRows} entries in classes.`)
+
+    })
   })
 
-  sql = 'CREATE TABLE IF NOT EXISTS group_classes(group_id int primary key, class_id int)'
+  sql = 'CREATE TABLE IF NOT EXISTS group_classes(group_id int, class_id int)'
   db.query(sql, (err, result) => {
     if (err) {
       console.log(err)
@@ -70,36 +102,9 @@ app.get('/createtables', (req, res) => {
   })
 
   // insert dummy data
-  grupe_example = []
-  for (grupa of config.grupe) {
-    let currSerie = ''
-    if (grupa.length == 5) {
-      currSerie = grupa.slice(-2)[0];
-    }
-    if (grupa.length == 4) {
-      currSerie = grupa.slice(-1);
-    }
-    grupe_example.push([grupa, Math.round(Math.random() * 100), currSerie])
-  }
 
-  sql = 'INSERT INTO groups (name, size, series) VALUES ?'
-  db.query(sql, [grupe_example], (err, result) => {
-    if (err) throw err
-    console.log(`added ${result.affectedRows} entries in classes.`)
 
-  })
 
-  courses_type = ['seminar', 'curs', 'lab', 'proiect', 'sport']
-  courses_example = []
-  for (let i = 0; i < 10; i++) {
-    courses_example.push([Math.random().toString(36).substr(10), Math.round(Math.random()*3+1), courses_type[Math.round(Math.random()*4)]])
-  }
-  sql = 'INSERT INTO courses (name, an, course_type) VALUES ?'
-  db.query(sql, [courses_example], (err, result) => {
-    if (err) throw err
-    console.log(`added ${result.affectedRows} entries in courses.`)
-    res.send('succesfully created tables')
-  })
 
 })
 
@@ -110,8 +115,8 @@ app.get('/api/getgroups/:an/', (req, res) => {
   db.query(sql, (err, result) => {
     if (err) throw err
     const filtered = []
-    for(grupa of result){
-      if(grupa.name[1] == req.params.an)
+    for (grupa of result) {
+      if (grupa.name[1] == req.params.an)
         filtered.push(grupa)
     }
     res.send(filtered)
@@ -142,13 +147,39 @@ app.post('/admin/newclass/', (req, res) => {
   console.log(req.body)
   res.status(200).send('Reservation registered!')
 
-  sql = `INSERT INTO classes (name, duration, day, start_time, end_time) VALUES ('${req.body.name}', ${req.body.duration}, '${req.body.day}', '${req.body.startTime}:00:00', '${req.body.endTime}:00:00')`
+  let sql = 'select id from groups where name in (' + "'" + req.body.groups.join("', '") + "'" + ')'
+
+  let resGroupsId
   db.query(sql, (err, result) => {
     if (err) throw err
-    console.log('new reservation')
+    console.log(result)
+    resGroupsId = result
 
+
+    sql = `INSERT INTO classes (name, duration, day, start_time, end_time) VALUES ('${req.body.name}', ${req.body.duration}, '${req.body.day}', '${req.body.startTime}:00:00', '${req.body.endTime}:00:00')`
+    db.query(sql, (err, result) => {
+      if (err) throw err
+      console.log('new reservation')
+
+      // get ID of just inserted class
+      db.query('SELECT id FROM classes ORDER BY id DESC LIMIT 0, 1', (err, lastResId) => {
+        if (err) throw err
+
+        console.log(lastResId)
+
+        let intermEntries = []
+        for (const groupId of resGroupsId) {
+          intermEntries.push([groupId.id, lastResId[0].id])
+        }
+
+        console.log(intermEntries)
+
+        db.query("INSERT INTO group_classes (group_id, class_id) VALUES ?", [intermEntries], (err, res) => {
+          if (err) throw err;
+        })
+      })
+    })
   })
-
 })
 
 app.get('/api/getclasses/', (req, res) => {
