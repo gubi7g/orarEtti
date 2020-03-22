@@ -9,7 +9,7 @@
     "start": "concurrently \"npm run client\" \"npm run server\"",
     "install-client": "cd client-orar-etti && npm install",
     "install-server": "cd server-orar-etti && npm install",
-    "install": "npm run install-client && npm run install-server"
+    "install": "npm run install-client && npm run install-server && git install concurrently"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/gubi7g/orarEtti/issues"
   },
-  "homepage": "https://github.com/gubi7g/orarEtti#readme"
+  "homepage": "https://github.com/gubi7g/orarEtti#readme",
+  "dependencies": {
+    "concurrently": "^5.1.0"
+  }
 }

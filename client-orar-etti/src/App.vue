@@ -123,7 +123,7 @@
       </b-col>
     </b-row>
     <b-row>
-      <table class="orar" @click="clickCell(); dblClk()">
+      <table class="orar" @click="clickCell()">
         <thead>
           <tr>
             <th v-for="grupa in ['Day', 'Time', ...groupsArray]" :key="grupa.key">{{grupa}}</th>
@@ -177,11 +177,17 @@ export default {
         currCellGroup = id.substr(0, 4);
       }
 
-      for(const day of this.dotw){
-        if(day.substr(0, 2) == currCellDay) currCellDay = day.substr(0, 2)
+      for(const day of this.dotw.slice(1, this.dotw.length)){
+        if(day.substr(0, 2) == currCellDay) {
+          currCellDay = day.substr(0, 2)
+          break
+        }
       }
 
       return {group: currCellGroup, timeInt: currCellTimeInt, day: currCellDay}
+    },
+    getId(props){
+      return props.currCellGroup + props.currCellDay + props.currCellTimeInt
     },
     findFloatingButtonPosition: function() {
       let maxGroup = this.findMaxGroupFromSelected(this.selectedGroups);
@@ -379,15 +385,10 @@ export default {
     },
     assignSelectedClasses: function(id) {
       let res = "";
-      let currCellGroup = "";
-      let currCellTimeInt = id.substr(-6, 4);
-      let currCellDay = id.substr(-2, 2);
-
-      if (id.length == 11) {
-        currCellGroup = id.substr(0, 5);
-      } else if (id.length == 10) {
-        currCellGroup = id.substr(0, 4);
-      }
+      let id_tmp = this.getCellProps(id)
+      let currCellGroup = id_tmp.group
+      let currCellTimeInt = id_tmp.timeInt
+      let currCellDay = id_tmp.day
 
 
       if(this.selectedDay && currCellDay != this.selectedDay.substr(0, 2))
@@ -460,82 +461,77 @@ export default {
 
       return res;
     },
-    rightClick() {
-      window.oncontextmenu = e => {
-        let isRightMB
-        e = e || window.event
-        if ("which" in e)
-          // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
-          isRightMB = e.which == 3;
-        else if ("button" in e)
-          // IE, Opera
-          isRightMB = e.button == 2;
+    // rightClick() {
+    //   window.oncontextmenu = e => {
+    //     let isRightMB
+    //     e = e || window.event
+    //     if ("which" in e)
+    //       // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
+    //       isRightMB = e.which == 3;
+    //     else if ("button" in e)
+    //       // IE, Opera
+    //       isRightMB = e.button == 2;
 
-        if (isRightMB){
-          if (/^4[1-4]\d[A-G](a|b|)\d{4}[A-Z][a-z]$/.test(e.target.id)) {
-            let clickedGroupName;
-            let clickedInt
-            let clickedDay
-            if (e.target.id.length == 11) {
-              clickedGroupName = e.target.id.substr(0, 5);
-            } else if (e.target.id.length == 10) {
-              clickedGroupName = e.target.id.substr(0, 4);
-            } else {
-              return console.log("error on click group name length");
-            }
+    //     if (isRightMB){
+    //       if (/^4[1-4]\d[A-G](a|b|)\d{4}[A-Z][a-z]$/.test(e.target.id)) {
+    //         let clickedGroupName;
+    //         let clickedInt
+    //         let clickedDay
+    //         if (e.target.id.length == 11) {
+    //           clickedGroupName = e.target.id.substr(0, 5);
+    //         } else if (e.target.id.length == 10) {
+    //           clickedGroupName = e.target.id.substr(0, 4);
+    //         } else {
+    //           return console.log("error on click group name length");
+    //         }
 
-            clickedDay = e.target.id.substr(-2, 2)
-            clickedInt = e.target.id.substr(e.target.id.length-6, 4)
+    //         clickedDay = e.target.id.substr(-2, 2)
+    //         clickedInt = e.target.id.substr(e.target.id.length-6, 4)
 
-            if (this.selectedGroups.includes(clickedGroupName)) {
-              // daca este deja in grupele selectate
-              console.log(clickedInt);
-              if (this.selectedDay.substr(0, 2) == clickedDay) {
-                // daca clickul este in aceeasi zi
-                console.log(this.selectedDay.substr(0, 2))
-                console.log(clickedDay)
-                if (clickedInt == this.selectedTimeInt) { // daca este SI acelasi interval selectat (pe langa aceeasi zi), sterge-l din selectate
-                  this.selectedGroupsRMB.splice(this.selectedGroupsRMB.indexOf(clickedGroupName), 1)
-                }
-              }
-            } else {
-              console.log("added new group to selected RMB");
-              this.selectedGroupsRMB.push(clickedGroupName);
-            }
+    //         if (this.selectedGroups.includes(clickedGroupName)) {
+    //           // daca este deja in grupele selectate
+    //           console.log(clickedInt);
+    //           if (this.selectedDay.substr(0, 2) == clickedDay) {
+    //             // daca clickul este in aceeasi zi
+    //             console.log(this.selectedDay.substr(0, 2))
+    //             console.log(clickedDay)
+    //             if (clickedInt == this.selectedTimeInt) { // daca este SI acelasi interval selectat (pe langa aceeasi zi), sterge-l din selectate
+    //               this.selectedGroupsRMB.splice(this.selectedGroupsRMB.indexOf(clickedGroupName), 1)
+    //             }
+    //           }
+    //         } else {
+    //           console.log("added new group to selected RMB");
+    //           this.selectedGroupsRMB.push(clickedGroupName);
+    //         }
 
-            // no matter what cell is clicked, we update selectedTimeInt and selectedDay after each click.
-            this.selectedTimeInt = clickedInt
+    //         // no matter what cell is clicked, we update selectedTimeInt and selectedDay after each click.
+    //         this.selectedTimeInt = clickedInt
 
-            // facem schimbarea de zi in afara conditiei
-            for (const day of this.dotw.slice(1, this.dotw.lengh)) {
-              // primul element e junk pt dropdown
-              if (day.substr(0, 2) == clickedDay)
-                this.selectedDay = day;
-            }
-          }
-        }
-        return false;
-      }
-    },
+    //         // facem schimbarea de zi in afara conditiei
+    //         for (const day of this.dotw.slice(1, this.dotw.lengh)) {
+    //           // primul element e junk pt dropdown
+    //           if (day.substr(0, 2) == clickedDay)
+    //             this.selectedDay = day;
+    //         }
+    //       }
+    //     }
+    //     return false;
+    //   }
+    // },
     clickCell() {
       window.onclick = e => {
+        // aici as vrea sa se incarce deja selected class pentru cell-ul clicked
+        // daca nu facem asta, o sa fie delay-ul pus de la setTimeout ALWAYS daca nu faci dublu click
         this.prevent = false
         this.maybeDblClick = setTimeout(() =>  {
           if(!this.prevent){
             if (/^4[1-4]\d[A-G](a|b|)\d{4}[A-Z][a-z]$/.test(e.target.id)) {
-              let clickedGroupName;
-              let clickedInt
-              let clickedDay
-              if (e.target.id.length == 11) {
-                clickedGroupName = e.target.id.substr(0, 5);
-              } else if (e.target.id.length == 10) {
-                clickedGroupName = e.target.id.substr(0, 4);
-              } else {
-                return console.log("error on click group name length");
-              }
+              let id = this.getCellProps(e.target.id)
 
-              clickedDay = e.target.id.substr(-2, 2)
-              clickedInt = e.target.id.substr(e.target.id.length-6, 4)
+              let clickedGroupName = id.group
+              let clickedInt = id.timeInt
+              let clickedDay = id.day
+              
 
               console.log(clickedGroupName);
               if (this.selectedGroups.includes(clickedGroupName)) {
@@ -582,12 +578,10 @@ export default {
 
             return
           }
-        }, 200)
+        }, 220)
         
-      };
-    },
-    dblClk() {
-      
+      }
+
       window.ondblclick = () => {
         this.prevent = true
         clearTimeout(this.maybeDblClick)
@@ -649,7 +643,9 @@ export default {
       selectedGroupsLMB: [],
       maybeDblClick: 0,
       prevent: false,
-      clickSelection: []
+      clickSelection: [],
+      selectedGroupsInt: [],
+      selectedGroupsUnique: []
     };
   },
   watch: {
