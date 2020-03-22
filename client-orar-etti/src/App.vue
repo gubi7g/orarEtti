@@ -102,9 +102,6 @@
           </b-col>
         </b-row>
       </b-col>
-      <b-col>
-        <p>{{(this.compareGroups('414A', '414A') == undefined) ? 'yes' : 'no' }}</p>
-      </b-col>
     </b-row>
 
     <h3>Selected Year: {{selectedYear}}</h3>
@@ -336,7 +333,7 @@ export default {
     findMinGroupFromSelected(x) {
       let min = this.groupsArray[this.groupsArray.length - 1]; // initialize with max group
       for (const grupa of x) {
-        if (this.compareGroups(min, grupa)) min = grupa;
+        if (this.compareGroups(min, grupa) >= 0) min = grupa;
       }
 
       return min;
@@ -344,37 +341,43 @@ export default {
     findMaxGroupFromSelected(x) {
       let max = this.groupsArray[0];
       for (const grupa of x) {
-        if (this.compareGroups(grupa, max)) max = grupa;
+        if (this.compareGroups(grupa, max) >= 0) max = grupa;
       }
 
       return max;
     },
-    // is @gr1 >= than @gr2?
+    //    gr1 > gr2? return 1
+    //    gr1 == gr2? return 0
+    //    gr1 < gr2? return -1
     compareGroups: function(gr1, gr2) {
       if (gr1[1] > gr2[1]) {
-        return true;
+        return 1;
       } else if (gr1[1] == gr2[1]) {
         if (gr1[3] > gr2[3]) {
-          return true;
+          return 1;
         } else if (gr1[3] == gr2[3]) {
           if (gr1[2] > gr2[2]) {
-            return true;
+            return 1;
           } else if (gr1[2] == gr2[2]) {
             if (gr1.length == 5 && gr2.length == 5) {
-              if (gr1[4] >= gr2[4]) return true;
-              else return false;
-            } else return true;
+              if (gr1[4] > gr2[4]) return 1
+              else if (gr1[4] == gr2[4]) return 0;
+              else return -1 
+            }
+            else {
+              return 0
+            }
           } else {
             // gr1[2] < gr2[2]
-            return false;
+            return -1;
           }
         } else {
           // gr1[3] < gr2[3]
-          return false;
+          return -1;
         }
       } else {
         // gr[1] < gr2[1]
-        return false;
+        return -1;
       }
     },
     getGroupsBetweenMinMax: function(x) {
@@ -449,16 +452,16 @@ export default {
 
             // console.log(currCellTimeInt == selectedTimeInts[0])
             if (
-              this.compareGroups(currCellGroup, minGroup) &&
-              this.compareGroups(maxGroup, currCellGroup) &&
+              this.compareGroups(currCellGroup, minGroup) >= 0 &&
+              this.compareGroups(maxGroup, currCellGroup) >= 0 &&
               currCellTimeInt == selectedTimeInts[0]
             ) {
               res += "selectedCellsTop ";
             }
 
             if (
-              this.compareGroups(currCellGroup, minGroup) &&
-              this.compareGroups(maxGroup, currCellGroup) &&
+              this.compareGroups(currCellGroup, minGroup) >= 0 &&
+              this.compareGroups(maxGroup, currCellGroup) >= 0 &&
               currCellTimeInt == selectedTimeInts[selectedTimeInts.length - 1]
             ) {
               res += "selectedCellsBottom ";
