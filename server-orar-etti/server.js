@@ -27,16 +27,15 @@ app.get('/createtables', (req, res) => {
   db.query(sql, (err, result) => {
     if (err) {
       console.log(err)
-      res.status(409).send('table already exists')
     }
     console.log('classes created')
   })
 
-  sql = 'CREATE TABLE IF NOT EXISTS courses(id int primary key AUTO_INCREMENT, name VARCHAR(255), prof_id varchar(255), course_type varchar(255), language varchar(255), description varchar(255), an int)'
+  sql = 'CREATE TABLE IF NOT EXISTS courses(id int primary key AUTO_INCREMENT, name VARCHAR(255), prof_id varchar(255), course_type varchar(255), language varchar(255), description varchar(255), an int); '
+  sql += 'CREATE UNIQUE INDEX course_name ON courses(name, course_type, an);'
   db.query(sql, (err, result) => {
     if (err) {
       console.log(err)
-      res.status(409).send('table already exists')
 
     }
     console.log('courses created')
@@ -46,7 +45,7 @@ app.get('/createtables', (req, res) => {
     for (let i = 0; i < 10; i++) {
       courses_example.push([Math.random().toString(36).substr(10), Math.round(Math.random() * 3 + 1), courses_type[Math.round(Math.random() * 4)]])
     }
-    sql = 'INSERT INTO courses (name, an, course_type) VALUES ?'
+    sql = 'INSERT IGNORE INTO courses (name, an, course_type) VALUES ?'
     db.query(sql, [courses_example], (err, result) => {
       if (err) throw err
       console.log(`added ${result.affectedRows} entries in courses.`)
@@ -58,7 +57,6 @@ app.get('/createtables', (req, res) => {
   db.query(sql, (err, result) => {
     if (err) {
       console.log(err)
-      res.status(409).send('table already exists')
     }
     console.log('contributors created')
   })
@@ -67,7 +65,6 @@ app.get('/createtables', (req, res) => {
   db.query(sql, (err, result) => {
     if (err) {
       console.log(err)
-      res.status(409).send('table already exists')
     }
     console.log('groups created')
 
@@ -95,16 +92,10 @@ app.get('/createtables', (req, res) => {
   db.query(sql, (err, result) => {
     if (err) {
       console.log(err)
-      res.status(409).send('table already exists')
     }
     console.log('group_classes created')
 
   })
-
-  // insert dummy data
-
-
-
 
 })
 
@@ -152,27 +143,25 @@ app.post('/admin/newclass/', (req, res) => {
   let resGroupsId
   db.query(sql, (err, result) => {
     if (err) throw err
-    console.log(result)
     resGroupsId = result
 
 
     sql = `INSERT INTO classes (name, duration, day, start_time, end_time) VALUES ('${req.body.name}', ${req.body.duration}, '${req.body.day}', '${req.body.startTime}:00:00', '${req.body.endTime}:00:00')`
     db.query(sql, (err, result) => {
       if (err) throw err
-      console.log('new reservation')
 
       // get ID of just inserted class
       db.query('SELECT id FROM classes ORDER BY id DESC LIMIT 0, 1', (err, lastResId) => {
         if (err) throw err
-
-        console.log(lastResId)
 
         let intermEntries = []
         for (const groupId of resGroupsId) {
           intermEntries.push([groupId.id, lastResId[0].id])
         }
 
+        console.log('new reservation')
         console.log(intermEntries)
+
 
         db.query("INSERT INTO group_classes (group_id, class_id) VALUES ?", [intermEntries], (err, res) => {
           if (err) throw err;
@@ -182,13 +171,40 @@ app.post('/admin/newclass/', (req, res) => {
   })
 })
 
+const consumeIntermGCTable = (arr) => {
+  return new Promise(async (resolve, reject) => {
+    let sql
+    for (let index = 0; index < arr.length; index++) {
+      sql = `SELECT g.name FROM groups AS g INNER JOIN group_classes AS gc ON gc.group_id = g.id WHERE gc.class_id = ${arr[index].id}`
+      const grupe = await promiseBasedQuery(sql)
+      arr[index].groups = grupe.map(elem => elem.name)
+      // console.log(arr[index])
+    }
+    resolve(arr)
+  })
+}
+
+
+const promiseBasedQuery = (sql) => {
+  return new Promise((resolve, reject) => {
+    db.query(sql, (err, result) =>{
+      if (err) reject('error on connection :(')
+      resolve(result)
+    })
+  })
+}
+
 app.get('/api/getclasses/', (req, res) => {
   let sql = 'SELECT * FROM classes'
   console.log('Serving classes...')
-  db.query(sql, (err, result) => {
+  db.query(sql, (err, classes) => {
     if (err) throw err
-    res.send(result)
+
+    // console.log(classes)
+    consumeIntermGCTable(classes).then(ans => res.send(ans))
+    
   })
+
 })
 
 // app.get('/api/:table/', (req, res) => {
