@@ -151,7 +151,7 @@
         </tbody>
       </table>
       <div :style="findFloatingButtonPosition()" id="floatingDiv">
-        <b-button @click="postReservation()">Send</b-button>
+        <b-button @click="postClass()">Send</b-button>
       </div>
     </b-row>
 
@@ -212,7 +212,7 @@ export default {
         }
       }
     },
-    postReservation: function() {
+    postClass: function() {
       console.log({
         name: this.selectedCourse,
         duration: this.selectedDuration,
@@ -237,6 +237,9 @@ export default {
         .then(response => {
           console.log(response)
           console.log('succesfully reserved interval')
+
+          // mai fa un fetch dupa classes.
+          this.fetchClasses();
         })
         .catch(err => { console.log(err) })
     },
@@ -293,6 +296,11 @@ export default {
 
         this.filterGroupsArray(); // ca sa nu fie empty tabelul on reload...
       });
+    },
+    fetchClasses: function() {
+      this.$http.get(config.api.classes).then(result => {
+        console.log('all classes: ', result.data);
+      })
     },
     filterGroupsArray() {
       this.groupsArray = [];
@@ -595,6 +603,8 @@ export default {
   created: function() {
     this.fetchGroups();
     this.fetchCourses();
+    // add fetchClasses
+    this.fetchClasses();
     console.log("created!");
   },
   data: () => {

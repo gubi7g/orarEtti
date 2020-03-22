@@ -142,13 +142,22 @@ app.post('/admin/newclass/', (req, res) => {
   console.log(req.body)
   res.status(200).send('Reservation registered!')
 
-  sql = `INSERT INTO classes (name, duration, day, start_time, end_time) VALUES (${req.body.name}, ${req.body.duration}, '${req.body.day}', '${req.body.startTime}:00:00', '${req.body.endTime}:00:00')`
+  sql = `INSERT INTO classes (name, duration, day, start_time, end_time) VALUES ('${req.body.name}', ${req.body.duration}, '${req.body.day}', '${req.body.startTime}:00:00', '${req.body.endTime}:00:00')`
   db.query(sql, (err, result) => {
     if (err) throw err
     console.log('new reservation')
 
   })
 
+})
+
+app.get('/api/getclasses/', (req, res) => {
+  let sql = 'SELECT * FROM classes'
+  console.log('Serving classes...')
+  db.query(sql, (err, result) => {
+    if (err) throw err
+    res.send(result)
+  })
 })
 
 // app.get('/api/:table/', (req, res) => {
