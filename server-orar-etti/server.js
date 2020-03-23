@@ -136,7 +136,6 @@ app.get('/api/getcourses/', (req, res) => {
 app.post('/admin/newclass/', (req, res) => {
   console.log('got a new reservation request...')
   console.log(req.body)
-  res.status(200).send('Reservation registered!')
 
   let sql = 'select id from groups where name in (' + "'" + req.body.groups.join("', '") + "'" + ')'
 
@@ -150,49 +149,29 @@ app.post('/admin/newclass/', (req, res) => {
     db.query(sql, (err, result) => {
       if (err) throw err
 
-      // get ID of just inserted class
+      // get ID of the freshly inserted class
       db.query('SELECT id FROM classes ORDER BY id DESC LIMIT 0, 1', (err, lastResId) => {
         if (err) throw err
 
+        // create intermediary entries to be pushed in the intermediary table.
         let intermEntries = []
         for (const groupId of resGroupsId) {
           intermEntries.push([groupId.id, lastResId[0].id])
         }
 
-        console.log('new reservation')
+        console.log('new reservation inserted ([group_id, class_id]):')
         console.log(intermEntries)
 
-
-        db.query("INSERT INTO group_classes (group_id, class_id) VALUES ?", [intermEntries], (err, res) => {
+        // finally, insert into the intermediary table. after this, you can send the response.
+        db.query("INSERT INTO group_classes (group_id, class_id) VALUES ?", [intermEntries], (err, result) => {
           if (err) throw err;
+          res.status(200).send('Reservation registered!')
+
         })
       })
     })
   })
 })
-
-const consumeIntermGCTable = (arr) => {
-  return new Promise(async (resolve, reject) => {
-    let sql
-    for (let index = 0; index < arr.length; index++) {
-      sql = `SELECT g.name FROM groups AS g INNER JOIN group_classes AS gc ON gc.group_id = g.id WHERE gc.class_id = ${arr[index].id}`
-      const grupe = await promiseBasedQuery(sql)
-      arr[index].groups = grupe.map(elem => elem.name)
-      // console.log(arr[index])
-    }
-    resolve(arr)
-  })
-}
-
-
-const promiseBasedQuery = (sql) => {
-  return new Promise((resolve, reject) => {
-    db.query(sql, (err, result) =>{
-      if (err) reject('error on connection :(')
-      resolve(result)
-    })
-  })
-}
 
 app.get('/api/getclasses/', (req, res) => {
   let sql = 'SELECT * FROM classes'
@@ -206,6 +185,37 @@ app.get('/api/getclasses/', (req, res) => {
   })
 
 })
+
+const consumeIntermGCTable = (classes) => {
+  return new Promise(async (resolve, reject) => {
+    let sql
+    for (let index = 0; index < classes.length; index++) {
+      sql = `SELECT g.name, gc.class_id FROM groups AS g INNER JOIN group_classes AS gc ON gc.group_id = g.id ORDER BY gc.class_id ASC`
+      const grupe = await promiseBasedQuery(sql)
+      for(const cls of classes){
+        cls.groups = []
+        for(const grupa of grupe){
+          if(cls.id == grupa.class_id){
+            cls.groups.push(grupa.name)
+          }
+        }
+      }
+    }
+    resolve(classes)
+  })
+}
+
+
+const promiseBasedQuery = (sql) => {
+  return new Promise((resolve, reject) => {
+    db.query(sql, (err, result) =>{
+      if (err) reject('error on connection :(')
+      resolve(result)
+    })
+  })
+}
+
+
 
 // app.get('/api/:table/', (req, res) => {
 //   console.log(req.params.table)
