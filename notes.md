@@ -68,5 +68,3 @@ db orarEtti:
   * option to export selected group to Google Calendar, .csv etc.
   * option to acces api for given groups.
   
-
-414Fa

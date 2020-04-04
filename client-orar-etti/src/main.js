@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import OrarFull from './views/OrarFull.vue'
 import Login from './views/Login.vue'
+import OrarRoom from './views/OrarRoom.vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import { BootstrapVue } from 'bootstrap-vue'
@@ -26,6 +27,11 @@ const router = new VueRouter({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/rooms',
+      name: 'rooms',
+      component: OrarRoom
     }
   ],
   mode: 'history'

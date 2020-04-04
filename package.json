@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/gubi7g/orarEtti#readme",
   "dependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "vue-router": "^3.1.6"
   }
 }

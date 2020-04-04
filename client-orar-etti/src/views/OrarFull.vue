@@ -279,7 +279,6 @@ export default {
       }
       this.selectedCourse = null;
 
-      console.log(this.coursesArray);
     },
     fetchGroups: function() {
       console.log(config.api.groups);
@@ -299,8 +298,9 @@ export default {
     },
     fetchClasses: function() {
       this.$http.get(config.api.classes).then(result => {
-        console.log('all classes: ', result.data);
         this.allReservedClasses = result.data
+        console.log('reserved classes:', this.allReservedClasses)
+
       })
     },
     filterGroupsArray() {
