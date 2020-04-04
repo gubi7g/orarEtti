@@ -159,9 +159,51 @@ export default {
   computed: {},
   methods: {
     placeReservedClasses() {
-      for(const cls of this.allReservedClasses){
-        console.log(cls)
+      for(const clsGroups of this.allReservedClasses){
+        this.breakIntoConsecGroups(clsGroups)
       }
+    },
+    breakIntoConsecGroups(cls) {
+      // ceva gen [1, 3, 4] -> [[1], [3, 4]] doar ca pt grupe
+      let res = []
+      let tmp = []
+      let sorted = cls.groups.sort(this.compareGroups)
+      let i = this.allGroupsArray.indexOf(sorted[0])
+      // console.log(sorted)
+      let continuity = true
+      for(const grupa of sorted){
+        if(grupa == this.allGroupsArray[i]){
+          // sunt aceleasi grupe
+          if(!continuity){
+            continuity = true
+            res.push(tmp)
+            tmp = []
+          }
+          tmp.push(grupa)
+          i++
+        }
+        else{
+          // daca a fost in if before:
+          if(continuity){
+            continuity = false
+            res.push(tmp)
+            tmp = []
+          }
+
+          while(grupa != this.allGroupsArray[i]){
+            // fast-forward pana cand ajungi la indexul dorit
+            i++;
+          }
+          tmp.push(grupa)
+        }
+      }
+
+      if(!res.length || tmp.length)
+        res.push(tmp)
+
+      console.log('for class', cls.groups, 'we have: ', res)
+
+      return res
     },
     getCellProps(id) {
       let currCellTimeInt = id.substr(-6, 4);
@@ -300,7 +342,7 @@ export default {
       this.$http.get(config.api.classes).then(result => {
         this.allReservedClasses = result.data
         console.log('reserved classes:', this.allReservedClasses)
-
+        this.placeReservedClasses()
       })
     },
     filterGroupsArray() {
