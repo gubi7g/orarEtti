@@ -173,27 +173,26 @@ export default {
       let continuity = true
       for(const grupa of sorted){
         if(grupa == this.allGroupsArray[i]){
-          // sunt aceleasi grupe
-          if(!continuity){
+          if(!continuity)
             continuity = true
-            res.push(tmp)
-            tmp = []
-          }
+
           tmp.push(grupa)
           i++
         }
         else{
-          // daca a fost in if before:
-          if(continuity){
-            continuity = false
+          if(tmp.length){
+            if(continuity)
+              continuity = false
+
             res.push(tmp)
             tmp = []
           }
-
           while(grupa != this.allGroupsArray[i]){
             // fast-forward pana cand ajungi la indexul dorit
             i++;
           }
+
+          i++
           tmp.push(grupa)
         }
       }
