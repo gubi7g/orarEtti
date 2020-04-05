@@ -117,25 +117,26 @@
       <table class="orar" @click="clickCell()">
         <thead>
           <tr>
-            <th v-for="grupa in ['Day', 'Time', ...groupsArray]" :key="grupa.key">{{grupa}}</th>
+            <th v-for="grupa in ['Day', 'Time', ...groupsArrayTest]" :key="grupa.key">{{grupa.grupa}}</th>
           </tr>
         </thead>
         <tbody>
-          <template v-for="(dayInt, dayIntIndex) in createDayIntTable()">
+          <template v-for="(dayInt, dayIntIndex) in createDayIntTable">
             <tr v-bind:key="dayInt.id">
-              <template v-for="grupa in [1, 2, ...groupsArray]">
+              <template v-for="grupa in [{grupa: 1}, {grupa: 2}, ...groupsArrayTest]">
                 <td
-                  v-if="grupa == 1 && dayIntIndex % ore.length == 0"
-                  v-bind:key="grupa.id"
+                  v-if="grupa.grupa == 1 && dayIntIndex % ore.length == 0"
+                  v-bind:key="grupa.grupa.id"
                   :rowspan="ore.length"
                 >{{dayInt[0]}}</td>
-                <td v-else-if="grupa == 2" v-bind:key="grupa.id">{{dayInt[1]}}</td>
+                <td v-else-if="grupa.grupa == 2" v-bind:key="grupa.grupa.id">{{dayInt[1]}}</td>
                 <td
-                  v-else-if="grupa != 1 && grupa != 2"
-                  v-bind:key="grupa.id"
-                  :id="grupa + dayInt[1].split('-').join('') + dayInt[0].substr(0,2)"
-                  :class="assignSelectedClasses(grupa + dayInt[1].split('-').join('') + dayInt[0].substr(0,2))"
+                  v-else-if="grupa.grupa != 1 && grupa.grupa != 2"
+                  v-bind:key="grupa.grupa.id"
+                  :id="createIdFromClass(grupa.grupa, dayInt[1].split('-').join(''), dayInt[0])"
+                  :class="assignSelectedClasses(createIdFromClass(grupa.grupa, dayInt[1].split('-').join(''), dayInt[0]))" 
                 ></td>
+                <!-- ASTA INSTRA IN LOOP INFINIT :::::::::::) -->
               </template>
             </tr>
           </template>
@@ -160,56 +161,108 @@ export default {
   name: "Orar",
   components: {},
   computed: {
-    
+    createDayIntTable: function() {
+      let table = [];
+
+      for (const day of this.dotw.slice(1, this.dotw.length)) {
+        for (const int of this.ore) {
+          table.push([day, int]);
+        }
+      }
+
+      return table;
+    },
+    groupsArray(){
+      // computed prop representing remaining groups after filtering series + year
+      let res = []
+      for (const grupa of this.allGroupsArray) {
+        if (grupa[1] == this.selectedYear) {
+          if (grupa[3] == this.selectedSeries) res.push(grupa);
+          else if (this.selectedSeries == null) res.push(grupa);
+        }
+      }
+      return res
+    },
+    groupsArrayTest(){
+      // computed prop representing remaining groups after filtering series + year
+      let res = []
+      for (const grupa of this.allGroupsArray) {
+        let tmp = {}
+
+        if (grupa[1] == this.selectedYear) {
+          if (grupa[3] == this.selectedSeries) {tmp.grupa = grupa; tmp.selected = false}
+          else if (this.selectedSeries == null) {tmp.grupa = grupa; tmp.selected = false}
+
+          res.push(tmp)
+        }
+      }
+      return res
+    },
+    findSelectedTimeInts: function() {
+      let selectedTimeInts = [];
+      if (this.selectedGroups.length > 0) {
+        for (let i = 0; i < this.selectedDuration; i++) {
+          let startTimeSelected = (
+            parseInt(this.selectedTimeInt.substr(0, 2)) + i
+          )
+            .toString()
+            .padStart(2, "0");
+          let endTimeSelected = (
+            parseInt(this.selectedTimeInt.substr(2, 2)) + i
+          )
+            .toString()
+            .padStart(2, "0");
+
+            if(startTimeSelected >= '21') break
+          selectedTimeInts.push(startTimeSelected + endTimeSelected);
+        }
+      }
+      // console.log(selectedTimeInts);
+      return selectedTimeInts;
+    },
   },
   methods: {
-    breakIntoConsecGroups(classesList) {
+    breakIntoConsecGroups(array) {
       // ceva gen [1, 3, 4] -> [[1], [3, 4]] doar ca pt grupe pt toate clasele
       // another eg: [1, 2, 4] -> [[1, 2], [4]]
 
-      let final = []
-      for(const cls of classesList){
-        let res = []
-        let tmp = []
-        let sorted = cls.groups.sort(this.compareGroups)
-        let i = this.allGroupsArray.indexOf(sorted[0])
-        // console.log(sorted)
-        let continuity = true
-        for(const grupa of sorted){
-          if(grupa == this.allGroupsArray[i]){
-            if(!continuity)
-              continuity = true
+      let res = []
+      let tmp = []
+      let sorted = array.sort(this.compareGroups)
+      let i = this.allGroupsArray.indexOf(sorted[0])
+      // console.log(sorted)
+      let continuity = true
+      for(const grupa of sorted){
+        if(grupa == this.allGroupsArray[i]){
+          if(!continuity)
+            continuity = true
 
-            tmp.push(grupa)
-            i++
-          }
-          else{
-            if(tmp.length){
-              if(continuity)
-                continuity = false
-
-              res.push(tmp)
-              tmp = []
-            }
-            while(grupa != this.allGroupsArray[i]){
-              // fast-forward pana cand ajungi la indexul dorit
-              i++;
-            }
-
-            i++
-            tmp.push(grupa)
-          }
+          tmp.push(grupa)
+          i++
         }
+        else{
+          if(tmp.length){
+            if(continuity)
+              continuity = false
 
-        if(!res.length || tmp.length)
-          res.push(tmp)
+            res.push(tmp)
+            tmp = []
+          }
+          while(grupa != this.allGroupsArray[i]){
+            // fast-forward pana cand ajungi la indexul dorit
+            i++;
+          }
 
-        // console.log('for class', cls.groups, 'we have: ', res)
-
-        cls.groups = res
-        final.push(cls)
+          i++
+          tmp.push(grupa)
+        }
       }
-      return final
+
+      if(!res.length || tmp.length)
+        res.push(tmp)
+
+      // console.log('for class', cls.groups, 'we have: ', res)
+      return res
     },
     
     getCellProps(id) {
@@ -231,17 +284,17 @@ export default {
 
       return {group: currCellGroup, timeInt: currCellTimeInt, day: currCellDay}
     },
-    createIdFromClass(group, day, start, stop){
-      return 'class' + group + start.substr(0,2) + stop.substr(0,2) + day.substr(0, 2)
+    createIdFromClass(group, int, day){
+      return group + int + day.substr(0, 2)
     },
     findFloatingButtonPosition: function() {
       let maxGroup = this.findMaxGroupFromSelected(this.selectedGroups);
-      if (this.findSelectedTimeInts().length > 0) {
+      if (this.findSelectedTimeInts.length > 0) {
 
         if (this.selectedTimeInt) {
           let closestCell = document.getElementById(
             maxGroup +
-              this.findSelectedTimeInts().pop() +
+              this.findSelectedTimeInts.pop() +
               this.selectedDay.substr(0, 2)
           );
 
@@ -266,8 +319,8 @@ export default {
         name: this.selectedCourse,
         duration: this.selectedDuration,
         day: this.selectedDay,
-        startTime: this.findSelectedTimeInts()[0].substr(0, 2),
-        endTime: this.findSelectedTimeInts()[this.findSelectedTimeInts().length - 1].substr(2, 2),
+        startTime: this.findSelectedTimeInts[0].substr(0, 2),
+        endTime: this.findSelectedTimeInts[this.findSelectedTimeInts.length - 1].substr(2, 2),
         prof: this.loggedProf,
         room: this.selectedRoom,
         groups: this.selectedGroups
@@ -276,8 +329,8 @@ export default {
         name: this.selectedCourse,
         duration: this.selectedDuration,
         day: this.selectedDay,
-        startTime: this.findSelectedTimeInts()[0].substr(0, 2),
-        endTime: this.findSelectedTimeInts()[this.findSelectedTimeInts().length - 1].substr(2, 2),
+        startTime: this.findSelectedTimeInts[0].substr(0, 2),
+        endTime: this.findSelectedTimeInts[this.findSelectedTimeInts.length - 1].substr(2, 2),
         prof: this.loggedProf,
         room: this.selectedRoom,
         groups: this.selectedGroups
@@ -292,17 +345,7 @@ export default {
         })
         .catch(err => { console.log(err) })
     },
-    createDayIntTable: function() {
-      let table = [];
-
-      for (const day of this.dotw.slice(1, this.dotw.length)) {
-        for (const int of this.ore) {
-          table.push([day, int]);
-        }
-      }
-
-      return table;
-    },
+    
     fetchCourses: function() {
       this.$http.get(config.api.courses).then(result => {
         this.allCoursesArray = [];
@@ -342,47 +385,26 @@ export default {
         console.log(this.allGroupsArray);
         console.log(this.seriesArray);
 
-        this.filterGroupsArray(); // ca sa nu fie empty tabelul on reload...
+        // this.filterGroupsArray(); // ca sa nu fie empty tabelul on reload...
       });
     },
     fetchClasses: function() {
       this.$http.get(config.api.classes).then(result => {
         this.allReservedClasses = result.data
-        this.allReservedClasses = this.breakIntoConsecGroups(this.allReservedClasses)
+        // this.allReservedClasses = this.breakIntoConsecGroups(this.allReservedClasses)
         console.log('reserved classes:', this.allReservedClasses)
       })
     },
-    filterGroupsArray() {
-      this.groupsArray = [];
-      for (const grupa of this.allGroupsArray) {
-        if (grupa[1] == this.selectedYear) {
-          if (grupa[3] == this.selectedSeries) this.groupsArray.push(grupa);
-          else if (this.selectedSeries == null) this.groupsArray.push(grupa);
-        }
-      }
-    },
-    findSelectedTimeInts: function() {
-      let selectedTimeInts = [];
-      if (this.selectedGroups.length > 0) {
-        for (let i = 0; i < this.selectedDuration; i++) {
-          let startTimeSelected = (
-            parseInt(this.selectedTimeInt.substr(0, 2)) + i
-          )
-            .toString()
-            .padStart(2, "0");
-          let endTimeSelected = (
-            parseInt(this.selectedTimeInt.substr(2, 2)) + i
-          )
-            .toString()
-            .padStart(2, "0");
-
-            if(startTimeSelected >= '21') break
-          selectedTimeInts.push(startTimeSelected + endTimeSelected);
-        }
-      }
-      console.log(selectedTimeInts);
-      return selectedTimeInts;
-    },
+    // filterGroupsArray() {
+    //   this.groupsArray = [];
+    //   for (const grupa of this.allGroupsArray) {
+    //     if (grupa[1] == this.selectedYear) {
+    //       if (grupa[3] == this.selectedSeries) this.groupsArray.push(grupa);
+    //       else if (this.selectedSeries == null) this.groupsArray.push(grupa);
+    //     }
+    //   }
+    // },
+    
     findMinGroupFromSelected(x) {
       let min = this.groupsArray[this.groupsArray.length - 1]; // initialize with max group
       for (const grupa of x) {
@@ -448,6 +470,9 @@ export default {
       return res;
     },
     assignSelectedClasses: function(id) {
+      // can we change this function?
+      // current functionality: we are utilizing the for from v-for when we render the table's td-s
+      // 
       let res = "";
       let id_tmp = this.getCellProps(id)
       let currCellGroup = id_tmp.group
@@ -468,7 +493,7 @@ export default {
         //   this.selectedGroups.push(group);
       }
 
-      let selectedTimeInts = this.findSelectedTimeInts();
+      let selectedTimeInts = this.findSelectedTimeInts;
 
       let minGroup = this.findMinGroupFromSelected(this.selectedGroups);
       let maxGroup = this.findMaxGroupFromSelected(this.selectedGroups);
@@ -523,7 +548,60 @@ export default {
         }
       }
 
-      return res;
+      return res
+      
+
+
+      // let minGroup = this.findMinGroupFromSelected(this.selectedGroups);
+      // let maxGroup = this.findMaxGroupFromSelected(this.selectedGroups);
+      // // console.log("min: ", minGroup, " max: ", maxGroup);
+
+
+      // if (currCellDay == this.selectedDay.substr(0, 2)) {
+      //   if (this.selectedGroups.length > 0) {
+      //     if (
+      //       currCellTimeInt >= selectedTimeInts[0] &&
+      //       selectedTimeInts[selectedTimeInts.length - 1] >=
+      //         currCellTimeInt &&
+      //       currCellGroup == minGroup
+      //     ) {
+      //       res += "selectedCellsLeft ";
+      //     }
+
+      //     if (
+      //       currCellTimeInt >= selectedTimeInts[0] &&
+      //       selectedTimeInts[selectedTimeInts.length - 1] >=
+      //         currCellTimeInt &&
+      //       currCellGroup == maxGroup
+      //     ) {
+      //       res += "selectedCellsRight ";
+      //     }
+      //     // console.log(this.compareGroups(currCellGroup, minGroup))
+      //     // console.log(this.compareGroups(maxGroup, currCellGroup))
+      //     // console.log('current cell: ', currCellGroup)
+
+      //     // console.log(this.compareGroups(currCellGroup, minGroup))
+      //     // console.log( this.compareGroups(maxGroup, currCellGroup))
+
+      //     // console.log(currCellTimeInt == selectedTimeInts[0])
+      //     if (
+      //       this.compareGroups(currCellGroup, minGroup) >= 0 &&
+      //       this.compareGroups(maxGroup, currCellGroup) >= 0 &&
+      //       currCellTimeInt == selectedTimeInts[0]
+      //     ) {
+      //       res += "selectedCellsTop ";
+      //     }
+
+      //     if (
+      //       this.compareGroups(currCellGroup, minGroup) >= 0 &&
+      //       this.compareGroups(maxGroup, currCellGroup) >= 0 &&
+      //       currCellTimeInt == selectedTimeInts[selectedTimeInts.length - 1]
+      //     ) {
+      //       res += "selectedCellsBottom ";
+      //     }
+      //   }
+      // }
+
     },
     // rightClick() {
     //   window.oncontextmenu = e => {
@@ -589,6 +667,7 @@ export default {
         this.prevent = false
         this.maybeDblClick = setTimeout(() =>  {
           if(!this.prevent){
+            // aici vreau sa adaug/scot din selected grupa clicked, si sa pornesc event listner pt hover
             if (/^4[1-4]\d[A-G](a|b|)\d{4}[A-Z][a-z]$/.test(e.target.id)) {
               let id = this.getCellProps(e.target.id)
 
@@ -613,19 +692,43 @@ export default {
                       }
                       else{ // daca este la margini
                         this.selectedGroupsLMB.splice(this.selectedGroupsLMB.indexOf(clickedGroupName), 1) // daca este la margini, sterge doar pe ea
+                        for(const obj of this.groupsArrayTest){
+                          if(obj.grupa == clickedGroupName){
+                            obj.selected = false
+                            break
+                          }
+                        }
                       }
                     }
 
                     else if(this.selectedGroupsRMB.includes(clickedGroupName))  // daca a fost selectata cu click dreapta inainte si acum dai click stanga pe ea, sterge-o
                       this.selectedGroupsRMB.splice(this.selectedGroupsRMB.indexOf(clickedGroupName), 1)
+                      for(const obj of this.groupsArrayTest){
+                        if(obj.grupa == clickedGroupName){
+                          obj.selected = false
+                          break
+                        }
+                      }
                   }
                 }
               } else {
                 console.log("added new group to selected");
                 this.selectedGroupsLMB.push(clickedGroupName);
+                for(const obj of this.groupsArrayTest){
+                  if(obj.grupa == clickedGroupName){
+                    obj.selected = true
+                    break
+                  }
+                }
                 if(this.selectedGroupsLMB.length > 1) {
                   for(const group of this.getGroupsBetweenMinMax(this.selectedGroupsLMB))
                     this.selectedGroupsLMB.push(group)
+                  for(const obj of this.groupsArrayTest){
+                    if(obj.grupa == clickedGroupName){
+                      obj.selected = true
+                      break
+                    }
+                  }
                 }
               }
 
@@ -642,11 +745,12 @@ export default {
 
             return
           }
-        }, 1)
+        }, 1) // we must apply classes outside the timeout for faster response
         
       }
 
       window.ondblclick = () => {
+        // aici vreau sa adaug/scot din selected si atat.
         this.prevent = true
         clearTimeout(this.maybeDblClick)
         console.log('sike! dbl click')
@@ -665,7 +769,6 @@ export default {
   },
   data: () => {
     return {
-      groupsArray: [],
       allGroupsArray: [],
       seriesArray: [],
       ore: [
@@ -729,13 +832,13 @@ export default {
       }
     },
     selectedYear() {
-      this.filterGroupsArray();
+      // this.filterGroupsArray();
       this.filterCoursesArray();
       this.selectedGroupsLMB = [];
       this.selectedGroupsRMB = [];
     },
     selectedSeries() {
-      this.filterGroupsArray();
+      // this.filterGroupsArray();
       this.selectedGroupsLMB = [];
       this.selectedGroupsRMB = [];
     },
@@ -786,7 +889,7 @@ table {
 }
 td {
   border: 1px solid black;
-  min-width: 200px;
+  min-width: 100px;
   height: 40px;
 }
 
