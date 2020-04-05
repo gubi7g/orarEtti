@@ -145,6 +145,9 @@
         <b-button @click="postClass()">Send</b-button>
       </div>
     </b-row>
+    <template v-for="cls in this.allReservedClasses" >
+      <div :key="cls.id"> {{cls.name}} {{cls.groups}} </div>
+    </template>
   </div>
 
     <!-- <p>{{this.serii}}</p> -->
@@ -156,54 +159,59 @@ const config = require("../config.json");
 export default {
   name: "Orar",
   components: {},
-  computed: {},
+  computed: {
+    
+  },
   methods: {
-    placeReservedClasses() {
-      for(const clsGroups of this.allReservedClasses){
-        this.breakIntoConsecGroups(clsGroups)
-      }
-    },
-    breakIntoConsecGroups(cls) {
-      // ceva gen [1, 3, 4] -> [[1], [3, 4]] doar ca pt grupe
-      let res = []
-      let tmp = []
-      let sorted = cls.groups.sort(this.compareGroups)
-      let i = this.allGroupsArray.indexOf(sorted[0])
-      // console.log(sorted)
-      let continuity = true
-      for(const grupa of sorted){
-        if(grupa == this.allGroupsArray[i]){
-          if(!continuity)
-            continuity = true
+    breakIntoConsecGroups(classesList) {
+      // ceva gen [1, 3, 4] -> [[1], [3, 4]] doar ca pt grupe pt toate clasele
+      // another eg: [1, 2, 4] -> [[1, 2], [4]]
 
-          tmp.push(grupa)
-          i++
-        }
-        else{
-          if(tmp.length){
-            if(continuity)
-              continuity = false
+      let final = []
+      for(const cls of classesList){
+        let res = []
+        let tmp = []
+        let sorted = cls.groups.sort(this.compareGroups)
+        let i = this.allGroupsArray.indexOf(sorted[0])
+        // console.log(sorted)
+        let continuity = true
+        for(const grupa of sorted){
+          if(grupa == this.allGroupsArray[i]){
+            if(!continuity)
+              continuity = true
 
-            res.push(tmp)
-            tmp = []
+            tmp.push(grupa)
+            i++
           }
-          while(grupa != this.allGroupsArray[i]){
-            // fast-forward pana cand ajungi la indexul dorit
-            i++;
+          else{
+            if(tmp.length){
+              if(continuity)
+                continuity = false
+
+              res.push(tmp)
+              tmp = []
+            }
+            while(grupa != this.allGroupsArray[i]){
+              // fast-forward pana cand ajungi la indexul dorit
+              i++;
+            }
+
+            i++
+            tmp.push(grupa)
           }
-
-          i++
-          tmp.push(grupa)
         }
+
+        if(!res.length || tmp.length)
+          res.push(tmp)
+
+        // console.log('for class', cls.groups, 'we have: ', res)
+
+        cls.groups = res
+        final.push(cls)
       }
-
-      if(!res.length || tmp.length)
-        res.push(tmp)
-
-      console.log('for class', cls.groups, 'we have: ', res)
-
-      return res
+      return final
     },
+    
     getCellProps(id) {
       let currCellTimeInt = id.substr(-6, 4);
       let currCellDay = id.substr(-2, 2);
@@ -340,8 +348,8 @@ export default {
     fetchClasses: function() {
       this.$http.get(config.api.classes).then(result => {
         this.allReservedClasses = result.data
+        this.allReservedClasses = this.breakIntoConsecGroups(this.allReservedClasses)
         console.log('reserved classes:', this.allReservedClasses)
-        this.placeReservedClasses()
       })
     },
     filterGroupsArray() {
@@ -634,7 +642,7 @@ export default {
 
             return
           }
-        }, 220)
+        }, 1)
         
       }
 
