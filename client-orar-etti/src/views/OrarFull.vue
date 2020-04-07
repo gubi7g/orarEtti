@@ -66,7 +66,7 @@
         </b-row>
 
         <b-row>
-          <b-col>
+          <!-- <b-col>
             <h1>Please select groups/series:</h1>
             <b-form-group id="checkbox-serie" text="Courses" class="m-md-2">
               <b-form-checkbox
@@ -77,7 +77,7 @@
 
               <b-form-checkbox-group v-model="selectedGroups" :options="groupsArray"></b-form-checkbox-group>
             </b-form-group>
-          </b-col>
+          </b-col> -->
           <b-col>
             <div>
               Selected groups:
@@ -114,10 +114,13 @@
       </b-col>
     </b-row>
     <b-row>
-      <table class="orar" @click="clickCell()">
+      <table class="orar" @click="clickCellRevised()">
         <thead>
           <tr>
-            <th v-for="grupa in ['Day', 'Time', ...groupsArrayTest]" :key="grupa.key">{{grupa.grupa}}</th>
+            <th
+              v-for="grupa in ['Day', 'Time', ...groupsArrayTest]"
+              :key="grupa.key"
+            >{{grupa.grupa}}</th>
           </tr>
         </thead>
         <tbody>
@@ -134,9 +137,8 @@
                   v-else-if="grupa.grupa != 1 && grupa.grupa != 2"
                   v-bind:key="grupa.grupa.id"
                   :id="createIdFromClass(grupa.grupa, dayInt[1].split('-').join(''), dayInt[0])"
-                  :class="assignSelectedClasses(createIdFromClass(grupa.grupa, dayInt[1].split('-').join(''), dayInt[0]))" 
+                  :class="findSelectedTimeInts.indexOf(dayInt[1].split('-').join('')) > -1 && dayInt[0] == this.selectedDay ? updateCellsStyle(createIdFromClass(grupa.grupa, dayInt[1].split('-').join(''), dayInt[0])) : ''"
                 ></td>
-                <!-- ASTA INSTRA IN LOOP INFINIT :::::::::::) -->
               </template>
             </tr>
           </template>
@@ -146,12 +148,12 @@
         <b-button @click="postClass()">Send</b-button>
       </div>
     </b-row>
-    <template v-for="cls in this.allReservedClasses" >
-      <div :key="cls.id"> {{cls.name}} {{cls.groups}} </div>
+    <template v-for="cls in this.allReservedClasses">
+      <div :key="cls.id">{{cls.name}} {{cls.groups}}</div>
     </template>
   </div>
 
-    <!-- <p>{{this.serii}}</p> -->
+  <!-- <p>{{this.serii}}</p> -->
 </template>
 
 <script>
@@ -172,31 +174,38 @@ export default {
 
       return table;
     },
-    groupsArray(){
+    groupsArray() {
       // computed prop representing remaining groups after filtering series + year
-      let res = []
+      let res = [];
       for (const grupa of this.allGroupsArray) {
         if (grupa[1] == this.selectedYear) {
           if (grupa[3] == this.selectedSeries) res.push(grupa);
           else if (this.selectedSeries == null) res.push(grupa);
         }
       }
-      return res
+      return res;
     },
-    groupsArrayTest(){
+    groupsArrayTest() {
       // computed prop representing remaining groups after filtering series + year
-      let res = []
+      let res = [];
       for (const grupa of this.allGroupsArray) {
-        let tmp = {}
+        let tmp = {};
 
         if (grupa[1] == this.selectedYear) {
-          if (grupa[3] == this.selectedSeries) {tmp.grupa = grupa; tmp.selected = false}
-          else if (this.selectedSeries == null) {tmp.grupa = grupa; tmp.selected = false}
+          if (grupa[3] == this.selectedSeries) {
+            tmp.grupa = grupa;
+            tmp.selected = false;
+            tmp.style = "";
+          } else if (this.selectedSeries == null) {
+            tmp.grupa = grupa;
+            tmp.selected = false;
+            tmp.style = "";
+          }
 
-          res.push(tmp)
+          res.push(tmp);
         }
       }
-      return res
+      return res;
     },
     findSelectedTimeInts: function() {
       let selectedTimeInts = [];
@@ -213,84 +222,85 @@ export default {
             .toString()
             .padStart(2, "0");
 
-            if(startTimeSelected >= '21') break
+          if (startTimeSelected >= "21") break;
           selectedTimeInts.push(startTimeSelected + endTimeSelected);
         }
       }
       // console.log(selectedTimeInts);
       return selectedTimeInts;
-    },
+    }
   },
   methods: {
     breakIntoConsecGroups(array) {
       // ceva gen [1, 3, 4] -> [[1], [3, 4]] doar ca pt grupe pt toate clasele
       // another eg: [1, 2, 4] -> [[1, 2], [4]]
 
-      let res = []
-      let tmp = []
-      let sorted = array.sort(this.compareGroups)
-      let i = this.allGroupsArray.indexOf(sorted[0])
-      // console.log(sorted)
-      let continuity = true
-      for(const grupa of sorted){
-        if(grupa == this.allGroupsArray[i]){
-          if(!continuity)
-            continuity = true
+      let res = [];
+      let tmp = [];
+      let sorted = [...array].sort(this.compareGroups);
+      let i = this.allGroupsArray.indexOf(sorted[0]);
+      console.log(sorted);
+      let continuity = true;
+      for (const grupa of sorted) {
+        if (grupa == this.allGroupsArray[i]) {
+          if (!continuity) continuity = true;
 
-          tmp.push(grupa)
-          i++
-        }
-        else{
-          if(tmp.length){
-            if(continuity)
-              continuity = false
+          tmp.push(grupa);
+          i++;
+        } else {
+          if (tmp.length) {
+            if (continuity) continuity = false;
 
-            res.push(tmp)
-            tmp = []
+            res.push(tmp);
+            tmp = [];
           }
-          while(grupa != this.allGroupsArray[i]){
+          while (grupa != this.allGroupsArray[i]) {
             // fast-forward pana cand ajungi la indexul dorit
             i++;
+            console.log(i);
+            if (i > 500) {
+              console.log("ERROR");
+              break;
+            }
           }
-
-          i++
-          tmp.push(grupa)
+          tmp.push(grupa);
         }
       }
 
-      if(!res.length || tmp.length)
-        res.push(tmp)
+      if (!res.length || tmp.length) res.push(tmp);
 
-      // console.log('for class', cls.groups, 'we have: ', res)
-      return res
+      return res;
     },
-    
+
     getCellProps(id) {
       let currCellTimeInt = id.substr(-6, 4);
       let currCellDay = id.substr(-2, 2);
-      let currCellGroup
+      let currCellGroup;
       if (id.length == 11) {
         currCellGroup = id.substr(0, 5);
       } else if (id.length == 10) {
         currCellGroup = id.substr(0, 4);
       }
 
-      for(const day of this.dotw.slice(1, this.dotw.length)){
-        if(day.substr(0, 2) == currCellDay) {
-          currCellDay = day.substr(0, 2)
-          break
+      for (const day of this.dotw.slice(1, this.dotw.length)) {
+        if (day.substr(0, 2) == currCellDay) {
+          currCellDay = day.substr(0, 2);
+          break;
         }
       }
 
-      return {group: currCellGroup, timeInt: currCellTimeInt, day: currCellDay}
+      return {
+        group: currCellGroup,
+        timeInt: currCellTimeInt,
+        day: currCellDay
+      };
     },
-    createIdFromClass(group, int, day){
-      return group + int + day.substr(0, 2)
+    createIdFromClass(group, int, day) {
+      return group + int + day.substr(0, 2);
     },
     findFloatingButtonPosition: function() {
       let maxGroup = this.findMaxGroupFromSelected(this.selectedGroups);
       if (this.findSelectedTimeInts.length > 0) {
-
         if (this.selectedTimeInt) {
           let closestCell = document.getElementById(
             maxGroup +
@@ -305,13 +315,10 @@ export default {
             window.scrollY + closestCell.getBoundingClientRect().top
           );
 
-          return `position:absolute; z-index:10; top:${y +
-            50}px; left:${x}px`;
+          return `position:absolute; z-index:10; top:${y + 50}px; left:${x}px`;
         }
-        
-      }
-      else {
-        return 'display: none'
+      } else {
+        return "display: none";
       }
     },
     postClass: function() {
@@ -320,32 +327,39 @@ export default {
         duration: this.selectedDuration,
         day: this.selectedDay,
         startTime: this.findSelectedTimeInts[0].substr(0, 2),
-        endTime: this.findSelectedTimeInts[this.findSelectedTimeInts.length - 1].substr(2, 2),
+        endTime: this.findSelectedTimeInts[
+          this.findSelectedTimeInts.length - 1
+        ].substr(2, 2),
         prof: this.loggedProf,
         room: this.selectedRoom,
         groups: this.selectedGroups
-      })
+      });
       let newClass = {
         name: this.selectedCourse,
         duration: this.selectedDuration,
         day: this.selectedDay,
         startTime: this.findSelectedTimeInts[0].substr(0, 2),
-        endTime: this.findSelectedTimeInts[this.findSelectedTimeInts.length - 1].substr(2, 2),
+        endTime: this.findSelectedTimeInts[
+          this.findSelectedTimeInts.length - 1
+        ].substr(2, 2),
         prof: this.loggedProf,
         room: this.selectedRoom,
         groups: this.selectedGroups
-      }
-      this.$http.post(config.admin.newclass, newClass)
+      };
+      this.$http
+        .post(config.admin.newclass, newClass)
         .then(response => {
-          console.log(response)
-          console.log('succesfully reserved interval')
+          console.log(response);
+          console.log("succesfully reserved interval");
 
           // mai fa un fetch dupa classes.
           this.fetchClasses();
         })
-        .catch(err => { console.log(err) })
+        .catch(err => {
+          console.log(err);
+        });
     },
-    
+
     fetchCourses: function() {
       this.$http.get(config.api.courses).then(result => {
         this.allCoursesArray = [];
@@ -370,7 +384,6 @@ export default {
         if (course.an == this.selectedYear) this.coursesArray.push(course);
       }
       this.selectedCourse = null;
-
     },
     fetchGroups: function() {
       console.log(config.api.groups);
@@ -390,10 +403,10 @@ export default {
     },
     fetchClasses: function() {
       this.$http.get(config.api.classes).then(result => {
-        this.allReservedClasses = result.data
+        this.allReservedClasses = result.data;
         // this.allReservedClasses = this.breakIntoConsecGroups(this.allReservedClasses)
-        console.log('reserved classes:', this.allReservedClasses)
-      })
+        console.log("reserved classes:", this.allReservedClasses);
+      });
     },
     // filterGroupsArray() {
     //   this.groupsArray = [];
@@ -404,7 +417,7 @@ export default {
     //     }
     //   }
     // },
-    
+
     findMinGroupFromSelected(x) {
       let min = this.groupsArray[this.groupsArray.length - 1]; // initialize with max group
       for (const grupa of x) {
@@ -435,12 +448,11 @@ export default {
             return 1;
           } else if (gr1[2] == gr2[2]) {
             if (gr1.length == 5 && gr2.length == 5) {
-              if (gr1[4] > gr2[4]) return 1
+              if (gr1[4] > gr2[4]) return 1;
               else if (gr1[4] == gr2[4]) return 0;
-              else return -1 
-            }
-            else {
-              return 0
+              else return -1;
+            } else {
+              return 0;
             }
           } else {
             // gr1[2] < gr2[2]
@@ -455,10 +467,10 @@ export default {
         return -1;
       }
     },
-    getGroupsBetweenMinMax: function(x) {
+    getGroupsBetweenMinMax: function(array) {
       let res = [];
-      let minGroup = this.findMinGroupFromSelected(x);
-      let maxGroup = this.findMaxGroupFromSelected(x);
+      let minGroup = this.findMinGroupFromSelected(array);
+      let maxGroup = this.findMaxGroupFromSelected(array);
 
       let indStart = this.groupsArray.indexOf(minGroup);
       let indEnd = this.groupsArray.indexOf(maxGroup);
@@ -472,23 +484,22 @@ export default {
     assignSelectedClasses: function(id) {
       // can we change this function?
       // current functionality: we are utilizing the for from v-for when we render the table's td-s
-      // 
+      //
       let res = "";
-      let id_tmp = this.getCellProps(id)
-      let currCellGroup = id_tmp.group
-      let currCellTimeInt = id_tmp.timeInt
-      let currCellDay = id_tmp.day
+      let id_tmp = this.getCellProps(id);
+      let currCellGroup = id_tmp.group;
+      let currCellTimeInt = id_tmp.timeInt;
+      let currCellDay = id_tmp.day;
 
-
-      if(this.selectedDay && currCellDay != this.selectedDay.substr(0, 2))
-        return res
+      if (this.selectedDay && currCellDay != this.selectedDay.substr(0, 2))
+        return res;
 
       if (!this.selectedGroups.includes(currCellGroup)) {
-        return res
+        return res;
         // if (!this.getGroupsBetweenMinMax().includes(currCellGroup)) {
         //   return res;
         // }
-        // asta trebuie mutata in click stanga: 
+        // asta trebuie mutata in click stanga:
         // for (const group of this.getGroupsBetweenMinMax())
         //   this.selectedGroups.push(group);
       }
@@ -498,8 +509,6 @@ export default {
       let minGroup = this.findMinGroupFromSelected(this.selectedGroups);
       let maxGroup = this.findMaxGroupFromSelected(this.selectedGroups);
       console.log("min: ", minGroup, " max: ", maxGroup);
-
-      
 
       if (this.selectedDay != null) {
         if (currCellDay == this.selectedDay.substr(0, 2)) {
@@ -547,15 +556,14 @@ export default {
           }
         }
       }
+      console.log(this.breakIntoConsecGroups(this.selectedGroups));
+      console.log(this.selectedGroups);
 
-      return res
-      
-
+      return res;
 
       // let minGroup = this.findMinGroupFromSelected(this.selectedGroups);
       // let maxGroup = this.findMaxGroupFromSelected(this.selectedGroups);
       // // console.log("min: ", minGroup, " max: ", maxGroup);
-
 
       // if (currCellDay == this.selectedDay.substr(0, 2)) {
       //   if (this.selectedGroups.length > 0) {
@@ -601,7 +609,6 @@ export default {
       //     }
       //   }
       // }
-
     },
     // rightClick() {
     //   window.oncontextmenu = e => {
@@ -638,12 +645,12 @@ export default {
     //             console.log(this.selectedDay.substr(0, 2))
     //             console.log(clickedDay)
     //             if (clickedInt == this.selectedTimeInt) { // daca este SI acelasi interval selectat (pe langa aceeasi zi), sterge-l din selectate
-    //               this.selectedGroupsRMB.splice(this.selectedGroupsRMB.indexOf(clickedGroupName), 1)
+    //               this.selectedGroupsDbl.splice(this.selectedGroupsDbl.indexOf(clickedGroupName), 1)
     //             }
     //           }
     //         } else {
     //           console.log("added new group to selected RMB");
-    //           this.selectedGroupsRMB.push(clickedGroupName);
+    //           this.selectedGroupsDbl.push(clickedGroupName);
     //         }
 
     //         // no matter what cell is clicked, we update selectedTimeInt and selectedDay after each click.
@@ -661,103 +668,235 @@ export default {
     //   }
     // },
     clickCell() {
+      let clickedGroupExt;
+
       window.onclick = e => {
         // aici as vrea sa se incarce deja selected class pentru cell-ul clicked
         // daca nu facem asta, o sa fie delay-ul pus de la setTimeout ALWAYS daca nu faci dublu click
-        this.prevent = false
-        this.maybeDblClick = setTimeout(() =>  {
-          if(!this.prevent){
+        this.prevent = false;
+        this.maybeDblClick = setTimeout(() => {
+          if (/^4[1-4]\d[A-G](a|b|)\d{4}[A-Z][a-z]$/.test(e.target.id)) {
+            let id = this.getCellProps(e.target.id);
+
+            let clickedGroupName = id.group;
+            clickedGroupExt = id.group;
+            let clickedInt = id.timeInt;
+            let clickedDay = id.day;
             // aici vreau sa adaug/scot din selected grupa clicked, si sa pornesc event listner pt hover
-            if (/^4[1-4]\d[A-G](a|b|)\d{4}[A-Z][a-z]$/.test(e.target.id)) {
-              let id = this.getCellProps(e.target.id)
 
-              let clickedGroupName = id.group
-              let clickedInt = id.timeInt
-              let clickedDay = id.day
-              
-
+            if (!this.prevent) {
               console.log(clickedGroupName);
               if (this.selectedGroups.includes(clickedGroupName)) {
                 // daca este deja in grupele selectate
                 console.log(clickedInt);
                 if (this.selectedDay.substr(0, 2) == clickedDay) {
                   // daca clickul este in aceeasi zi
-                  console.log(this.selectedDay.substr(0, 2))
-                  console.log(clickedDay)
-                  if (clickedInt == this.selectedTimeInt) { // daca este SI acelasi interval selectat (pe langa aceeasi zi), sterge-l din selectate
-                    
-                    if(this.selectedGroupsLMB.includes(clickedGroupName)){ // daca a fost selectata cu click stanga inainte si acum dai click stanga pe ea
-                      if (this.getGroupsBetweenMinMax(this.selectedGroupsLMB).includes(clickedGroupName)) { // daca este click in mijloc, sterge tot 
-                        this.selectedGroupsLMB = [];
-                      }
-                      else{ // daca este la margini
-                        this.selectedGroupsLMB.splice(this.selectedGroupsLMB.indexOf(clickedGroupName), 1) // daca este la margini, sterge doar pe ea
-                        for(const obj of this.groupsArrayTest){
-                          if(obj.grupa == clickedGroupName){
-                            obj.selected = false
-                            break
-                          }
-                        }
+                  console.log(this.selectedDay.substr(0, 2));
+                  console.log(clickedDay);
+                  if (clickedInt == this.selectedTimeInt) {
+                    // daca este SI acelasi interval selectat (pe langa aceeasi zi), sterge-l din selectate
+
+                    if (this.selectedGroupsSgl.includes(clickedGroupName)) {
+                      // daca a fost selectata cu click stanga inainte si acum dai click stanga pe ea
+                      if (
+                        this.getGroupsBetweenMinMax(
+                          this.selectedGroupsSgl
+                        ).includes(clickedGroupName)
+                      ) {
+                        // daca este click in mijloc, sterge tot
+                        this.selectedGroupsSgl = [];
+                      } else {
+                        // daca este la margini
+                        this.selectedGroupsSgl.splice(
+                          this.selectedGroupsSgl.indexOf(clickedGroupName),
+                          1
+                        ); // daca este la margini, sterge doar pe ea
+                        // for(const obj of this.groupsArrayTest){
+                        //   if(obj.grupa == clickedGroupName){
+                        //     obj.selected = false
+                        //     break
+                        //   }
+                        // }
                       }
                     }
 
-                    else if(this.selectedGroupsRMB.includes(clickedGroupName))  // daca a fost selectata cu click dreapta inainte si acum dai click stanga pe ea, sterge-o
-                      this.selectedGroupsRMB.splice(this.selectedGroupsRMB.indexOf(clickedGroupName), 1)
-                      for(const obj of this.groupsArrayTest){
-                        if(obj.grupa == clickedGroupName){
-                          obj.selected = false
-                          break
-                        }
-                      }
+                    // else if(this.selectedGroupsDbl.includes(clickedGroupName))  // daca a fost selectata cu click dreapta inainte si acum dai click stanga pe ea, sterge-o
+                    //   this.selectedGroupsDbl.splice(this.selectedGroupsDbl.indexOf(clickedGroupName), 1)
+                    //   // for(const obj of this.groupsArrayTest){
+                    //   //   if(obj.grupa == clickedGroupName){
+                    //   //     obj.selected = false
+                    //   //     break
+                    //   //   }
+                    //   // }
                   }
                 }
               } else {
                 console.log("added new group to selected");
-                this.selectedGroupsLMB.push(clickedGroupName);
-                for(const obj of this.groupsArrayTest){
-                  if(obj.grupa == clickedGroupName){
-                    obj.selected = true
-                    break
-                  }
+                this.selectedGroupsSgl.push(clickedGroupName);
+                // problema mare:
+                if (this.selectedGroupsSgl.length > 1) {
+                  for (const group of this.getGroupsBetweenMinMax(
+                    this.selectedGroupsSgl
+                  ))
+                    this.selectedGroupsSgl.push(group);
                 }
-                if(this.selectedGroupsLMB.length > 1) {
-                  for(const group of this.getGroupsBetweenMinMax(this.selectedGroupsLMB))
-                    this.selectedGroupsLMB.push(group)
-                  for(const obj of this.groupsArrayTest){
-                    if(obj.grupa == clickedGroupName){
-                      obj.selected = true
-                      break
+              }
+
+              // no matter what cell is clicked, we update selectedTimeInt and selectedDay after each click.
+              this.selectedTimeInt = clickedInt;
+
+              // facem schimbarea de zi in afara conditiei
+              for (const day of this.dotw.slice(1, this.dotw.lengh)) {
+                // primul element e junk pt dropdown
+                if (day.substr(0, 2) == clickedDay) {
+                  this.selectedDay = day;
+                  break;
+                }
+              }
+            }
+
+            return;
+          }
+        }, 1); // we must apply classes outside the timeout for faster response
+        console.log(this.selectedGroups);
+      };
+
+      window.ondblclick = () => {
+        // aici vreau sa adaug/scot din selected si atat.
+        this.prevent = true;
+        clearTimeout(this.maybeDblClick);
+        this.selectedGroupsDbl.push(clickedGroupExt);
+        console.log("sike! dbl click");
+      };
+    },
+    toggleAllGroups(checked) {
+      this.selectedGroups = checked ? this.allGroupsArray.slice() : [];
+    },
+    clickCellRevised() {
+      /*
+        1 singur click:
+          - daca este deja inclus in selectedGroups: nu ar trebui sa faca nimic inca
+          - daca nu este deja inclus in selectedGroups: ar trebui sa fie deja aplicat stilul, adica bagat in selectedGroups.
+
+        dbl click:
+          - daca este inclus: 
+      **/
+      let clickedGroupExt;
+
+      window.onclick = e => {
+        console.log('click')
+        // aici as vrea sa se incarce deja selected class pentru cell-ul clicked
+        // daca nu facem asta, o sa fie delay-ul pus de la setTimeout ALWAYS daca nu faci dublu click
+        this.prevent = false;
+        this.maybeDblClick = setTimeout(() => {
+          if (/^4[1-4]\d[A-G](a|b|)\d{4}[A-Z][a-z]$/.test(e.target.id)) {
+            let id = this.getCellProps(e.target.id);
+
+            let clickedGroupName = id.group;
+            clickedGroupExt = id.group;
+            let clickedInt = id.timeInt;
+            let clickedDay = id.day;
+            // aici vreau sa adaug/scot din selected grupa clicked, si sa pornesc event listner pt hover
+            let found = false;
+
+            if (!this.prevent) {
+              console.log(clickedGroupName);
+              console.log(clickedInt);
+              if (this.selectedDay == null || this.selectedDay.substr(0, 2) == clickedDay) {
+                // daca clickul este in aceeasi zi
+                console.log(clickedDay);
+                if (clickedInt == this.selectedTimeInt) {
+                  // daca este SI acelasi interval selectat (pe langa aceeasi zi), sterge-l din selectate
+                  for (const [
+                    index,
+                    selection
+                  ] of this.selectedGroupsRevised.entries()) {
+                    if (selection.indexOf(clickedGroupName) > -1) {
+                      if (selection.length == 1) {
+                        // daca este deja selectat si este doar o casuta izolata
+                        this.selectedGroupsRevised.splice(
+                          this.selectedGroupsRevised.indexOf(selection),
+                          1
+                        );
+                      } else {
+                        // daca este deja selectat dar este un interval
+                        if (
+                          clickedGroupName == selection[0] ||
+                          clickedGroupName == selection[selection.lengh - 1]
+                        ) {
+                          this.selectedGroupsRevised[index] = selection.splice(
+                            clickedGroupName,
+                            1
+                          );
+                        } else {
+                          this.selectedGroupsRevised.splice(index, 1);
+                        }
+                      }
+                      found = true;
+                      break;
                     }
+                  }
+
+                  if (!found) {
+                    // daca nu a fost gasita grupa, o adaugam!
+                    // acum vine partea mai complicata...
                   }
                 }
               }
 
               // no matter what cell is clicked, we update selectedTimeInt and selectedDay after each click.
-              this.selectedTimeInt = clickedInt
+              this.selectedTimeInt = clickedInt;
 
               // facem schimbarea de zi in afara conditiei
               for (const day of this.dotw.slice(1, this.dotw.lengh)) {
                 // primul element e junk pt dropdown
-                if (day.substr(0, 2) == clickedDay)
+                if (day.substr(0, 2) == clickedDay) {
                   this.selectedDay = day;
+                  break;
+                }
               }
             }
 
-            return
+            return;
           }
-        }, 1) // we must apply classes outside the timeout for faster response
-        
-      }
+        }, 500); // we must apply classes outside the timeout for faster response
+        console.log(this.selectedGroups);
+      };
 
       window.ondblclick = () => {
         // aici vreau sa adaug/scot din selected si atat.
-        this.prevent = true
-        clearTimeout(this.maybeDblClick)
-        console.log('sike! dbl click')
-      }
+        this.prevent = true;
+        clearTimeout(this.maybeDblClick);
+        this.selectedGroupsDbl.push(clickedGroupExt);
+        console.log("sike! dbl click");
+      };
     },
-    toggleAllGroups(checked) {
-      this.selectedGroups = checked ? this.groupsArray.slice() : [];
+    updateCellsStyle(id) {
+      const { group, timeInt } = this.getCellProps(id);
+      let style = "";
+      for (const g of this.selectedGroupsRevised) {
+        if (g.indexOf(group) > -1) {
+          const timeInts = this.findSelectedTimeInts();
+          if (timeInts.indexOf(timeInt) == 0) {
+            style += "selectedClassTop";
+          }
+
+          if (timeInts.indexOf(timeInt) == timeInts.length - 1) {
+            style += "selectedClassBottom";
+          }
+
+          if (g.indexOf(group) == 0) {
+            style += "selectedClassLeft";
+          }
+
+          if (g.indexOf(group) == g.length - 1) {
+            style += "selectedClassRight";
+          }
+          break;
+        }
+      }
+      console.log('style: ', style)
+      return style;
     }
   },
   created: function() {
@@ -767,6 +906,7 @@ export default {
     this.fetchClasses();
     console.log("created!");
   },
+
   data: () => {
     return {
       allGroupsArray: [],
@@ -796,6 +936,7 @@ export default {
       ],
       selectedDay: null,
       selectedGroups: [],
+      selectedGroupsRevised: [],
       allGroupsSelected: false,
       indeterminate: false,
       selectedCourse: null,
@@ -807,8 +948,8 @@ export default {
       selectedDuration: 2,
       loggedProf: null,
       selectedRoom: null,
-      selectedGroupsRMB: [],
-      selectedGroupsLMB: [],
+      selectedGroupsDbl: [],
+      selectedGroupsSgl: [],
       maybeDblClick: 0,
       prevent: false,
       clickSelection: [],
@@ -834,22 +975,26 @@ export default {
     selectedYear() {
       // this.filterGroupsArray();
       this.filterCoursesArray();
-      this.selectedGroupsLMB = [];
-      this.selectedGroupsRMB = [];
+      this.selectedGroupsSgl = [];
+      this.selectedGroupsDbl = [];
     },
     selectedSeries() {
       // this.filterGroupsArray();
-      this.selectedGroupsLMB = [];
-      this.selectedGroupsRMB = [];
+      this.selectedGroupsSgl = [];
+      this.selectedGroupsDbl = [];
     },
     selectedCourse() {
       console.log("new selected course: ", this.selectedCourse);
     },
-    selectedGroupsRMB() {
-      this.selectedGroups = [...this.selectedGroupsLMB, ...this.selectedGroupsRMB]
+    selectedGroupsDbl() {
+      this.selectedGroups = [
+        ...new Set([...this.selectedGroupsSgl, ...this.selectedGroupsDbl])
+      ]; // temp fix. hate this
     },
-    selectedGroupsLMB() {
-      this.selectedGroups = [...this.selectedGroupsLMB, ...this.selectedGroupsRMB]
+    selectedGroupsSgl() {
+      this.selectedGroups = [
+        ...new Set([...this.selectedGroupsDbl, ...this.selectedGroupsSgl])
+      ]; // temp fix. hate this
     }
   }
 };
