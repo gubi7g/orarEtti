@@ -32,6 +32,10 @@ const router = new VueRouter({
       path: '/rooms',
       name: 'rooms',
       component: OrarRoom
+    },
+    {
+      path: '*',
+      redirect: '/orar'
     }
   ],
   mode: 'history'
