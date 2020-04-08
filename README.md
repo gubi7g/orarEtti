@@ -1,21 +1,20 @@
 # orarEtti
-orarul ETTI
+## Getting started
 
 ```
-cd orarEtti/ser
-npm i
-cd ../cli
-npm i
+cd orarEtti/
+npm i   // installs both dependancies for client and server
+npm run // runs both the client and server
 ```
 
-for server:
-```
-npm start
-```
+## Further edits
+the sql connection can be modified in the server-orar-etti/server.js
 
-for client:
+these are the current parameters for the connection
 ```
-npm run serve
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  database: 'orarEtti'
+});
 ```
-
-you need to have a local sql DB called oraretti for the server to serve the groups for the front end.
