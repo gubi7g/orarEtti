@@ -82,6 +82,8 @@
             <div>
               Selected groups:
               <strong>{{ selectedGroups }}</strong>
+              <br />org sel groups:
+              <strong>{{ organizedSelected }}</strong>
               <br />All Selected:
               <strong>{{ allGroupsSelected }}</strong>
               <br />Indeterminate:
@@ -170,6 +172,7 @@ export default {
       return this.breakIntoConsecGroups(this.selectedGroups)
     },
     createDayIntTable: function() {
+      console.log('generating table')
       let table = [];
 
       for (const day of this.dotw.slice(1, this.dotw.length)) {
@@ -180,17 +183,17 @@ export default {
 
       return table;
     },
-    groupsArray() {
-      // computed prop representing remaining groups after filtering series + year
-      let res = [];
-      for (const grupa of this.allGroupsArray) {
-        if (grupa[1] == this.selectedYear) {
-          if (grupa[3] == this.selectedSeries) res.push(grupa);
-          else if (this.selectedSeries == null) res.push(grupa);
-        }
-      }
-      return res;
-    },
+    // groupsArray() {
+    //   // computed prop representing remaining groups after filtering series + year
+    //   let res = [];
+    //   for (const grupa of this.allGroupsArray) {
+    //     if (grupa[1] == this.selectedYear) {
+    //       if (grupa[3] == this.selectedSeries) res.push(grupa);
+    //       else if (this.selectedSeries == null) res.push(grupa);
+    //     }
+    //   }
+    //   return res;
+    // },
     groupsArrayTest() {
       // computed prop representing remaining groups after filtering series + year
       let res = [];
@@ -213,7 +216,11 @@ export default {
       }
       return res;
     },
+    
+  },
+  methods: {
     findSelectedTimeInts() {
+
       let selectedTimeInts = [];
       if (this.selectedGroups.length > 0) {
         for (let i = 0; i < this.selectedDuration; i++) {
@@ -232,13 +239,16 @@ export default {
           selectedTimeInts.push(startTimeSelected + endTimeSelected);
         }
       }
-      console.log(selectedTimeInts);
       return selectedTimeInts;
-    }
-  },
-  methods: {
+    },
     styleCondition(timeInt, day, grupa) {
-      return ((this.findSelectedTimeInts.indexOf(timeInt) > -1) && (day.substr(0, 2) == this.selectedDay.substr(0, 2)) && (this.selectedGroups.indexOf(grupa) > -1 ))
+      if(day.substr(0, 2) == 'Mo' && timeInt == '0809' && grupa == '411A'){
+        console.log((this.findSelectedTimeInts().indexOf(timeInt) > -1) + ' ' + (this.selectedGroups.indexOf(grupa) > -1 ))
+        console.log(this.findSelectedTimeInts())
+        console.log(timeInt)
+      }
+      // console.log((day.substr(0, 2) == this.selectedDay.substr(0, 2)))
+      return ((this.findSelectedTimeInts().indexOf(timeInt) > -1) && (day.substr(0, 2) == this.selectedDay.substr(0, 2)) && (this.selectedGroups.indexOf(grupa) > -1 ))
     },
     breakIntoConsecGroups(array) {
       // ceva gen [1, 3, 4] -> [[1], [3, 4]] doar ca pt grupe pt toate clasele
@@ -299,11 +309,11 @@ export default {
     },
     findFloatingButtonPosition() {
       let maxGroup = this.findMaxGroupFromSelected(this.selectedGroups);
-      if (this.findSelectedTimeInts.length > 0) {
+      if (this.findSelectedTimeInts().length > 0) {
         if (this.selectedTimeInt) {
           let closestCell = document.getElementById(
             maxGroup +
-              this.findSelectedTimeInts.pop() +
+              this.findSelectedTimeInts().pop() +
               this.selectedDay.substr(0, 2)
           );
 
@@ -327,21 +337,22 @@ export default {
         name: this.selectedCourse,
         duration: this.selectedDuration,
         day: this.selectedDay,
-        startTime: this.findSelectedTimeInts[0].substr(0, 2),
-        endTime: this.findSelectedTimeInts[
-          this.findSelectedTimeInts.length - 1
+        startTime: this.findSelectedTimeInts()[0].substr(0, 2),
+        endTime: this.findSelectedTimeInts()[
+          this.findSelectedTimeInts().length - 1
         ].substr(2, 2),
         prof: this.loggedProf,
         room: this.selectedRoom,
         groups: this.selectedGroups
       });
+
       let newClass = {
         name: this.selectedCourse,
         duration: this.selectedDuration,
         day: this.selectedDay,
-        startTime: this.findSelectedTimeInts[0].substr(0, 2),
-        endTime: this.findSelectedTimeInts[
-          this.findSelectedTimeInts.length - 1
+        startTime: this.findSelectedTimeInts()[0].substr(0, 2),
+        endTime: this.findSelectedTimeInts()[
+          this.findSelectedTimeInts().length - 1
         ].substr(2, 2),
         prof: this.loggedProf,
         room: this.selectedRoom,
@@ -399,7 +410,7 @@ export default {
         console.log(this.allGroupsArray);
         console.log(this.seriesArray);
 
-        // this.filterGroupsArray(); // ca sa nu fie empty tabelul on reload...
+        this.filterGroupsArray(); // ca sa nu fie empty tabelul on reload...
       });
     },
     fetchClasses: function() {
@@ -409,15 +420,15 @@ export default {
         console.log("reserved classes:", this.allReservedClasses);
       });
     },
-    // filterGroupsArray() {
-    //   this.groupsArray = [];
-    //   for (const grupa of this.allGroupsArray) {
-    //     if (grupa[1] == this.selectedYear) {
-    //       if (grupa[3] == this.selectedSeries) this.groupsArray.push(grupa);
-    //       else if (this.selectedSeries == null) this.groupsArray.push(grupa);
-    //     }
-    //   }
-    // },
+    filterGroupsArray() {
+      this.groupsArray = [];
+      for (const grupa of this.allGroupsArray) {
+        if (grupa[1] == this.selectedYear) {
+          if (grupa[3] == this.selectedSeries) this.groupsArray.push(grupa);
+          else if (this.selectedSeries == null) this.groupsArray.push(grupa);
+        }
+      }
+    },
 
     // findMinGroupFromSelected(x) {
     //   let min = this.groupsArray[this.groupsArray.length - 1]; // initialize with max group
@@ -500,15 +511,16 @@ export default {
       
       let group, timeInt, day;
       window.onclick = e => {
-        console.log('click')
         // aici as vrea sa se incarce deja selected class pentru cell-ul clicked
         // daca nu facem asta, o sa fie delay-ul pus de la setTimeout ALWAYS daca nu faci dublu click
         // this.prevent = false;
         if (/^4[1-4]\d[A-G](a|b|)\d{4}[A-Z][a-z]$/.test(e.target.id)) {
+          console.log('click')
+
 
 
           // if first click
-          if(this.selectedDay == null)
+          if(!this.selectedDay) {
             for (const _day of this.dotw.slice(1, this.dotw.lengh)) {
               // primul element e junk pt dropdown
               if (_day.substr(0, 2) == day) {
@@ -516,6 +528,7 @@ export default {
                 break;
               }
             }
+          }
           
 
           let temp = this.getCellProps(e.target.id);
@@ -528,22 +541,20 @@ export default {
 
           // this.maybeDblClick = setTimeout(() => {
 
-          if (!this.prevent) {
-            if(this.selectedGroups.indexOf(group) > -1) {
-              // daca este selectat deja
-              if (this.selectedDay.substr(0, 2) == day) {
-                // daca clickul este in aceeasi zi
-                if (timeInt == this.selectedTimeInt) {
-                  // daca este SI acelasi interval selectat (pe langa aceeasi zi), sterge-l din selectate
-                  this.selectedGroups.splice(this.selectedGroups.indexOf(group), 1)
-                }
+          if(this.selectedGroups.indexOf(group) > -1) {
+            // daca este selectat deja
+            if (this.selectedDay.substr(0, 2) == day) {
+              // daca clickul este in aceeasi zi
+              if (timeInt == this.selectedTimeInt) {
+                // daca este SI acelasi interval selectat (pe langa aceeasi zi), sterge-l din selectate
+                this.selectedGroups.splice(this.selectedGroups.indexOf(group), 1)
               }
             }
-            else {
-              this.selectedGroups.push(group)
-            }
-            
           }
+          else {
+            this.selectedGroups.push(group)
+          }
+          
           // }, 1)// we must apply classes outside the timeout for faster response
 
 
@@ -573,11 +584,12 @@ export default {
     },
     updateCellsStyle(id) {
       // console.log(id)
+      console.log('updated style')
       const { group, timeInt } = this.getCellProps(id);
       let style = "";
       for (const g of this.organizedSelected) {
         if (g.indexOf(group) > -1) {
-          const timeInts = this.findSelectedTimeInts;
+          const timeInts = this.findSelectedTimeInts();
           if (timeInts.indexOf(timeInt) == 0) {
             style += " selectedCellsTop";
           }
@@ -637,6 +649,7 @@ export default {
       ],
       selectedDay: null,
       selectedGroups: [],
+      groupsArray: [],
       selectedGroupsRevised: [],
       allGroupsSelected: false,
       indeterminate: false,
@@ -674,18 +687,17 @@ export default {
       }
     },
     selectedYear() {
-      // this.filterGroupsArray();
+      this.filterGroupsArray();
       this.filterCoursesArray();
-      this.selectedGroupsSgl = [];
-      this.selectedGroupsDbl = [];
+      // this.selectedGroups = [];
+      console.log(this.selectedGroups)
+      console.log(this.organizedSelected)
     },
     selectedSeries() {
-      // this.filterGroupsArray();
-      this.selectedGroupsSgl = [];
-      this.selectedGroupsDbl = [];
-    },
-    selectedCourse() {
-      console.log("new selected course: ", this.selectedCourse);
+      this.filterGroupsArray();
+      this.selectedGroups = [];
+      console.log(this.selectedGroups)
+      console.log(this.organizedSelected)
     },
   }
 };
