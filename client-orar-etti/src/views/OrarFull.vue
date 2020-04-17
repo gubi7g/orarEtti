@@ -103,16 +103,16 @@
     <h3>Selected Year: {{selectedYear}}</h3>
     <b-row>
       <b-col>
-        <b-button @click="selectedYear = 1">An 1</b-button>
+        <b-button @click="() => {selectedYear = 1; selectedSeries = null}">An 1</b-button>
       </b-col>
       <b-col>
-        <b-button @click="selectedYear = 2">An 2</b-button>
+        <b-button @click="() => {selectedYear = 2; selectedSeries = null}">An 2</b-button>
       </b-col>
       <b-col>
-        <b-button @click="selectedYear = 3">An 3</b-button>
+        <b-button @click="() => {selectedYear = 3; selectedSeries = null}">An 3</b-button>
       </b-col>
       <b-col>
-        <b-button @click="selectedYear = 4">An 4</b-button>
+        <b-button @click="() => {selectedYear = 4; selectedSeries = null}">An 4</b-button>
       </b-col>
     </b-row>
     <b-row>
@@ -146,11 +146,14 @@
           </template>
         </tbody>
       </table>
-      <span :style="findFloatingButtonPosition()" class="floatingDiv">
-        <b-button >All</b-button>
+      <span :style="findFloatingButtonPosition()[0]" class="floatingDiv">
+        <b-button @click="toggleAllGroups">All</b-button>
       </span>
-      <span :style="findFloatingButtonPosition()" class="floatingDiv">
-        <b-button @click="postClass()">Send</b-button>
+      <span :style="findFloatingButtonPosition()[1]" class="floatingDiv">
+        <b-button @click="postClass">Send</b-button>
+      </span>
+      <span :style="findFloatingButtonPosition()[2]" class="floatingDiv">
+        <b-button @click="clearSelected">Clear</b-button>
       </span>
     </b-row>
     <template v-for="cls in this.allReservedClasses">
@@ -194,28 +197,6 @@ export default {
     //   }
     //   return res;
     // },
-    groupsArrayTest() {
-      // computed prop representing remaining groups after filtering series + year
-      let res = [];
-      for (const grupa of this.allGroupsArray) {
-        let tmp = {};
-
-        if (grupa[1] == this.selectedYear) {
-          if (grupa[3] == this.selectedSeries) {
-            tmp.grupa = grupa;
-            tmp.selected = false;
-            tmp.style = "";
-          } else if (this.selectedSeries == null) {
-            tmp.grupa = grupa;
-            tmp.selected = false;
-            tmp.style = "";
-          }
-
-          res.push(tmp);
-        }
-      }
-      return res;
-    },
     
   },
   methods: {
@@ -308,9 +289,9 @@ export default {
       return group + int + day.substr(0, 2);
     },
     findFloatingButtonPosition() {
-      let maxGroup = this.findMaxGroupFromSelected(this.selectedGroups);
-      if (this.findSelectedTimeInts().length > 0) {
-        if (this.selectedTimeInt) {
+      let maxGroup = this.organizedSelected[this.organizedSelected.length - 1][this.organizedSelected[this.organizedSelected.length - 1].length - 1]
+      console.log('max group', maxGroup)
+        if (this.selectedTimeInt && this.selectedGroups.length > 0) {
           let closestCell = document.getElementById(
             maxGroup +
               this.findSelectedTimeInts().pop() +
@@ -318,18 +299,35 @@ export default {
           );
 
           let x = Math.round(
-            window.scrollX + closestCell.getBoundingClientRect().left
-          );
-          // if(val == 1)
-          //   x -= 50
-          let y = Math.round(
-            window.scrollY + closestCell.getBoundingClientRect().top
+            document.documentElement.scrollLeft + closestCell.getBoundingClientRect().left
           );
 
-          return `position:absolute; z-index:10; top:${y + 50}px; left:${x}px; display: inline`;
-        }
+          let y = Math.round(
+            document.documentElement.scrollTop + closestCell.getBoundingClientRect().top
+          );
+
+          console.log(x, x+75, x-75)
+
+          if(this.selectedSeries == null) {
+            return [
+              `display: none`,
+              `position:absolute; z-index:10; top:${y + 50}px; left:${x+75}px; display: inline`,
+              `position:absolute; z-index:10; top:${y + 50}px; left:${x}px; display: inline`
+            ]
+          } else {
+            return [
+              `position:absolute; z-index:10; top:${y + 50}px; left:${x+75}px; display: inline`,
+              `position:absolute; z-index:10; top:${y + 50}px; left:${x}px; display: inline`,
+              `position:absolute; z-index:10; top:${y + 50}px; left:${x-75}px; display: inline`
+            ]
+          }
+          
       } else {
-        return "display: none";
+        return [
+          'display: none',
+          'display: none',
+          'display: none'
+        ]
       }
     },
     postClass: function() {
@@ -430,6 +428,23 @@ export default {
       }
     },
 
+    filterSelectedGroups() {
+      if(this.selectedSeries == null) return
+
+      let newSel = []
+      console.log('start', this.selectedGroups)
+      for(const grupa of this.selectedGroups) {
+        if(grupa[3] == this.selectedSeries) {
+          newSel.push(grupa)
+        }
+      }
+      console.log('stop', this.selectedGroups)
+      console.log('new sel series val:', this.selectedSeries)
+
+      this.selectedGroups = newSel
+
+    },
+
     // findMinGroupFromSelected(x) {
     //   let min = this.groupsArray[this.groupsArray.length - 1]; // initialize with max group
     //   for (const grupa of x) {
@@ -497,6 +512,9 @@ export default {
     toggleAllGroups(checked) {
       this.selectedGroups = checked ? this.groupsArray.slice() : [];
     },
+    clearSelected() {
+      this.selectedGroups = []
+    },
     clickCellRevised() {
       /*
         1 singur click:
@@ -552,7 +570,16 @@ export default {
             }
           }
           else {
-            this.selectedGroups.push(group)
+            if(this.selectedGroups.length > 0){
+              if(this.selectedDay.substr(0, 2) == day){
+                if(timeInt == this.selectedTimeInt){
+                  this.selectedGroups.push(group)
+                }
+              }
+            }
+            else {
+              this.selectedGroups.push(group)
+            }
           }
           
           // }, 1)// we must apply classes outside the timeout for faster response
@@ -689,13 +716,15 @@ export default {
     selectedYear() {
       this.filterGroupsArray();
       this.filterCoursesArray();
-      // this.selectedGroups = [];
+      this.selectedGroups = [];
+
       console.log(this.selectedGroups)
       console.log(this.organizedSelected)
     },
     selectedSeries() {
       this.filterGroupsArray();
-      this.selectedGroups = [];
+      this.filterSelectedGroups()
+
       console.log(this.selectedGroups)
       console.log(this.organizedSelected)
     },
