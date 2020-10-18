@@ -1,7 +1,8 @@
 {
   "api":{
     "groups": "http://localhost:3000/api/getgroups",
-    "courses": "http://localhost:3000/api/getcourses"
+    "courses": "http://localhost:3000/api/getcourses",
+    "classes": "http://localhost:3000/api/getclasses"
   },
   "admin": {
     "newclass": "http://localhost:3000/admin/newclass"
