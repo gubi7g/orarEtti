@@ -181,7 +181,6 @@ app.get('/api/getclasses/', (req, res) => {
 
     // console.log(classes)
     consumeIntermGCTable(classes).then(ans => res.send(ans))
-    
   })
 
 })
